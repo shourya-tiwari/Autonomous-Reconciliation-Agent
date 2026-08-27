@@ -26,7 +26,7 @@ import argparse
 import json
 import sys
 import time
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -38,7 +38,7 @@ for _stream in (sys.stdout, sys.stderr):  # Windows consoles default to cp1252
     except (AttributeError, ValueError):
         pass
 
-from config import settings  # noqa: E402
+from config import settings
 
 PAGE_SIZE = 100  # Razorpay hard max per request
 
@@ -112,7 +112,7 @@ def main() -> None:
 
     client = razorpay.Client(auth=(key_id, key_secret))
 
-    now = datetime.now(timezone.utc)
+    now = datetime.now(UTC)
     window = {
         "from": int((now - timedelta(days=args.days)).timestamp()),
         "to": int(now.timestamp()),
@@ -146,8 +146,8 @@ def main() -> None:
         "key_mode": "test",
         "key_id": key_id,
         "window": {
-            "from": datetime.fromtimestamp(window["from"], timezone.utc).isoformat(),
-            "to": datetime.fromtimestamp(window["to"], timezone.utc).isoformat(),
+            "from": datetime.fromtimestamp(window["from"], UTC).isoformat(),
+            "to": datetime.fromtimestamp(window["to"], UTC).isoformat(),
             "days": args.days,
         },
         "max_per_resource": args.max,

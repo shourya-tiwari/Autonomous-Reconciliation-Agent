@@ -1,0 +1,2 @@
+# Store LF in the repo; check out native line endings on each platform.
+* text=auto eol=lf

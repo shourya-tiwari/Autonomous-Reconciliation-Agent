@@ -25,11 +25,10 @@ Payments entity. If the curated snapshot differs, adjust `_load_payments`.
 from __future__ import annotations
 
 import argparse
-import csv
 import json
 import random
 import sys
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -41,7 +40,7 @@ for _stream in (sys.stdout, sys.stderr):  # Windows consoles default to cp1252
     except (AttributeError, ValueError):
         pass
 
-from config import settings  # noqa: E402
+from config import settings
 
 # Fraction of eligible payments that receive each injected case (see catalogue).
 INJECTION_PLAN = {
@@ -133,7 +132,7 @@ def main() -> None:
     print(f"loaded {len(payments)} snapshot payments")
 
     manifest = {
-        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "generated_at": datetime.now(UTC).isoformat(),
         "seed": args.seed,
         "n_payments": len(payments),
         "injection_plan": INJECTION_PLAN,

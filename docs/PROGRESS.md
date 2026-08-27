@@ -101,11 +101,13 @@ Keep entries short — this exists so a new session has continuity without re-re
   stub — deliberately left until a real snapshot exists so transforms match real fields.
 - `pyproject.toml`: pythonpath += "." so `config` imports resolve in tests.
 
+- `.venv/` created (Python 3.13), `requirements.txt` installed. `pytest` (6 skipped stubs)
+  and `ruff` both green. Note resolved versions: `google-genai` 2.20, `razorpay` 2.0.1,
+  pandas 3.0.5.
+
 **Blocked / waiting on user:**
 - **Need Razorpay test-mode keys** in `.env` to run `pull_razorpay_sandbox.py`. Also may
   need to create a few test payments/refunds first (test accounts start empty).
-- Dev deps not installed here (`pytest`, `ruff` missing) — run `pip install -r requirements.txt`
-  (heavy: pulls torch via sentence-transformers; consider a venv).
 
 **Next:**
 1. User runs the pull script → `data/raw/` populated.
