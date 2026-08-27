@@ -2,13 +2,14 @@
 
 Time budget: ~6-8 hrs/day, solo build.
 
-## Day 1 — Dataset
-- [ ] Pull real transactions from Razorpay sandbox/test-mode API (multi-currency, refunds, partial captures, failed settlements)
-- [ ] Construct 2-3 messy transaction sources (bank statement, invoice ledger, payment gateway export)
-- [ ] Design deliberate mismatches: amount rounding, split payments, duplicate refs, missing fields — document *why* each one is included
-- [ ] Define evaluation metrics upfront: match precision/recall, % auto-resolved, % escalated, throughput
+## Day 1 — Dataset — DONE
+- [x] Pull real transactions from Razorpay sandbox/test-mode API — only 8 payments / 6 orders / 1 refund available (S2S payment creation not enabled on the test account). Kept as the schema anchor in `data/snapshot/`; corpus expanded synthetically from them. See `data/snapshot/provenance.md`.
+- [x] Construct 3 messy transaction sources — `gateway_export.csv` (paise, ISO-8601), `invoice_ledger.csv` (rupees, `YYYY-MM-DD`, INR-denominated), `bank_statement.csv` (rupees, `DD-MM-YYYY`, settlement-level)
+- [x] Design deliberate mismatches, each documented with rationale + expected behaviour — 4 structural + 11 injected cases in `data/synthetic/mismatch_catalogue.md`
+- [x] Define evaluation metrics upfront — `src/recon/eval/metrics.py` (defined Day 1, computed Day 6)
 
 ## Day 2 — Deterministic Matching Layer
+- [x] Ingest + canonical schema (prerequisite, task 1.2) — 680 rows → 679 normalised + 1 rejected
 - [ ] Exact match (ref/amount/date)
 - [ ] Fuzzy match (tolerant amount/date/name matching)
 - [ ] This is the accuracy floor / baseline — log everything from this point on
