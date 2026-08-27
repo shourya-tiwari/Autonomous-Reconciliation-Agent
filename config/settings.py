@@ -8,6 +8,7 @@ confidence cutoffs, top-k) in this file, not scattered across modules.
 from __future__ import annotations
 
 import os
+from decimal import Decimal
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -29,8 +30,30 @@ LLM_REPLAY_ONLY = os.environ.get("RECON_LLM_REPLAY_ONLY", "1") == "1"  # no live
 LLM_CACHE_DIR = DATA_DIR / "llm_cache"     # committed request->response cache for offline replay
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")  # only needed when RECON_LLM_REPLAY_ONLY=0
 
-# Matching thresholds — TODO tune on real data (Day 2/6)
-AMOUNT_ABS_TOLERANCE = 0.0
-DATE_WINDOW_DAYS = 0
-NAME_SIMILARITY_MIN = 0.0
-LLM_CONFIDENCE_MIN = 0.0  # below this -> escalate
+# --- Deterministic matching thresholds ---
+# Amount: a candidate's amounts must agree within the larger of an absolute and a
+# relative band. Absolute covers rounding to whole rupees; relative covers the
+# small give from fee models and settlement math.
+AMOUNT_ABS_TOLERANCE = Decimal("1.00")   # rupees
+AMOUNT_REL_TOLERANCE = 0.015             # 1.5%
+# Date: invoice vs settlement dates drift by the settlement lag plus weekends.
+DATE_WINDOW_DAYS = 4
+# Name: rapidfuzz token_sort_ratio, 0..1. Below this the names are treated as
+# unrelated rather than a weak positive.
+NAME_SIMILARITY_MIN = 0.72
+# Combined score (0..1) at or above which a single clear best candidate is
+# accepted as a confident 1:1 match...
+MATCH_CONFIDENT = 0.82
+# ...and it must beat the second-best candidate by at least this margin, else the
+# pairing is ambiguous and goes to the LLM.
+MATCH_MARGIN = 0.08
+# Settlement (N:1): net-of-fees is computed from the actual fee column, so a
+# real batch foots to the paisa. Keep the tolerance tight — a loose one lets a
+# wrong subset (drop a different payment) foot by coincidence.
+SETTLEMENT_ABS_TOLERANCE = Decimal("0.05")
+
+# --- LLM reasoning ---
+LLM_CONFIDENCE_MIN = 0.60  # structured LLM output below this -> escalate, don't force
+
+# --- Audit trail ---
+AUDIT_ENABLED = os.environ.get("RECON_AUDIT", "1") == "1"

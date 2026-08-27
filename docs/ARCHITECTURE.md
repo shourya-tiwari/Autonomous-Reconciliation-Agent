@@ -12,9 +12,14 @@ Ingest -> Deterministic Match -> LLM Reasoning (ambiguous cases only) -> RAG Gro
 - Validates input; malformed records routed to failure-handling path, not silently dropped
 
 ### 2. Deterministic Matching Layer
-- Exact match: reference ID, amount, date
-- Fuzzy match: tolerant amount/date/name matching
-- Output: matched / unmatched-ambiguous / unmatched-exception
+- Exact match: reference id + amount + currency + day (ambiguous keys deferred)
+- Fuzzy match: rapidfuzz-scored amount/date/name/ref; a currency or amount
+  disagreement is capped below the confident threshold
+- Settlement N:1: bank credit vs the batch of gateway payments (subset-sum)
+- Output buckets: `matched` / `unmatched-ambiguous` (→ LLM) /
+  `unmatched-exception` (→ RAG) / `ignored` (failed payments, filtered pre-match)
+- 100% bucket accuracy vs ground truth on the current corpus; resolves ~68%
+  deterministically
 
 ### 3. LLM Reasoning Layer
 - Input: unmatched-ambiguous records only (not the full dataset — cost/latency control)
@@ -33,7 +38,11 @@ Ingest -> Deterministic Match -> LLM Reasoning (ambiguous cases only) -> RAG Gro
 - At least one deliberate failure mode demonstrated as gracefully handled
 
 ### 6. Audit Trail
-- Every decision (deterministic, LLM, RAG-grounded) logged with: input, decision, confidence/source, timestamp
+- `src/recon/audit/logger.py` — append-only JSONL, one object per decision:
+  `run_id, seq, ts, record_id, stage, decision, confidence, source, matched_to,
+  inputs, rationale`
+- `rationale` is never blank; ambiguous decisions carry the scored candidates so
+  the LLM stage (and a human) can see what was weighed
 - This is the artifact judges will actually inspect — treat it as a first-class output, not incidental logging
 
 ## Stretch (Phase 3, not core)

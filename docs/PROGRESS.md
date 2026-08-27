@@ -164,3 +164,43 @@ churn now.
   task 1.4 — the audit trail, wired into matching before any LLM/RAG work.
 
 ---
+
+## Session 5 — tasks 1.3 + 1.4 (deterministic matching + audit trail)
+**Date:** 2026-08-28
+**Done:**
+- **Generator data-flow fix:** bank statement (settlements + refund/charge debits) is now
+  derived from the *post-injection* gateway rows, so a settlement credit always foots to
+  its members. Partial-capture / duplicate payments are `_held` back from settlement
+  (realistic — flagged payments are held pending review). Corpus regenerated; all random
+  ids shifted (deterministic generator, different RNG call order). Ingest tests still green.
+- `src/recon/matching/`:
+  - `types.py` — `Bucket`, `ScoreBreakdown`, `Candidate`, `MatchDecision`, `MatchReport`.
+  - `exact.py` — 1:1 on ref+amount+currency+day; a key mapping to >1 record on either side
+    is deferred to fuzzy (surfaces duplicate refs instead of mis-resolving).
+  - `fuzzy.py` — `score_pair` → weighted amount/date/name(rapidfuzz)/ref. **Hard rule:**
+    cross-currency or real amount gap caps the score below `MATCH_CONFIDENT` → those can
+    only reach `unmatched-ambiguous`.
+  - `engine.py` — `reconcile()`: filter dead → exact → fuzzy (greedy mutual-best + margin
+    gate) → settlement N:1 (subset-sum, tolerates a held-back payment) → bank exceptions.
+- `config/settings.py` — real matching thresholds (`MATCH_CONFIDENT=0.82`, `MATCH_MARGIN`,
+  `AMOUNT_ABS/REL_TOLERANCE`, `DATE_WINDOW_DAYS=4`, `NAME_SIMILARITY_MIN=0.72`,
+  `SETTLEMENT_ABS_TOLERANCE`). `LLM_CONFIDENCE_MIN=0.60`.
+- `src/recon/audit/logger.py` — `AuditLogger`: append-only JSONL, per-line flush, in-memory
+  mirror, `seq` counter, `read()` round-trip, context manager, `for_run()` factory.
+  Wired into the engine: one entry per decision.
+- `tests/test_matching.py` (18) + `tests/test_audit.py` (15). Full suite: 57 passed,
+  4 skipped (agent/eval/rag/reasoning stubs). ruff clean.
+
+**Verified DoD:**
+- **Deterministic matching: 100% bucket accuracy** vs `data/ground_truth/` on all 679
+  records. 464 matched (68%) / 112 → LLM / 48 → RAG / 55 ignored. Zero misbuckets.
+- Audit: a run writes 679 JSONL entries; `entries on disk == decisions`; every entry has a
+  non-blank rationale; ambiguous entries carry the scored candidates for the LLM stage.
+- One real bug caught & fixed: `audit = audit or AuditLogger(...)` — an empty logger is
+  falsy (`__len__`), so a passed-in logger was silently replaced. Now `if audit is None`.
+
+**Next:**
+- Task 1.5 — LLM reasoning layer (Gemini, structured output, replay cache) on the 112
+  `unmatched-ambiguous` records.
+
+---

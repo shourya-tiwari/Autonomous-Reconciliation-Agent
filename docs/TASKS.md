@@ -65,29 +65,44 @@ no source file (now correctly no match — they are exceptions); settlement N:1
 truth not expressible in one column (added
 `data/ground_truth/settlement_groups.csv`, 208 rows).
 
-### 1.3 Deterministic matching (Day 2 PM)
-- [ ] `src/recon/matching/exact.py` — 1:1 match on (ref_id, amount, value_date);
-      exact hits removed from the pool.
-- [ ] `src/recon/matching/fuzzy.py` — tolerant match: amount within
-      `AMOUNT_ABS_TOLERANCE`, date within `DATE_WINDOW_DAYS`, name similarity
-      ≥ `NAME_SIMILARITY_MIN` (rapidfuzz). Produce scored candidates.
-- [ ] Classifier → `matched` | `unmatched-ambiguous` (has candidates, none
-      confident) | `unmatched-exception` (no candidate at all).
-- [ ] Set real threshold values in `config/settings.py`.
-- [ ] `tests/test_matching.py` — each injected mismatch lands in the intended
-      bucket.
-- [ ] **DoD:** running matching on the dataset produces the three buckets with
-      sane counts; this is the accuracy baseline.
+### 1.3 Deterministic matching (Day 2 PM) — DONE
+- [x] `src/recon/matching/exact.py` — 1:1 match on ref + amount + currency + day;
+      a key that maps to >1 record on either side is left for the fuzzy pass
+      (this is how duplicate references are surfaced, not mis-resolved).
+- [x] `src/recon/matching/fuzzy.py` — `score_pair` → `ScoreBreakdown` (amount /
+      date / name via rapidfuzz / ref, weighted). Two hard rules: different
+      currencies and real amount disagreements are capped below the confident
+      threshold, so partial captures / FX slips / duplicates can only reach
+      `unmatched-ambiguous`.
+- [x] `src/recon/matching/engine.py` — `reconcile()`: filter dead → exact →
+      fuzzy (greedy mutual-best with a margin gate) → settlement N:1 (subset-sum,
+      so a batch with a held-back payment still foots) → bank exceptions.
+      Buckets: `matched | unmatched-ambiguous | unmatched-exception | ignored`.
+- [x] Real thresholds in `config/settings.py` (`MATCH_CONFIDENT`, `MATCH_MARGIN`,
+      `AMOUNT_*_TOLERANCE`, `DATE_WINDOW_DAYS`, `NAME_SIMILARITY_MIN`,
+      `SETTLEMENT_ABS_TOLERANCE`).
+- [x] `tests/test_matching.py` — 18 tests incl. the accuracy contract.
+- [x] **DoD:** on the full corpus, **bucket accuracy = 100%** against
+      `data/ground_truth/`. 464 matched / 112 → LLM / 48 → RAG / 55 ignored.
+      Deterministic baseline resolves 68% with zero misbuckets.
 
-### 1.4 Audit trail foundation (Day 2, before anything LLM/RAG)
-- [ ] `src/recon/audit/logger.py` — `AuditLogger` appending one JSONL record per
-      decision to `outputs/audit/run-<timestamp>.jsonl`: `record_id`, `stage`,
-      `decision`, `confidence`, `source` (rule id / model / retrieved clause),
-      `inputs`, `timestamp`, `run_id`.
-- [ ] Wire it into matching (1.3) retroactively.
-- [ ] `tests/` — a run produces a valid, parseable trail.
-- [ ] **DoD:** every matching decision is in the trail with enough context to
-      explain it without rerunning.
+**Also fixed a generator data-flow bug:** the bank statement (settlements +
+refund/charge debits) is now derived from the *post-injection* gateway rows, so a
+settlement credit always foots to its members. Partial-capture / duplicate
+payments are `_held` back from settlement.
+
+### 1.4 Audit trail foundation (Day 2, before anything LLM/RAG) — DONE
+- [x] `src/recon/audit/logger.py` — `AuditLogger`: append-only JSONL to
+      `outputs/audit/run-<run_id>.jsonl`, flushed per line, mirrored in memory.
+      Each entry: `run_id`, `seq`, `ts`, `record_id`, `stage`, `decision`,
+      `confidence`, `source`, `matched_to`, `inputs`, `rationale`. `path=None` →
+      memory only (tests); `AuditLogger.for_run()` → default file.
+- [x] Wired into the matching engine — one entry per decision, `rationale` never
+      blank, ambiguous entries carry the scored candidates for the LLM stage.
+- [x] `tests/test_audit.py` — 15 tests: JSONL validity, round-trip, and that
+      `entries on disk == decisions`.
+- [x] **DoD:** a matching run writes 679 entries; every decision is explained
+      in-line without re-running.
 
 ### 1.5 LLM reasoning layer (Day 3)
 - [ ] `src/recon/reasoning/llm_client.py` — structured-output call returning
