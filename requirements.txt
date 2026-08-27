@@ -1,0 +1,20 @@
+# --- core / data ---
+pandas>=2.2
+python-dateutil>=2.9
+pydantic>=2.7            # canonical transaction schema + validation
+python-dotenv>=1.0
+
+# --- fuzzy matching ---
+rapidfuzz>=3.9
+
+# --- LLM reasoning layer (provider not yet locked — see PROGRESS.md Session 1) ---
+anthropic>=0.40
+
+# --- RAG grounding layer ---
+chromadb>=0.5           # local embedded vector store, no server (clean-clone friendly)
+sentence-transformers>=3.0   # local embeddings, no API key / offline reproducible
+pypdf>=4.2              # read GST/tax policy PDFs
+
+# --- dev ---
+pytest>=8.2
+ruff>=0.6

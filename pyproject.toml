@@ -1,0 +1,13 @@
+[project]
+name = "recon-agent"
+version = "0.1.0"
+description = "Autonomous Reconciliation Agent — Razorpay AI Buildathon 2026"
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+src = ["src", "scripts", "tests"]
