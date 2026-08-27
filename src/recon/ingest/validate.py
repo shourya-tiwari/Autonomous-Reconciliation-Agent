@@ -24,6 +24,15 @@ from .schema import Source
 T = TypeVar("T")
 
 
+# Where each source keeps its record identifier, so a rejected row can still be
+# named in the audit trail and matched against the ground-truth answer key.
+_ID_COLUMN = {
+    Source.GATEWAY: "pg_payment_id",
+    Source.INVOICE: "invoice_no",
+    Source.BANK: "bank_txn_ref",
+}
+
+
 class RejectedRow(BaseModel):
     """An input row that could not be normalised, kept for the audit trail."""
 
@@ -33,6 +42,13 @@ class RejectedRow(BaseModel):
     row_number: int  # 1-based line number in the source file, header included
     reason: str
     raw: dict[str, Any]
+
+    @property
+    def record_id(self) -> str:
+        """The row's own id when it is legible, else a file-position fallback."""
+        column = _ID_COLUMN.get(self.source)
+        value = (self.raw.get(column) or "").strip() if column else ""
+        return value or f"{self.source}:line{self.row_number}"
 
     def __str__(self) -> str:
         return f"{self.source} line {self.row_number}: {self.reason}"
