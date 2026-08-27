@@ -37,18 +37,33 @@ it writes to the trail.
       complete. Corpus buckets: ~464 auto / ~112 escalated / ~48 exception /
       ~55 ignored / 1 failed.
 
-### 1.2 Ingest + canonical schema (Day 2 AM)
-- [ ] `src/recon/ingest/schema.py` — pydantic `CanonicalTxn` model: `txn_id`,
-      `source`, `ref_id`, `amount` (Decimal), `currency`, `value_date`,
-      `counterparty`, `direction`, `raw` (original dict).
-- [ ] `src/recon/ingest/loaders.py` — one loader per source, each mapping its
-      schema → `CanonicalTxn`, returning `(records, rejects)`.
-- [ ] `src/recon/ingest/validate.py` — type/format checks; malformed rows become
-      `RejectedRow(reason, raw)` routed to the failure path, never dropped.
-- [ ] `tests/test_ingest.py` — schema mapping per source; malformed row is
-      rejected with a reason, not silently lost.
-- [ ] **DoD:** all 3 synthetic sources load to a single normalized list; the
-      malformed row surfaces as a reject.
+### 1.2 Ingest + canonical schema (Day 2 AM) — DONE
+- [x] `src/recon/ingest/schema.py` — frozen pydantic `CanonicalTxn`: `txn_id`,
+      `source`, `ref_id`, `amount` (Decimal, **positive magnitude, major units**),
+      `currency`, `value_date` (date), `counterparty`, `direction`, `status`,
+      `fee`, `raw`. Plus `moved_money` (filters failed payments) and
+      `signed_amount`. Field validators reject non-positive amounts, bad ISO
+      currency codes, blank ids.
+- [x] `src/recon/ingest/loaders.py` — `load_gateway` / `load_invoice` /
+      `load_bank`, each owning one file dialect (paise+ISO / rupees+`YYYY-MM-DD`
+      / rupees+`DD-MM-YYYY`+debit-credit+narration-parsed ref). `load_all()`
+      returns `IngestResult(records, rejects)`.
+- [x] `src/recon/ingest/validate.py` — field parsers that raise on bad input and
+      a `RowErrors` accumulator so a bad row reports **all** its problems;
+      `RejectedRow(source, row_number, reason, raw)`.
+- [x] `tests/test_ingest.py` — 22 tests: per-source dialects, exact Decimal
+      conversion, day-first vs ISO dates, direction from debit/credit, ref
+      extraction, immutability, ids aligned with ground truth.
+- [x] **DoD:** 680 rows read → **679 normalised + 1 rejected**; the reject names
+      both bad fields (`amount: 'N/A' …; captured_at: '2026-13-45T99:99:99' …`)
+      and preserves the raw row. `records + rejects == rows on disk` is asserted.
+
+**Fixed three defects in the 1.1 output first** (they would have poisoned
+normalisation): invoice rows labelled `currency=USD` while carrying INR amounts
+(ledger is now always INR); refund bank rows pointing at `rfnd_…` ids present in
+no source file (now correctly no match — they are exceptions); settlement N:1
+truth not expressible in one column (added
+`data/ground_truth/settlement_groups.csv`, 208 rows).
 
 ### 1.3 Deterministic matching (Day 2 PM)
 - [ ] `src/recon/matching/exact.py` — 1:1 match on (ref_id, amount, value_date);

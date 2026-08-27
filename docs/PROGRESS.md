@@ -122,3 +122,45 @@ Keep entries short — this exists so a new session has continuity without re-re
   malformed-row rejection path. `tests/test_ingest.py`.
 
 ---
+
+## Session 4 — task 1.2 (ingest + canonical schema)
+**Date:** 2026-08-28
+**Done:**
+- **Fixed 3 defects in the 1.1 corpus** found while designing the schema — each would
+  have corrupted normalisation:
+  1. Invoice rows had `currency=USD` while `gross_amount` held the INR value. The ledger
+     is now always INR (functional currency); the source currency lives on the gateway
+     side only. This is what *creates* the FX case rather than being a data bug.
+  2. Refund bank rows had `true_match_id=rfnd_…`, an id present in **no** source file —
+     unreachable ground truth. They now correctly carry no match (they are exceptions,
+     explained by RAG, not matched).
+  3. Settlement N:1 truth was crammed into `true_match_id` as `SETTLE:setl_…`. Added
+     `data/ground_truth/settlement_groups.csv` (208 rows) as the real N:1 answer key.
+- `src/recon/ingest/schema.py` — frozen pydantic `CanonicalTxn`. Amounts are positive
+  Decimals in **major units** (paise divided exactly once, here); `direction` carries the
+  sign; `value_date` is a plain date; `raw` preserves the source row for the audit trail.
+  `status` keeps each source's own vocabulary — `moved_money` is the one cross-source
+  question matching asks (filters the 55 failed payments).
+- `src/recon/ingest/validate.py` — parsers that raise with the field named, plus a
+  `RowErrors` accumulator so a bad row reports **all** its problems at once (better
+  audit evidence). `RejectedRow(source, row_number, reason, raw)`.
+- `src/recon/ingest/loaders.py` — one loader per dialect; `load_all()` → `IngestResult`.
+  Bank loader parses `setl_/pay_/rfnd_/order_` ids out of free-text narration.
+- `tests/test_ingest.py` — 22 tests, all passing. ruff clean.
+
+**Verified DoD:** 680 rows read → **679 normalised + 1 rejected**. The reject names both
+bad fields and keeps the raw row:
+`gateway line 308: amount: 'N/A' is not a whole number of minor units; captured_at:
+'2026-13-45T99:99:99' is not an ISO-8601 date/timestamp`.
+Counts: 306 gateway / 245 invoice / 128 bank.
+
+**Note / minor friction:** `import recon` only resolves via pytest (`pythonpath` in
+pyproject) or the `sys.path` insertion scripts do. Ad-hoc `python -c` needs
+`PYTHONPATH="src;."`. Left as-is — an editable install is Phase 2 polish, not worth the
+churn now.
+
+**Next:**
+- Task 1.3 — deterministic matching (exact then fuzzy) producing the three buckets, and
+  task 1.4 — the audit trail, wired into matching before any LLM/RAG work.
+
+---
