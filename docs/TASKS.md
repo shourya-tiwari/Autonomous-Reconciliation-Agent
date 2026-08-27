@@ -131,25 +131,37 @@ payments are `_held` back from settlement.
       structured `unsure`/escalation and the run completes. With the cache
       populated, they get real Gemini judgments.
 
-**Cache population:** `scripts/populate_llm_cache.py` run live over all 112; cache
-committed. (In progress / done — see PROGRESS.md.)
+**Cache population:** `scripts/populate_llm_cache.py`, run live. **~20/112 done —
+the Gemini free-tier daily quota is exhausted.** Options: enable billing (fastest,
+costs pennies), switch to a `-flash-lite` model, or run over several days. The
+pipeline runs fine meanwhile (cache miss → escalate fallback).
 
-### 1.6 RAG grounding layer (Day 4)
-- [ ] Collect 5–10 real GST/tax invoicing docs from cbic-gst.gov.in →
-      `data/policy/` (PDF/txt). Note source URL + retrieval date per doc.
-- [ ] `scripts/build_rag_index.py` — chunk, embed (local sentence-transformers),
-      persist ChromaDB index. Rebuildable; index committed or built on first run
-      (decide based on size).
-- [ ] `src/recon/rag/index.py` — load/query the store.
-- [ ] `src/recon/rag/ground.py` — for each `unmatched-exception`: retrieve top-k
-      clauses, produce an explanation that **cites the specific clause** (doc +
-      section + quoted text).
-- [ ] Retrieval quality check: does the cited clause actually fit the exception?
-      Record a few worked examples.
-- [ ] Log retrieval + explanation to the trail.
-- [ ] `tests/test_rag.py` — offline; asserts citations are present and resolve to
-      real chunks.
-- [ ] **DoD:** every exception record gets a grounded, cited explanation.
+### 1.6 RAG grounding layer (Day 4) — DONE
+- [x] **9 real GST documents** from cbic-gst.gov.in in `data/policy/` — CGST Act
+      ss.16/17/31/34/54, CGST Rules 38/46/53, Circular 160/16/2021. Each `.txt`
+      carries its `Source:` URL + `Retrieved:` date; `SOURCES.md` maps each to
+      what it governs. Extracted from the official PDFs with `pypdf`; amendment
+      footnotes / running headers stripped.
+- [x] `scripts/build_rag_index.py` — chunks (sub-section aware, ~700 chars),
+      embeds with local `sentence-transformers` (`all-MiniLM-L6-v2`), persists
+      ChromaDB to `data/rag_index/`. **Not committed** (binary, non-deterministic)
+      — auto-builds on first query, or run the script. `--check` runs the
+      retrieval gate.
+- [x] `src/recon/rag/index.py` — `PolicyIndex`: `load_chunks`, `build`, `query`
+      → `Retrieved` with cosine similarity.
+- [x] `src/recon/rag/ground.py` — `ground_exception`: exception kind → targeted
+      query → top-k clauses → `GroundedExplanation` (summary + action + verbatim
+      quoted citations, doc title + source). No LLM prose — retrieval + template,
+      so every claim traces to a quote.
+- [x] Retrieval gate (in the build script + `tests/test_rag.py`): refund query →
+      s.34 (credit notes) in top-3; charge query → s.16/s.17/r.38 (ITC).
+- [x] `run_grounding()` logs every grounding to the trail (stage `ground`): cited
+      doc, score, exception kind.
+- [x] `tests/test_rag.py` — 12 tests: corpus shape, chunk sizing, retrieval
+      quality, verbatim-quote check, audit coverage. (Skips if the embedding
+      model can't load offline.)
+- [x] **DoD:** all 48 exception records get a grounded, cited explanation
+      (43 refund → s.34, 5 charge → s.16/r.38).
 
 ### 1.7 Agent orchestration + failure modes (Day 5)
 - [ ] `src/recon/agent/orchestrator.py` — the full loop: ingest → match →

@@ -1,0 +1,64 @@
+# Section 16 CGST Act - Eligibility and conditions for taking input tax credit
+
+Source: https://cbic-gst.gov.in/pdf/CGST-Act-Updated-31082021.pdf (CGST Act 2017, as on 31.08.2021)
+Retrieved: 2026-08-28
+
+---
+
+16. Eligibility and conditions for taking input tax credit. — (1) Every
+registered person shall, subject to such conditions and restrictions as may be prescribed
+and in the manner specified in section 49, be entitled to take credit of input tax charged on
+any supply of goods or services or both to him which are used or intended to be used in the
+course or furtherance of his business and the said amount shall be credited to the
+electronic credit ledger of such person.
+(2) Notwithstanding anything contained in this section, no registered person
+shall be entitled to the credit of any input tax in respect of any supply of goods or services
+or both to him unless,––
+(a) he is in possession of a tax invoice or debit note issued by a supplier registered
+under this Act, or such other tax paying documents as may be prescribed;
+(b) he has received the goods or services or both.
+[Explanation.— For the purposes of this clause, it sh all be deemed that the
+registered person has received the goods or, as the case may be, services––
+(i) where the goods are delivered by the supplier to a recipient or any other person
+on the direction of such registered person, whether acting as an agent or otherwise, before
+or during movement of goods, either by way of transfer of documents of title to goods or
+otherwise;
+(ii) where the services are provided by the supplier to any person on the direction
+of and on account of such registered person;] (c) subject to the provisions of section 41, the tax charged in respect of such
+supply has been actually paid to the Government, either in cash or through utilisation of
+person has received the goods where the goods are delivered by the supplier to a recipient or any other person
+on the direction of such registered person, whether acting as an agent or otherwise, before or during
+movement of goods, either by way of transfer of documents of title to goods or otherwise;‖ by The Central
+Goods and Services Tax (Amendment) Act, 2018 (No. 31 of 2018) – Brought into force w.e.f. 01 st
+February, 2019.
+input tax credit admissible in respect of the said supply; and
+(d) he has furnished the return under section 39:
+Provided that where the goods against an invoice are received in lots or
+instalments, the registered person shall be entitled to take credit upon receipt of the last
+lot or instalment:
+Provided further that where a recipient fails to pay to t he supplier of goods or
+services or both, other than the supplies on which tax is payable on reverse charge basis,
+the amount towards the value of supply along with tax payable thereon within a period of
+one hundred and eighty days from the date of issue o f invoice by the supplier, an amount
+equal to the input tax credit availed by the recipient shall be added to his output tax
+liability, along with interest thereon, in such manner as may be prescribed:
+Provided also that the recipient shall be entitled to avail of the credit of input tax on
+payment made by him of the amount towards the value of supply of goods or services or
+both along with tax payable thereon.
+(3) Where the registered person has claimed depreciation on the tax component
+of the cost of capital goods and plant and machinery under the provisions of the Income -
+tax Act, 1961, the input tax credit on the said tax component shall not be allowed.
+(4) A registered person shall not be entitled to take input tax credit in respect
+of any invoice or debit note for supply of goods or services or both after the due date of
+furnishing of the return under section 39 for the month of September following the end of
+financial year to which such invoice or [******] debit note pertains or furnishing of the
+relevant annual return, whichever is earlier.
+[Provided that the registered person shall be entitled to take input tax credit after
+the due date of furnishing of the return under section 39 for the month of September,
+2018 till the due date of furnishing of the return under the said section for the month of
+March, 2019 in respect of any invoice or invoice relating to such debit note for supply of
+goods or services or both made during the financial year 2017 -18, the details of which
+have been uploaded by the supplier und er sub-section (1) of section 37 till the due date
+01st January, 2021.
+for furnishing the details under sub -section (1) of said section for the month of March,
+2019.]

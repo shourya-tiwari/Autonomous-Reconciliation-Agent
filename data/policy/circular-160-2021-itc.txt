@@ -1,0 +1,263 @@
+# Circular No. 160/16/2021-GST - Clarifications on input tax credit and debit notes
+
+Source: https://cbic-gst.gov.in/pdf/Circular-No-160-14-2021-GST.pdf
+Retrieved: 2026-08-28
+
+---
+
+Circular No. 160/16/2021-GST
+F. No. CBIC-20001/8/2021-GST
+Government of India
+Ministry of Finance
+Department of Revenue
+Central Board of Indirect Taxes and Customs
+GST Policy Wing
+******
+
+New Delhi, dated the 20th September, 2021
+To
+
+The Pr. Chief Commissioners / Chief Commissioners / Principal Commissioners /
+Commissioners of Central Tax (All)
+The Principal Directors General / Directors General (All)
+
+Madam / Sir,
+
+Subject: Clarification in respect of certain GST related issues - reg.
+
+Various representations have been received from taxpayers and other stakeholders seeking
+clarification in respect of certain issues pertaining to GST laws. The issues have been examined.
+In order to ensure uniformity in the implementation of the provisions of the law across field
+formations, the Board, in exercise of its powers conferred by section 168(1) of the Central Goods
+and Services Tax Act, 2017 (hereinafter referred to as “CGST Act”), hereby clarifies each of these
+issues as under:
+
+S. No. Issue Clarification
+1. Section 16 (4), as amended with
+effect from 01.01.2021, provides
+that a registered person shall not
+be entitled to take input tax
+credit in respect of any invoice
+or debit note for supply of goods
+or services or both after the due
+date of furnishing of the return
+under section 39 for the month
+of September following the end
+of financial year to which such
+1. With effect from 01.01.2021, section 16(4)
+of the CGST Act, 2017 was amended vide
+the Finance Act, 2020, so as to delink the
+date of issuance of debit note from the date
+of issuance of the underlying invoice for
+purposes of availing input tax credit.
+The amendment made is shown as below:
+“A registered person shall not be
+entitled to take input tax credit in
+respect of any invoice or debit note for
+supply of goods or services or both
+Circular No. 160/16/2021-GST
+invoice or debit note pertains
+or furnishing of the relevant
+annual return, whichever is
+earlier.
+
+Doubts have been raised seeking
+following clarification:
+1. Which of the following
+dates are relevant to
+determine the ‘financial
+year’ for the purpose of
+section 16(4):
+(a) date of issuance
+of debit note, or
+(b) date of issuance
+of underlying
+invoice.
+2. Whether any availment
+of input tax credit, on or
+after 01.01.2021, in
+respect of debit notes
+issued either prior to or
+after 01.01.2021, will
+be governed by the
+provisions of the
+amended section 16(4),
+or the amended
+provision will be
+applicable only in
+respect of the debit
+notes issued after
+01.01.2021?
+after the due date of furnishing of the
+return under section 39 for the month
+of September following the end of
+financial year to which such invoice or
+invoice relating to such debit note
+pertains or furnishing of the relevant
+annual return, whichever is earlier.”
+As can be seen, the words “invoice
+relating to such” were omitted w.e.f.
+01.01.2021.
+
+2. The intent of law as specified in the
+Memorandum explaining the Finance Bill,
+2020 states that “Clause 118 of the Bill
+seeks to amend sub-section (4) of section
+16 of the Central Goods and Services Tax
+Act so as to delink the date of issuance of
+debit note from the date of issuance of the
+underlying invoice for purposes of
+availing input tax credit.
+
+3. Accordingly, it is clarified that:
+
+a) w.e.f. 01.01.2021, in case of debit notes,
+the date of issuance of debit note (not the
+date of underlying invoice) shall determine
+the relevant financial year for the purpose
+of section 16(4) of the CGST Act.
+b) The availment of ITC on debit notes in
+respect of amended provision shall be
+applicable from 01.01.2021. Accordingly,
+for availment of ITC on or after
+01.01.2021, in respect of debit notes issued
+either prior to or after 01.01.2021, the
+eligibility for availment of ITC will be
+governed by the amended provision of
+section 16(4), whereas any ITC availed
+prior to 01.01.2021, in respect of debit
+notes, shall be governed under the
+Circular No. 160/16/2021-GST
+provisions of section 16(4), as it existed
+before the said amendment on 01.01.2021.
+
+Illustration 1. A debit note dated 07.07.2021 is
+issued in respect of the original invoice dated
+16.03.2021. As the invoice pertains to F.Y. 2020-
+21, the relevant financial year for availment of ITC
+in respect of the said invoice in terms of section
+16(4) of the CGST shall be 2020-21. However, as
+the debit note has been issued in FY 2021-22, the
+relevant financial year for availment of ITC in
+respect of the said debit note shall be 2021-22 in
+terms of amended provision of section 16(4) of the
+CGST Act.
+
+Illustration 2. A debit note has been issued on
+10.11.2020 in respect an invoice dated 15.07.2019.
+As per amended provision of section 16(4), the
+relevant financial year for availment of input tax
+credit on the said debit note, on or after 01.01.2021,
+will be FY 2020-21 and accordingly, the registered
+person can avail ITC on the same till due date of
+furnishing of FORM GSTR-3B for the month of
+September, 2021 or furnishing of the annual return
+for FY 2020-21, whichever is earlier.
+2. Whether carrying physical copy
+of invoice is compulsory during
+movement of goods in cases
+where suppliers have issued
+invoices in the manner
+prescribed under rule 48 (4) of
+the CGST Rules, 2017 (i.e. in
+cases of e-invoice).
+1. Rule 138A (1) of the CGST Rules, 2017
+inter-alia, provides that the person in
+charge of a conveyance shall carry— (a) the
+invoice or bill of supply or delivery
+challan, as the case may be; and (b) a copy
+of the e-way bill or the e-way bill number,
+either physically or mapped to a Radio
+Frequency Identification Device
+embedded on to the conveyance in such
+manner as may be notified by the
+Commissioner.
+
+2. Further, rule 138A (2) of CGST Rules, after
+being amended vide notification No.
+72/2020-Central Tax dated 30.09.2020,
+Circular No. 160/16/2021-GST
+states that “In case, invoice is issued in the
+manner prescribed under sub-rule (4) of
+rule 48, the Quick Reference (QR) code
+having an embedded Invoice Reference
+Number (IRN) in it, may be produced
+electronically, for verification by the
+proper officer in lieu of the physical copy of
+such tax invoice”
+
+3. A conjoint reading of rules 138A (1) and
+138A (2) of CGST Rules, 2017 clearly
+indicates that there is no requirement to
+carry the physical copy of tax invoice in
+cases where e-invoice has been generated
+by the supplier. After amendment, the
+revised rule 138A (2) states in
+unambiguous words that whenever e-
+invoice has been generated, the Quick
+Reference (QR) code, having an embedded
+Invoice Reference Number (IRN) in it,
+may be produced electronically for
+verification by the proper officer in lieu of
+the physical copy of such tax invoice.
+
+4. Accordingly, it is clarified that there is no
+need to carry the physical copy of tax
+invoice in cases where invoice has been
+generated by the supplier in the manner
+prescribed under rule 48(4) of the CGST
+Rules and production of the Quick
+Response (QR) code having an
+embedded Invoice Reference Number
+(IRN) electronically, for verification by
+the proper officer, would suffice.
+3. Whether the first proviso to
+section 54(3) of CGST / SGST
+Act, prohibiting refund of
+unutilized ITC is applicable in
+case of exports of goods which
+1. The term ‘subjected to export duty’ used in
+first proviso to section 54(3) of the CGST
+Act, 2017 means where the goods are
+actually leviable to export duty and suffering
+export duty at the time of export. Therefore,
+goods in respect of which either NIL rate is
+Circular No. 160/16/2021-GST
+are having NIL rate of export
+duty.
+specified in Second Schedule to the Customs
+Tariff Act, 1975 or which are fully exempted
+from payment of export duty by virtue of any
+customs notification or which are not
+covered under Second Schedule to the
+Customs Tariff Act, 1975, cannot be
+considered to be subjected to any export duty
+under Customs Tariff Act, 1975.
+2. Accordingly, it is clarified that only those
+goods which are actually subjected to
+export duty i.e., on which some export
+duty has to be paid at the time of export,
+will be covered under the restriction
+imposed under section 54(3) from
+availment of refund of accumulated ITC.
+Goods, which are not subject to any export
+duty and in respect of which either NIL rate
+is specified in Second Schedule to the
+Customs Tariff Act, 1975 or which are fully
+exempted from payment of export duty by
+virtue of any customs notification or which
+are not covered under Second Schedule to the
+Customs Tariff Act, 1975, would not be
+covered by the restriction imposed under
+the first proviso to section 54(3) of the
+CGST Act for the purpose of availment of
+refund of accumulated ITC.
+
+2. It is requested that suitable trade notices may be issued to publicize the contents of this
+Circular.
+
+3. Difficulty, if any, in the implementation of this Circular may be brought to the notice of
+the Board. Hindi version will follow.
+
+(Sanjay Mangal)
+Principal Commissioner

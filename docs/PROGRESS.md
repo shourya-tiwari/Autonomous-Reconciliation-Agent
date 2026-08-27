@@ -204,3 +204,43 @@ churn now.
   `unmatched-ambiguous` records.
 
 ---
+
+## Session 6 — tasks 1.5 (LLM reasoning) + 1.6 (RAG grounding)
+**Date:** 2026-08-28
+**Done — 1.5:**
+- `src/recon/reasoning/` — `GeminiReasoner` (`google-genai`, `response_schema`,
+  `temperature=0`), content-addressed replay cache, `run_reasoning()` batch runner.
+- **Model: `gemini-2.5-flash` → `gemini-3.6-flash`** — 2.5-flash is 404 for new API keys.
+- Confident LLM match + residual amount variance (FX / partial) → escalates with the
+  LLM's finding attached, not auto-resolved. Keeps ground-truth alignment (all 112
+  ambiguous → escalated) while surfacing the analysis.
+- `fail_once_ids` hook for the task-1.7 retry demo. Persistent failure escalates that
+  record, batch continues.
+- 15 tests, fully offline. `scripts/populate_llm_cache.py` (rate-limit backoff).
+
+**Done — 1.6:**
+- 9 real GST docs in `data/policy/` (CGST Act ss.16/17/31/34/54, Rules 38/46/53,
+  Circular 160/16/2021), extracted from cbic-gst.gov.in PDFs with pypdf. `SOURCES.md`.
+- `src/recon/rag/` — `PolicyIndex` (chunk → sentence-transformers embed → ChromaDB),
+  `ground_exception` (retrieval + template, verbatim quoted citations, no LLM prose),
+  `run_grounding()`. `scripts/build_rag_index.py --check`.
+- Index NOT committed (binary/non-deterministic) — auto-builds on first query (~2s once
+  the ~90MB embedding model is cached).
+- 12 tests. Retrieval gate passes: refund → s.34, charge → s.16/r.38.
+
+**Verified DoD:**
+- Reasoning: 112 ambiguous → structured `unsure`/escalate in fallback mode, run completes.
+- Grounding: all 48 exceptions grounded + cited (43 refund → s.34, 5 charge → s.16/r.38).
+- Full suite: 83 passed, 2 skipped (agent, eval stubs). ruff clean.
+
+**Blocked / waiting on user:**
+- **LLM cache is ~20/112** — Gemini **free-tier daily quota exhausted** (429
+  `RESOURCE_EXHAUSTED`). To fill it: enable billing on the API key (fastest, ~cents),
+  use a `-flash-lite` model, or run over a few days. Non-blocking — the pipeline runs
+  with the fallback until then; Day 6 eval wants the full cache.
+
+**Next:**
+- Task 1.7 — agent orchestration: wire ingest → match → reason → ground into one loop
+  with retry, and demonstrate both injected failure modes handled.
+
+---

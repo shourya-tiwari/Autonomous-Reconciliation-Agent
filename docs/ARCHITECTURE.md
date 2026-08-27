@@ -31,9 +31,14 @@ Ingest -> Deterministic Match -> LLM Reasoning (ambiguous cases only) -> RAG Gro
   to a human — with the model's finding attached, never forcing money to move
 
 ### 4. RAG Grounding Layer
-- Input: unmatched-exception records
-- Retrieves relevant clauses from GST/tax policy vector store
-- Output: natural-language exception explanation citing the retrieved clause
+- Input: `unmatched-exception` records only (refund debits, bank charges)
+- Corpus: 9 real GST documents (CGST Act sections + Rules + a circular) in
+  `data/policy/`; chunked, embedded with local `sentence-transformers`
+  (`all-MiniLM-L6-v2`), stored in ChromaDB (`data/rag_index/`, built on first run)
+- Output: a `GroundedExplanation` — summary + recommended action + **verbatim
+  quoted citations** (doc title + source). Retrieval + template, no LLM prose, so
+  every claim traces to a quote a controller can check
+- refund debit → s.34 credit-note rule · bank charge → s.16 / s.17 / r.38 ITC
 
 ### 5. Agent Orchestration
 - Coordinates the full loop: ingest -> match -> reason -> ground -> log

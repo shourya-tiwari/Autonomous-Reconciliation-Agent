@@ -23,5 +23,6 @@ outputs/audit/*.jsonl
 outputs/reports/*
 !outputs/**/.gitkeep
 
-# local vector store build (rebuildable from data/policy/)
-data/policy/.chroma/
+# ChromaDB vector store — rebuilt from data/policy/ on first run (or via
+# scripts/build_rag_index.py). Binary + non-deterministic, so not committed.
+data/rag_index/

@@ -1,0 +1,44 @@
+# Rule 53 CGST Rules - Revised tax invoice and credit or debit notes
+
+Source: https://cbic-gst.gov.in/pdf/cgst-rules-30122017.pdf (CGST Rules 2017, as on 30.12.2017)
+Retrieved: 2026-08-28
+
+---
+
+53. Revised tax inv oice and credit or debit notes. -(1)A revised tax invoice referred to in
+section 31 and credit or debit note s referred to in section 34 shall contain the following
+particulars, namely:-
+(a) the word “Revised Invoice”, wherever applicable, indicated prominently;
+(b) name, address and Goods and Service s Tax Identification Number of the
+supplier;
+(c) nature of the document;
+(d) a consecutive serial number not exceeding sixteen characters, in one or
+multiple series, containing alphabets or numerals or special characters -
+hyphen or dash and slash symbolised as “ -” and “/” respectively, and any
+combination thereof, unique for a financial year;
+(e) date of issue of the document;
+(f) name, address and Goods and Service s Tax Identification Number or Unique
+Identity Number, if registered, of the recipient;
+(g) name and address of the recipient and the address of delivery, along with the
+name of State and its code, if such recipient is un-registered;
+(h) serial number and date of the corresponding tax invoice or, as the case may
+be, bill of supply;
+(i) value of taxable supply of goods or services, rate of tax and the amount of the
+tax credited or, as the case may be, debited to the recipient; and
+(j) signature or digital signature of the supplier or his authorised representative.
+
+(2) Every registered person who has been granted registration with effect from a date
+earlier than the date of issuance of certificate of registration to him, may issue revised tax
+invoices in respect of taxable supplies effected during the period starting fro m the effective
+date of registration till the date of the issuance of the certificate of registration:
+Provided that the registered person may issue a consolidated revised tax invoice in
+respect of all taxable supplies made to a recipient who is not regi stered under the Act during
+such period:
+Provided further that in the case of inter-State supplies, where the value of a supply
+does not exceed two lakh and fifty thousand rupees, a consolidated revised invoice may be
+issued separately in respect of all the recipients located in a State, who are not registered
+under the Act.
+(3) Any invoice or debit note issued in pursuance of any tax payable in accordance with
+the provisions of section 74 or section 129 or section 130 shall prominently contain the
+words “INPUT TAX CREDIT NOT ADMISSIBLE”.
+41

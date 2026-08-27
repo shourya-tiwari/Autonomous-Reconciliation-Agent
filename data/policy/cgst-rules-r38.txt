@@ -1,0 +1,31 @@
+# Rule 38 CGST Rules - Claim of credit by a banking company or a financial institution
+
+Source: https://cbic-gst.gov.in/pdf/cgst-rules-30122017.pdf (CGST Rules 2017, as on 30.12.2017)
+Retrieved: 2026-08-28
+
+---
+
+38. Claim of credit by a banking company or a financial institution.-A banking company
+or a financial institution, including a non -banking financial company, engaged in the supply
+of services by way of accepting deposits or extending loans or advances that chooses not to
+comply with the provisions of sub -section (2) of section 17, in accordance with the option
+permitted under sub -section (4) of that section, shall follow the following procedure,
+namely,-
+
+(a) the said company or institution shall not avail the credit of,-
+(i) the tax paid on inputs and input services that are used for non -business
+purposes; and
+(ii)the credit attributable to the supplies specified in sub -section (5) of section 17,
+in FORM GSTR-2;
+
+(b) the said company or institution shall avail the credit of tax paid on inputs and input
+services referred to in the second proviso to sub -section (4) of section 17 and not
+covered under clause (a);
+
+(c) fifty per cent. of the remaining amount of input tax shall be the input tax credit
+admissible to the company or the institution and shall be furnished in FORM GSTR-
+2;
+
+(d) the amount referred to in clauses (b) and (c) shall, subject to the provi sions of sections
+41, 42 and 43, be credited to the electronic credit ledger of the said company or the
+institution.
