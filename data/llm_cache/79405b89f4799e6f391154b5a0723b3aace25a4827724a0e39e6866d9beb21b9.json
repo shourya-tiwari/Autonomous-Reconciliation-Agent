@@ -1,0 +1,45 @@
+{
+  "key": "79405b89f4799e6f391154b5a0723b3aace25a4827724a0e39e6866d9beb21b9",
+  "model": "gemini-3.6-flash",
+  "prompt_version": "recon-reason-v1",
+  "created_at": "2026-08-27T21:25:14.733533+00:00",
+  "request": {
+    "record": {
+      "txn_id": "INV-2026-00007",
+      "source": "invoice",
+      "amount": "191859.20",
+      "currency": "INR",
+      "value_date": "2026-06-01",
+      "counterparty": "Ananya Patel Technologies",
+      "ref_id": "order_PHxTXQeUvgoeLM",
+      "status": "booked"
+    },
+    "candidates": [
+      {
+        "txn_id": "pay_HOl0amiYY5sIJ0",
+        "source": "gateway",
+        "amount": "2306.00",
+        "currency": "USD",
+        "value_date": "2026-06-01",
+        "counterparty": "Ananya Patel Technologies",
+        "ref_id": "order_PHxTXQeUvgoeLM",
+        "status": "captured",
+        "match_score": {
+          "total": 0.55,
+          "amount": 0.0,
+          "date": 1.0,
+          "name": 1.0,
+          "ref": 1.0,
+          "same_currency": false
+        }
+      }
+    ],
+    "why_escalated": "best candidate pay_HOl0amiYY5sIJ0 is a different currency — needs review"
+  },
+  "output": {
+    "decision": "match",
+    "matched_candidate_id": "pay_HOl0amiYY5sIJ0",
+    "confidence": 0.95,
+    "rationale": "The invoice amount of 191,859.20 INR matches the gateway payment of 2,306.00 USD at an exact exchange rate of 83.20 INR/USD. Both records share the identical reference ID (order_PHxTXQeUvgoeLM), counterparty, and value date."
+  }
+}

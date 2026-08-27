@@ -1,0 +1,45 @@
+{
+  "key": "2f9af5eefaafe84c833a05f2402b00ccf8268d9f2a426a9fdd0b4456c8345829",
+  "model": "gemini-3.6-flash",
+  "prompt_version": "recon-reason-v1",
+  "created_at": "2026-08-27T21:25:23.571812+00:00",
+  "request": {
+    "record": {
+      "txn_id": "INV-2026-00021",
+      "source": "invoice",
+      "amount": "7904.00",
+      "currency": "INR",
+      "value_date": "2026-06-08",
+      "counterparty": "Reyansh Iyer Enterprises",
+      "ref_id": "order_LmBumN1yBTAjDE",
+      "status": "booked"
+    },
+    "candidates": [
+      {
+        "txn_id": "pay_wTrpaO16KSQ6pM",
+        "source": "gateway",
+        "amount": "95.00",
+        "currency": "USD",
+        "value_date": "2026-06-08",
+        "counterparty": "Reyansh Iyer Enterprises",
+        "ref_id": "order_LmBumN1yBTAjDE",
+        "status": "captured",
+        "match_score": {
+          "total": 0.55,
+          "amount": 0.0,
+          "date": 1.0,
+          "name": 1.0,
+          "ref": 1.0,
+          "same_currency": false
+        }
+      }
+    ],
+    "why_escalated": "best candidate pay_wTrpaO16KSQ6pM is a different currency — needs review"
+  },
+  "output": {
+    "decision": "match",
+    "matched_candidate_id": "pay_wTrpaO16KSQ6pM",
+    "confidence": 0.95,
+    "rationale": "The reference order_LmBumN1yBTAjDE, counterparty, and date match perfectly. The invoice amount of 7904.00 INR equals 95.00 USD at an exact exchange rate of 83.20 INR/USD."
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "key": "44af1ea9f62e20e7e15b4b75cb484166d079295b39bff668d87a06752ab1d5df",
+  "model": "gemini-3.6-flash",
+  "prompt_version": "recon-reason-v1",
+  "created_at": "2026-08-27T21:32:17.048116+00:00",
+  "request": {
+    "record": {
+      "txn_id": "INV-2026-00094",
+      "source": "invoice",
+      "amount": "362336.00",
+      "currency": "INR",
+      "value_date": "2026-07-04",
+      "counterparty": "Vivaan Nair Enterprises",
+      "ref_id": "order_7tirfILLWQ0OsG",
+      "status": "booked"
+    },
+    "candidates": [
+      {
+        "txn_id": "pay_aOBSMjzQ1fgUKx",
+        "source": "gateway",
+        "amount": "4355.00",
+        "currency": "USD",
+        "value_date": "2026-07-04",
+        "counterparty": "Vivaan Nair Enterprises",
+        "ref_id": "order_7tirfILLWQ0OsG",
+        "status": "captured",
+        "match_score": {
+          "total": 0.55,
+          "amount": 0.0,
+          "date": 1.0,
+          "name": 1.0,
+          "ref": 1.0,
+          "same_currency": false
+        }
+      }
+    ],
+    "why_escalated": "best candidate pay_aOBSMjzQ1fgUKx is a different currency — needs review"
+  },
+  "output": {
+    "decision": "match",
+    "matched_candidate_id": "pay_aOBSMjzQ1fgUKx",
+    "confidence": 0.95,
+    "rationale": "The gateway payment of 4,355.00 USD matches the invoice amount of 362,336.00 INR at an implied exchange rate of 83.20 INR/USD. All other metadata, including reference ID (order_7tirfILLWQ0OsG), date (2026-07-04), and counterparty, match perfectly."
+  }
+}

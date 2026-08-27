@@ -1,0 +1,63 @@
+{
+  "key": "a580f8320e82c6a3e66326471bc30514de25dc946cd9acf711383f5f1e25dfd9",
+  "model": "gemini-3.6-flash",
+  "prompt_version": "recon-reason-v1",
+  "created_at": "2026-08-27T21:31:04.048517+00:00",
+  "request": {
+    "record": {
+      "txn_id": "INV-2026-00082",
+      "source": "invoice",
+      "amount": "206169.60",
+      "currency": "INR",
+      "value_date": "2026-06-29",
+      "counterparty": "Dev Nair LLP",
+      "ref_id": "order_4XTx6IIhaKH6sU",
+      "status": "booked"
+    },
+    "candidates": [
+      {
+        "txn_id": "pay_fVByODHiyXH7iP",
+        "source": "gateway",
+        "amount": "2478.00",
+        "currency": "USD",
+        "value_date": "2026-06-29",
+        "counterparty": "Dev Nair LLP",
+        "ref_id": "order_4XTx6IIhaKH6sU",
+        "status": "captured",
+        "match_score": {
+          "total": 0.55,
+          "amount": 0.0,
+          "date": 1.0,
+          "name": 1.0,
+          "ref": 1.0,
+          "same_currency": false
+        }
+      },
+      {
+        "txn_id": "pay_OaN6tN28TQoETX",
+        "source": "gateway",
+        "amount": "206770.69",
+        "currency": "INR",
+        "value_date": "2026-07-18",
+        "counterparty": "Vivaan Bose Enterprises",
+        "ref_id": "order_v66DORgxLS12WS",
+        "status": "captured",
+        "match_score": {
+          "total": 0.4111,
+          "amount": 0.85,
+          "date": 0.0,
+          "name": 0.1429,
+          "ref": 0.0,
+          "same_currency": true
+        }
+      }
+    ],
+    "why_escalated": "best candidate pay_fVByODHiyXH7iP is a different currency — needs review"
+  },
+  "output": {
+    "decision": "match",
+    "matched_candidate_id": "pay_fVByODHiyXH7iP",
+    "confidence": 0.95,
+    "rationale": "Candidate pay_fVByODHiyXH7iP matches the reference ID order_4XTx6IIhaKH6sU, counterparty, and value date exactly. The USD amount of 2,478.00 converts to 206,169.60 INR at an exact FX rate of 83.20 INR/USD."
+  }
+}

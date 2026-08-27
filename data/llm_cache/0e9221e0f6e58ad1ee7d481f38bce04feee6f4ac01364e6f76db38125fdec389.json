@@ -1,0 +1,63 @@
+{
+  "key": "0e9221e0f6e58ad1ee7d481f38bce04feee6f4ac01364e6f76db38125fdec389",
+  "model": "gemini-3.6-flash",
+  "prompt_version": "recon-reason-v1",
+  "created_at": "2026-08-27T21:27:48.545199+00:00",
+  "request": {
+    "record": {
+      "txn_id": "INV-2026-00031",
+      "source": "invoice",
+      "amount": "158579.20",
+      "currency": "INR",
+      "value_date": "2026-06-13",
+      "counterparty": "Aarav Gupta Industries",
+      "ref_id": "order_L05tRx9JmpBrmk",
+      "status": "booked"
+    },
+    "candidates": [
+      {
+        "txn_id": "pay_YTo3k3UAdLh0eV",
+        "source": "gateway",
+        "amount": "1906.00",
+        "currency": "USD",
+        "value_date": "2026-06-13",
+        "counterparty": "Aarav Gupta Industries",
+        "ref_id": "order_L05tRx9JmpBrmk",
+        "status": "captured",
+        "match_score": {
+          "total": 0.55,
+          "amount": 0.0,
+          "date": 1.0,
+          "name": 1.0,
+          "ref": 1.0,
+          "same_currency": false
+        }
+      },
+      {
+        "txn_id": "pay_E5GXTeLYHteOtL",
+        "source": "gateway",
+        "amount": "158165.62",
+        "currency": "INR",
+        "value_date": "2026-06-21",
+        "counterparty": "Aadhya Nair Enterprises",
+        "ref_id": "order_AQvc1v9r86eNwX",
+        "status": "captured",
+        "match_score": {
+          "total": 0.4269,
+          "amount": 0.85,
+          "date": 0.0,
+          "name": 0.2222,
+          "ref": 0.0,
+          "same_currency": true
+        }
+      }
+    ],
+    "why_escalated": "best candidate pay_YTo3k3UAdLh0eV is a different currency — needs review"
+  },
+  "output": {
+    "decision": "match",
+    "matched_candidate_id": "pay_YTo3k3UAdLh0eV",
+    "confidence": 0.95,
+    "rationale": "Candidate pay_YTo3k3UAdLh0eV matches the reference ID (order_L05tRx9JmpBrmk), counterparty name, and value date exactly. The amount of $1,906.00 USD corresponds to ₹158,579.20 INR at an effective FX rate of 83.20 INR/USD."
+  }
+}

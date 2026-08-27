@@ -1,0 +1,45 @@
+{
+  "key": "bfe27765fe039bb67f031d04e04a66f646140f5db21cd3b7fb37260cfd61ff41",
+  "model": "gemini-3.6-flash",
+  "prompt_version": "recon-reason-v1",
+  "created_at": "2026-08-27T21:30:46.767157+00:00",
+  "request": {
+    "record": {
+      "txn_id": "INV-2026-00079",
+      "source": "invoice",
+      "amount": "14643.20",
+      "currency": "INR",
+      "value_date": "2026-06-28",
+      "counterparty": "Arjun Kapoor Industries",
+      "ref_id": "order_btP7ySeQMgV0Lh",
+      "status": "booked"
+    },
+    "candidates": [
+      {
+        "txn_id": "pay_jhPInRVkLUhY7g",
+        "source": "gateway",
+        "amount": "176.00",
+        "currency": "USD",
+        "value_date": "2026-06-28",
+        "counterparty": "Arjun Kapoor Industries",
+        "ref_id": "order_btP7ySeQMgV0Lh",
+        "status": "captured",
+        "match_score": {
+          "total": 0.55,
+          "amount": 0.0,
+          "date": 1.0,
+          "name": 1.0,
+          "ref": 1.0,
+          "same_currency": false
+        }
+      }
+    ],
+    "why_escalated": "best candidate pay_jhPInRVkLUhY7g is a different currency — needs review"
+  },
+  "output": {
+    "decision": "match",
+    "matched_candidate_id": "pay_jhPInRVkLUhY7g",
+    "confidence": 0.95,
+    "rationale": "The invoice amount of 14643.20 INR exactly equals 176.00 USD at an exchange rate of 83.20 INR/USD. Reference ID (order_btP7ySeQMgV0Lh), counterparty, and date (2026-06-28) are all identical."
+  }
+}

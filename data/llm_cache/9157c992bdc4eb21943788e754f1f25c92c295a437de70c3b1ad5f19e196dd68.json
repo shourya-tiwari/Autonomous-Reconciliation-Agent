@@ -1,0 +1,63 @@
+{
+  "key": "9157c992bdc4eb21943788e754f1f25c92c295a437de70c3b1ad5f19e196dd68",
+  "model": "gemini-3.6-flash",
+  "prompt_version": "recon-reason-v1",
+  "created_at": "2026-08-27T21:31:22.280623+00:00",
+  "request": {
+    "record": {
+      "txn_id": "INV-2026-00086",
+      "source": "invoice",
+      "amount": "247353.60",
+      "currency": "INR",
+      "value_date": "2026-07-02",
+      "counterparty": "Diya Singh LLP",
+      "ref_id": "order_wdwN7dsNemMVLk",
+      "status": "booked"
+    },
+    "candidates": [
+      {
+        "txn_id": "pay_DBpQ8YxTbqKjCQ",
+        "source": "gateway",
+        "amount": "2973.00",
+        "currency": "USD",
+        "value_date": "2026-07-02",
+        "counterparty": "Diya Singh LLP",
+        "ref_id": "order_wdwN7dsNemMVLk",
+        "status": "captured",
+        "match_score": {
+          "total": 0.55,
+          "amount": 0.0,
+          "date": 1.0,
+          "name": 1.0,
+          "ref": 1.0,
+          "same_currency": false
+        }
+      },
+      {
+        "txn_id": "pay_2De3SF3XQMhUk9",
+        "source": "gateway",
+        "amount": "211545.60",
+        "currency": "INR",
+        "value_date": "2026-07-03",
+        "counterparty": "Sara Chauhan Solutions",
+        "ref_id": "order_8YhA9A9MZp44ey",
+        "status": "captured",
+        "match_score": {
+          "total": 0.3532,
+          "amount": 0.3552,
+          "date": 0.8,
+          "name": 0.1667,
+          "ref": 0.0,
+          "same_currency": true
+        }
+      }
+    ],
+    "why_escalated": "best candidate pay_DBpQ8YxTbqKjCQ is a different currency — needs review"
+  },
+  "output": {
+    "decision": "match",
+    "matched_candidate_id": "pay_DBpQ8YxTbqKjCQ",
+    "confidence": 0.95,
+    "rationale": "The reference ID (order_wdwN7dsNemMVLk), value date (2026-07-02), and counterparty (Diya Singh LLP) match pay_DBpQ8YxTbqKjCQ exactly. The invoice amount of 247353.60 INR converts perfectly to 2973.00 USD at an exchange rate of 83.20 INR/USD."
+  }
+}

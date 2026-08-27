@@ -1,0 +1,81 @@
+{
+  "key": "abb523da60c2f59531c7351eadb7859d9977936dd85635f115f2b225c476164c",
+  "model": "gemini-3.6-flash",
+  "prompt_version": "recon-reason-v1",
+  "created_at": "2026-08-27T21:25:28.753158+00:00",
+  "request": {
+    "record": {
+      "txn_id": "INV-2026-00023",
+      "source": "invoice",
+      "amount": "3017.00",
+      "currency": "INR",
+      "value_date": "2026-06-09",
+      "counterparty": "Reyansh Das Enterprises",
+      "ref_id": "order_u8JiZXVKuhizRI",
+      "status": "booked"
+    },
+    "candidates": [
+      {
+        "txn_id": "pay_XCkKYgEXnXAY8Q",
+        "source": "gateway",
+        "amount": "1238.43",
+        "currency": "INR",
+        "value_date": "2026-06-09",
+        "counterparty": "Reyansh Das Enterprises",
+        "ref_id": "order_u8JiZXVKuhizRI",
+        "status": "captured",
+        "match_score": {
+          "total": 0.55,
+          "amount": 0.0,
+          "date": 1.0,
+          "name": 1.0,
+          "ref": 1.0,
+          "same_currency": true
+        }
+      },
+      {
+        "txn_id": "pay_TfVc0PkwBM2fYl",
+        "source": "gateway",
+        "amount": "3061.00",
+        "currency": "INR",
+        "value_date": "2026-07-17",
+        "counterparty": "Vivaan Gupta Pvt Ltd",
+        "ref_id": "order_y7qx0XOXhRd6jz",
+        "status": "refunded",
+        "match_score": {
+          "total": 0.4151,
+          "amount": 0.85,
+          "date": 0.0,
+          "name": 0.1628,
+          "ref": 0.0,
+          "same_currency": true
+        }
+      },
+      {
+        "txn_id": "pay_iOnsd624MAE86P",
+        "source": "gateway",
+        "amount": "2972.00",
+        "currency": "INR",
+        "value_date": "2026-06-03",
+        "counterparty": "Arjun Singh LLP",
+        "ref_id": "order_WtzjxUD0sRX4I8",
+        "status": "captured",
+        "match_score": {
+          "total": 0.4141,
+          "amount": 0.85,
+          "date": 0.0,
+          "name": 0.1579,
+          "ref": 0.0,
+          "same_currency": true
+        }
+      }
+    ],
+    "why_escalated": "best candidate pay_XCkKYgEXnXAY8Q matches on reference/date but not amount"
+  },
+  "output": {
+    "decision": "unsure",
+    "matched_candidate_id": "",
+    "confidence": 0.4,
+    "rationale": "Candidate pay_XCkKYgEXnXAY8Q matches on reference ID (order_u8JiZXVKuhizRI), date, and counterparty, but there is an unexplained amount discrepancy (1238.43 INR vs 3017.00 INR). Human review is required to verify if this represents a partial capture or a split payment."
+  }
+}

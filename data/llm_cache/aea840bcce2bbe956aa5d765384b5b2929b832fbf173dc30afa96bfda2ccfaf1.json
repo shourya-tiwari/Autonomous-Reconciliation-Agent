@@ -1,0 +1,45 @@
+{
+  "key": "aea840bcce2bbe956aa5d765384b5b2929b832fbf173dc30afa96bfda2ccfaf1",
+  "model": "gemini-3.6-flash",
+  "prompt_version": "recon-reason-v1",
+  "created_at": "2026-08-27T21:29:28.113067+00:00",
+  "request": {
+    "record": {
+      "txn_id": "INV-2026-00057",
+      "source": "invoice",
+      "amount": "178285.00",
+      "currency": "INR",
+      "value_date": "2026-06-19",
+      "counterparty": "Anika Nair Solutions",
+      "ref_id": "order_8pIx5F21rWz5FY",
+      "status": "booked"
+    },
+    "candidates": [
+      {
+        "txn_id": "pay_jIIf94ChZESFqZ",
+        "source": "gateway",
+        "amount": "1970.00",
+        "currency": "EUR",
+        "value_date": "2026-06-19",
+        "counterparty": "Anika Nair Solutions",
+        "ref_id": "order_8pIx5F21rWz5FY",
+        "status": "captured",
+        "match_score": {
+          "total": 0.55,
+          "amount": 0.0,
+          "date": 1.0,
+          "name": 1.0,
+          "ref": 1.0,
+          "same_currency": false
+        }
+      }
+    ],
+    "why_escalated": "best candidate pay_jIIf94ChZESFqZ is a different currency — needs review"
+  },
+  "output": {
+    "decision": "match",
+    "matched_candidate_id": "pay_jIIf94ChZESFqZ",
+    "confidence": 0.92,
+    "rationale": "Candidate pay_jIIf94ChZESFqZ matches on ref_id, counterparty, and value date (2026-06-19). The amount of 1,970.00 EUR converts exactly to 178,285.00 INR at an FX rate of 90.50 INR/EUR."
+  }
+}

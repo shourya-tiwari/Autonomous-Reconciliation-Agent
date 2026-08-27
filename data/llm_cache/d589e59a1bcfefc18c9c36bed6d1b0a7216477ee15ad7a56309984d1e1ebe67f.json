@@ -1,0 +1,45 @@
+{
+  "key": "d589e59a1bcfefc18c9c36bed6d1b0a7216477ee15ad7a56309984d1e1ebe67f",
+  "model": "gemini-3.6-flash",
+  "prompt_version": "recon-reason-v1",
+  "created_at": "2026-08-27T21:28:26.938652+00:00",
+  "request": {
+    "record": {
+      "txn_id": "INV-2026-00040",
+      "source": "invoice",
+      "amount": "316992.00",
+      "currency": "INR",
+      "value_date": "2026-06-15",
+      "counterparty": "Kiara Gupta LLP",
+      "ref_id": "order_veCcwrN8fKxJ7T",
+      "status": "booked"
+    },
+    "candidates": [
+      {
+        "txn_id": "pay_IJQ2N9u8tBDNXK",
+        "source": "gateway",
+        "amount": "3810.00",
+        "currency": "USD",
+        "value_date": "2026-06-15",
+        "counterparty": "Kiara Gupta LLP",
+        "ref_id": "order_veCcwrN8fKxJ7T",
+        "status": "captured",
+        "match_score": {
+          "total": 0.55,
+          "amount": 0.0,
+          "date": 1.0,
+          "name": 1.0,
+          "ref": 1.0,
+          "same_currency": false
+        }
+      }
+    ],
+    "why_escalated": "best candidate pay_IJQ2N9u8tBDNXK is a different currency — needs review"
+  },
+  "output": {
+    "decision": "match",
+    "matched_candidate_id": "pay_IJQ2N9u8tBDNXK",
+    "confidence": 0.92,
+    "rationale": "The transaction ref_id order_veCcwrN8fKxJ7T, counterparty Kiara Gupta LLP, and date 2026-06-15 match perfectly. The amount of 316,992.00 INR versus 3,810.00 USD corresponds to an effective FX rate of 83.20 INR/USD."
+  }
+}

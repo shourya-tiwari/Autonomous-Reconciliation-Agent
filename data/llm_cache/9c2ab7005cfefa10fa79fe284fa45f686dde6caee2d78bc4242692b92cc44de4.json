@@ -1,0 +1,63 @@
+{
+  "key": "9c2ab7005cfefa10fa79fe284fa45f686dde6caee2d78bc4242692b92cc44de4",
+  "model": "gemini-3.6-flash",
+  "prompt_version": "recon-reason-v1",
+  "created_at": "2026-08-27T21:25:37.157093+00:00",
+  "request": {
+    "record": {
+      "txn_id": "INV-2026-00025",
+      "source": "invoice",
+      "amount": "185253.50",
+      "currency": "INR",
+      "value_date": "2026-06-10",
+      "counterparty": "Arjun Nair Technologies",
+      "ref_id": "order_zmss5ClWZfGRFQ",
+      "status": "booked"
+    },
+    "candidates": [
+      {
+        "txn_id": "pay_Qxy435LkB2XiVp",
+        "source": "gateway",
+        "amount": "2047.00",
+        "currency": "EUR",
+        "value_date": "2026-06-10",
+        "counterparty": "Arjun Nair Technologies",
+        "ref_id": "order_zmss5ClWZfGRFQ",
+        "status": "refunded",
+        "match_score": {
+          "total": 0.55,
+          "amount": 0.0,
+          "date": 1.0,
+          "name": 1.0,
+          "ref": 1.0,
+          "same_currency": false
+        }
+      },
+      {
+        "txn_id": "pay_J8cKvWB9h3lcBG",
+        "source": "gateway",
+        "amount": "186951.00",
+        "currency": "INR",
+        "value_date": "2026-08-10",
+        "counterparty": "Vivaan Bose LLP",
+        "ref_id": "order_YQ6TmA65MPh3FP",
+        "status": "captured",
+        "match_score": {
+          "total": 0.3983,
+          "amount": 0.85,
+          "date": 0.0,
+          "name": 0.0789,
+          "ref": 0.0,
+          "same_currency": true
+        }
+      }
+    ],
+    "why_escalated": "best candidate pay_Qxy435LkB2XiVp is a different currency — needs review"
+  },
+  "output": {
+    "decision": "match",
+    "matched_candidate_id": "pay_Qxy435LkB2XiVp",
+    "confidence": 0.9,
+    "rationale": "Candidate pay_Qxy435LkB2XiVp matches on ref_id (order_zmss5ClWZfGRFQ), counterparty, and date (2026-06-10). The amount of 185,253.50 INR converts precisely to 2,047.00 EUR at an exchange rate of 90.50 INR/EUR."
+  }
+}

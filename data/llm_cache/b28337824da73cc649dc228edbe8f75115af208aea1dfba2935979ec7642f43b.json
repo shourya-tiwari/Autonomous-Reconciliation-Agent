@@ -1,0 +1,63 @@
+{
+  "key": "b28337824da73cc649dc228edbe8f75115af208aea1dfba2935979ec7642f43b",
+  "model": "gemini-3.6-flash",
+  "prompt_version": "recon-reason-v1",
+  "created_at": "2026-08-27T21:30:29.698592+00:00",
+  "request": {
+    "record": {
+      "txn_id": "INV-2026-00078",
+      "source": "invoice",
+      "amount": "388044.80",
+      "currency": "INR",
+      "value_date": "2026-06-27",
+      "counterparty": "Vivaan Nair LLP",
+      "ref_id": "order_PlZLbm4xmsGCwa",
+      "status": "booked"
+    },
+    "candidates": [
+      {
+        "txn_id": "pay_X4Jyx6dxDu7Nsk",
+        "source": "gateway",
+        "amount": "4664.00",
+        "currency": "USD",
+        "value_date": "2026-06-27",
+        "counterparty": "Vivaan Nair LLP",
+        "ref_id": "order_PlZLbm4xmsGCwa",
+        "status": "refunded",
+        "match_score": {
+          "total": 0.55,
+          "amount": 0.0,
+          "date": 1.0,
+          "name": 1.0,
+          "ref": 1.0,
+          "same_currency": false
+        }
+      },
+      {
+        "txn_id": "pay_AxvpCPZygFP0xO",
+        "source": "gateway",
+        "amount": "386981.00",
+        "currency": "INR",
+        "value_date": "2026-08-01",
+        "counterparty": "Vivaan Das Industries",
+        "ref_id": "order_Lsgd9N1qS3sjV3",
+        "status": "captured",
+        "match_score": {
+          "total": 0.4381,
+          "amount": 0.85,
+          "date": 0.0,
+          "name": 0.2778,
+          "ref": 0.0,
+          "same_currency": true
+        }
+      }
+    ],
+    "why_escalated": "best candidate pay_X4Jyx6dxDu7Nsk is a different currency — needs review"
+  },
+  "output": {
+    "decision": "match",
+    "matched_candidate_id": "pay_X4Jyx6dxDu7Nsk",
+    "confidence": 0.95,
+    "rationale": "Candidate pay_X4Jyx6dxDu7Nsk matches on reference ID (order_PlZLbm4xmsGCwa), counterparty name, and date (2026-06-27). The 4,664.00 USD converts exactly to the invoice amount of 388,044.80 INR at an exchange rate of 83.20 INR/USD."
+  }
+}

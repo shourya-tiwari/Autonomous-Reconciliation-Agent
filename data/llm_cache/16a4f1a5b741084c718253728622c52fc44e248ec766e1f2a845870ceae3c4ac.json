@@ -1,0 +1,63 @@
+{
+  "key": "16a4f1a5b741084c718253728622c52fc44e248ec766e1f2a845870ceae3c4ac",
+  "model": "gemini-3.6-flash",
+  "prompt_version": "recon-reason-v1",
+  "created_at": "2026-08-27T21:28:47.434638+00:00",
+  "request": {
+    "record": {
+      "txn_id": "INV-2026-00048",
+      "source": "invoice",
+      "amount": "408512.00",
+      "currency": "INR",
+      "value_date": "2026-06-17",
+      "counterparty": "Reyansh Sharma Solutions",
+      "ref_id": "order_dVYH1QTIdVRAAi",
+      "status": "booked"
+    },
+    "candidates": [
+      {
+        "txn_id": "pay_LeI6qccFOAs08b",
+        "source": "gateway",
+        "amount": "4910.00",
+        "currency": "USD",
+        "value_date": "2026-06-17",
+        "counterparty": "Reyansh Sharma Solutions",
+        "ref_id": "order_dVYH1QTIdVRAAi",
+        "status": "refunded",
+        "match_score": {
+          "total": 0.55,
+          "amount": 0.0,
+          "date": 1.0,
+          "name": 1.0,
+          "ref": 1.0,
+          "same_currency": false
+        }
+      },
+      {
+        "txn_id": "pay_ekgd2IbyVfqjO2",
+        "source": "gateway",
+        "amount": "417366.00",
+        "currency": "INR",
+        "value_date": "2026-06-16",
+        "counterparty": "Kabir Jain Enterprises",
+        "ref_id": "order_tprMiZbP1uD8Hq",
+        "status": "captured",
+        "match_score": {
+          "total": 0.4059,
+          "amount": 0.4788,
+          "date": 0.8,
+          "name": 0.1522,
+          "ref": 0.0,
+          "same_currency": true
+        }
+      }
+    ],
+    "why_escalated": "best candidate pay_LeI6qccFOAs08b is a different currency — needs review"
+  },
+  "output": {
+    "decision": "match",
+    "matched_candidate_id": "pay_LeI6qccFOAs08b",
+    "confidence": 0.9,
+    "rationale": "Candidate pay_LeI6qccFOAs08b shares the exact reference ID order_dVYH1QTIdVRAAi, counterparty, and value date (2026-06-17). The amount of 408,512.00 INR corresponds to 4,910.00 USD at an exact exchange rate of 83.20 INR/USD."
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "key": "afbca73f85f9be31421838a7bd03821366d6c692ae6f90b6ebdc871d7fe59711",
+  "model": "gemini-3.6-flash",
+  "prompt_version": "recon-reason-v1",
+  "created_at": "2026-08-27T21:30:08.989009+00:00",
+  "request": {
+    "record": {
+      "txn_id": "INV-2026-00065",
+      "source": "invoice",
+      "amount": "310153.00",
+      "currency": "INR",
+      "value_date": "2026-06-21",
+      "counterparty": "Aadhya Nair Enterprises",
+      "ref_id": "order_AQvc1v9r86eNwX",
+      "status": "booked"
+    },
+    "candidates": [
+      {
+        "txn_id": "pay_E5GXTeLYHteOtL",
+        "source": "gateway",
+        "amount": "158165.62",
+        "currency": "INR",
+        "value_date": "2026-06-21",
+        "counterparty": "Aadhya Nair Enterprises",
+        "ref_id": "order_AQvc1v9r86eNwX",
+        "status": "captured",
+        "match_score": {
+          "total": 0.5545,
+          "amount": 0.01,
+          "date": 1.0,
+          "name": 1.0,
+          "ref": 1.0,
+          "same_currency": true
+        }
+      }
+    ],
+    "why_escalated": "best candidate pay_E5GXTeLYHteOtL matches on reference/date but not amount"
+  },
+  "output": {
+    "decision": "unsure",
+    "matched_candidate_id": "",
+    "confidence": 0.4,
+    "rationale": "The ref_id order_AQvc1v9r86eNwX, counterparty, and date match perfectly, but the gateway payment of INR 158165.62 is significantly less than the invoice amount of INR 310153.00. This unexplained large amount discrepancy may indicate a partial payment or missing second installment, requiring human review."
+  }
+}

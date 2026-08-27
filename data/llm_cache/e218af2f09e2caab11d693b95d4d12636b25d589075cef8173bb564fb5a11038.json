@@ -1,0 +1,117 @@
+{
+  "key": "e218af2f09e2caab11d693b95d4d12636b25d589075cef8173bb564fb5a11038",
+  "model": "gemini-3.6-flash",
+  "prompt_version": "recon-reason-v1",
+  "created_at": "2026-08-27T21:31:41.773728+00:00",
+  "request": {
+    "record": {
+      "txn_id": "INV-2026-00089",
+      "source": "invoice",
+      "amount": "2501.00",
+      "currency": "INR",
+      "value_date": "2026-07-02",
+      "counterparty": "Reyansh Das Enterprises",
+      "ref_id": "order_qQ3yz9tcGvLAC8",
+      "status": "booked"
+    },
+    "candidates": [
+      {
+        "txn_id": "pay_T8wUm7N72Q3B7G",
+        "source": "gateway",
+        "amount": "1657.38",
+        "currency": "INR",
+        "value_date": "2026-07-02",
+        "counterparty": "Reyansh Das Enterprises",
+        "ref_id": "order_qQ3yz9tcGvLAC8",
+        "status": "captured",
+        "match_score": {
+          "total": 0.6,
+          "amount": 0.1627,
+          "date": 1.0,
+          "name": 1.0,
+          "ref": 1.0,
+          "same_currency": true
+        }
+      },
+      {
+        "txn_id": "pay_GQkqqjkrsWw6SE",
+        "source": "gateway",
+        "amount": "2488.00",
+        "currency": "INR",
+        "value_date": "2026-07-03",
+        "counterparty": "Rohan Gupta LLP",
+        "ref_id": "order_MCiay0x1BAZOKs",
+        "status": "captured",
+        "match_score": {
+          "total": 0.5793,
+          "amount": 0.85,
+          "date": 0.8,
+          "name": 0.1842,
+          "ref": 0.0,
+          "same_currency": true
+        }
+      },
+      {
+        "txn_id": "pay_y5Kcnm1ys3J6xI",
+        "source": "gateway",
+        "amount": "2698.00",
+        "currency": "INR",
+        "value_date": "2026-07-02",
+        "counterparty": "Arjun Patel Industries",
+        "ref_id": "order_ifBvKCMACzXtxl",
+        "status": "captured",
+        "match_score": {
+          "total": 0.4366,
+          "amount": 0.427,
+          "date": 1.0,
+          "name": 0.2222,
+          "ref": 0.0,
+          "same_currency": true
+        }
+      },
+      {
+        "txn_id": "pay_4iCppaX3QjBvKN",
+        "source": "gateway",
+        "amount": "2472.00",
+        "currency": "INR",
+        "value_date": "2026-07-10",
+        "counterparty": "Aadhya Mehta LLP",
+        "ref_id": "order_Ap0mxDoJJ9s8Or",
+        "status": "captured",
+        "match_score": {
+          "total": 0.4184,
+          "amount": 0.85,
+          "date": 0.0,
+          "name": 0.1795,
+          "ref": 0.0,
+          "same_currency": true
+        }
+      },
+      {
+        "txn_id": "pay_0Xv00kKXR4bR6I",
+        "source": "gateway",
+        "amount": "2297.00",
+        "currency": "INR",
+        "value_date": "2026-07-02",
+        "counterparty": "Aadhya Das LLP",
+        "ref_id": "order_Il92EtEfonGa4m",
+        "status": "refunded",
+        "match_score": {
+          "total": 0.4153,
+          "amount": 0.4184,
+          "date": 1.0,
+          "name": 0.1351,
+          "ref": 0.0,
+          "same_currency": true
+        }
+      }
+    ],
+    "why_escalated": "best candidate pay_T8wUm7N72Q3B7G matches on reference/date but not amount"
+  },
+  "output": {
+    "decision": "unsure",
+    "matched_candidate_id": "",
+    "confidence": 0.4,
+    "rationale": "Candidate pay_T8wUm7N72Q3B7G matches the ref_id order_qQ3yz9tcGvLAC8, counterparty Reyansh Das Enterprises, and date 2026-07-02, but the amount of 1657.38 INR differs significantly from the invoice amount of 2501.00 INR (a difference of 843.62 INR) which requires manual investigation for partial capture or missing payments."
+  }
+}
