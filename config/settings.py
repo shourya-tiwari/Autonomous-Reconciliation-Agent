@@ -23,9 +23,11 @@ OUTPUT_DIR = ROOT / "outputs"
 AUDIT_DIR = OUTPUT_DIR / "audit"
 REPORT_DIR = OUTPUT_DIR / "reports"
 
-# LLM reasoning layer — provider/model TBD (see docs/PROGRESS.md Session 1 flags)
-LLM_MODEL = os.environ.get("RECON_LLM_MODEL", "claude-sonnet-5")
+# LLM reasoning layer — Google Gemini (google-genai SDK)
+LLM_MODEL = os.environ.get("RECON_LLM_MODEL", "gemini-2.5-flash")
 LLM_REPLAY_ONLY = os.environ.get("RECON_LLM_REPLAY_ONLY", "1") == "1"  # no live API by default
+LLM_CACHE_DIR = DATA_DIR / "llm_cache"     # committed request->response cache for offline replay
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")  # only needed when RECON_LLM_REPLAY_ONLY=0
 
 # Matching thresholds — TODO tune on real data (Day 2/6)
 AMOUNT_ABS_TOLERANCE = 0.0

@@ -79,8 +79,9 @@ it writes to the trail.
 
 ### 1.5 LLM reasoning layer (Day 3)
 - [ ] `src/recon/reasoning/llm_client.py` — structured-output call returning
-      `{decision: match|no_match|unsure, confidence: 0..1, rationale}`. Provider
-      per confirmed decision (assumed Anthropic Claude; see open questions).
+      `{decision: match|no_match|unsure, confidence: 0..1, rationale}`. Google
+      Gemini via the `google-genai` SDK, `response_schema` for structured output,
+      model `gemini-2.5-flash` (`config.settings.LLM_MODEL`).
 - [ ] **Replay cache**: hash the request → store/lookup response under
       `data/llm_cache/`. `RECON_LLM_REPLAY_ONLY=1` (default) never hits network;
       live mode records new entries. Commit the cache.
@@ -179,12 +180,14 @@ it writes to the trail.
 
 ---
 
-## Open questions blocking clean starts
+## Design decisions (resolved — Session 3, 2026-08-28)
 
-Carried from `docs/PROGRESS.md` Session 1 — confirm before/at Phase 1 start:
-1. Frozen snapshot in `data/snapshot/` acceptable? (vs live pulls)
-2. Commit LLM replay cache for offline reproducibility?
-3. LLM provider/model — Anthropic Claude `claude-sonnet-5`?
-4. RAG: local sentence-transformers + ChromaDB (vs API embeddings)?
-5. Exactly 3 sources?
-6. Python 3.11+, pandas + pydantic v2 + rapidfuzz?
+1. Frozen curated snapshot committed to `data/snapshot/`; live pulls in `data/raw/` (gitignored). ✔
+2. LLM replay cache committed to `data/llm_cache/` for offline reproducibility. ✔
+3. LLM provider: **Google Gemini**, `google-genai` SDK, model `gemini-2.5-flash`. ✔
+4. RAG: local sentence-transformers embeddings + embedded ChromaDB (no API key). ✔
+5. Exactly 3 sources: bank statement, invoice ledger, payment gateway export. ✔
+6. Python 3.11+ (3.13 on the dev box); pandas + pydantic v2 + rapidfuzz. ✔
+
+Dataset sourcing: user supplies Razorpay **test-mode** API keys; `scripts/pull_razorpay_sandbox.py`
+pulls live, then the snapshot is curated by hand from `data/raw/`.

@@ -7,8 +7,11 @@ python-dotenv>=1.0
 # --- fuzzy matching ---
 rapidfuzz>=3.9
 
-# --- LLM reasoning layer (provider not yet locked — see PROGRESS.md Session 1) ---
-anthropic>=0.40
+# --- LLM reasoning layer ---
+google-genai>=0.8       # Google Gemini SDK (structured output via response_schema)
+
+# --- Razorpay sandbox pull (scripts/pull_razorpay_sandbox.py only) ---
+razorpay>=1.4
 
 # --- RAG grounding layer ---
 chromadb>=0.5           # local embedded vector store, no server (clean-clone friendly)
