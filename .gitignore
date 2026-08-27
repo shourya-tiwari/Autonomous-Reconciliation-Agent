@@ -1,0 +1,21 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.pytest_cache/
+.ruff_cache/
+
+# local agent instructions — not part of the project
+CLAUDE.md
+
+# live data pulls — the COMMITTED frozen copy lives in data/snapshot/
+data/raw/
+
+# generated at runtime
+outputs/audit/*.jsonl
+outputs/reports/*
+!outputs/**/.gitkeep
+
+# local vector store build (rebuildable from data/policy/)
+data/policy/.chroma/
