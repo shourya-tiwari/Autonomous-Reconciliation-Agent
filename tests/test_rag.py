@@ -142,6 +142,31 @@ def test_every_exception_gets_at_least_one_citation(grounding):
     assert report.summary()["total"] > 40
 
 
+def test_an_unavailable_policy_store_degrades_instead_of_losing_records():
+    """A first, offline run cannot fetch the embedding model. The exceptions must
+    still be reported — without a citation — rather than killing the run."""
+    from recon.matching import reconcile
+    from recon.rag import GroundingReport, run_grounding
+
+    class Broken(PolicyIndex):
+        def query(self, text, k=4):
+            raise RuntimeError("cannot download embedding model")
+
+    ingest = load_all()
+    match_report = reconcile(ingest, AuditLogger(path=None))
+    audit = AuditLogger(path=None)
+    report: GroundingReport = run_grounding(match_report, ingest, audit, Broken())
+
+    assert len(report.explanations) == len(match_report.in_bucket(Bucket.EXCEPTION))
+    assert report.summary()["with_citation"] == 0
+    for explanation in report.explanations:
+        assert "manual review" in explanation.action
+        assert "build_rag_index" in explanation.action  # tells the reader how to fix it
+    entries = audit.by_stage("ground")
+    assert len(entries) == len(report.explanations)
+    assert all(e["decision"] == "no-clause-found" for e in entries)
+
+
 def test_every_grounding_is_audited_with_the_cited_doc(grounding):
     _, report, audit = grounding
     entries = audit.by_stage("ground")

@@ -46,6 +46,27 @@ class GroundingReport:
         return {"total": len(self.explanations), "with_citation": cited, "by_kind": kinds}
 
 
+def _ungrounded(txn: CanonicalTxn, exc: Exception) -> GroundedExplanation:
+    """An exception we could not cite policy for — still reported, never dropped."""
+    narration = str(txn.raw.get("narration", "")).strip()
+    return GroundedExplanation(
+        record_id=txn.txn_id,
+        exception_kind=txn.status,
+        summary=(
+            f"{txn.currency} {txn.amount} on {txn.value_date}"
+            f"{f' ({narration})' if narration else ''} has no matching invoice or "
+            "gateway record."
+        ),
+        action=(
+            "Needs manual review: the GST policy store was unavailable "
+            f"({type(exc).__name__}: {exc}), so no clause could be cited. "
+            "Run scripts/build_rag_index.py once with network access to restore "
+            "grounded explanations."
+        ),
+        citations=(),
+    )
+
+
 def run_grounding(
     match_report: MatchReport,
     ingest: IngestResult,
@@ -62,7 +83,14 @@ def run_grounding(
         txn = by_id.get(decision.record_id)
         if txn is None:
             continue
-        explanation = ground_exception(txn, index)
+        try:
+            explanation = ground_exception(txn, index)
+        except Exception as exc:  # noqa: BLE001
+            # The policy store is unavailable — most likely the embedding model
+            # could not be fetched on a first, offline run. The record is still an
+            # exception and still needs a human; it just arrives without the
+            # citation. Losing the grounding must never lose the record.
+            explanation = _ungrounded(txn, exc)
         report.explanations.append(explanation)
         primary = explanation.primary
         audit.log(
