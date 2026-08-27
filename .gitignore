@@ -18,9 +18,9 @@ data/raw/
 # regenerable from scripts/generate_synthetic.py (the 3 source CSVs + manifest are committed)
 data/synthetic/base_transactions.json
 
-# generated at runtime
+# One ~480KB JSONL per run, timestamped — regenerate with scripts/run_pipeline.py.
+# outputs/reports/ IS committed: it is the evidence for the metrics we quote.
 outputs/audit/*.jsonl
-outputs/reports/*
 !outputs/**/.gitkeep
 
 # ChromaDB vector store — rebuilt from data/policy/ on first run (or via
