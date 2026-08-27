@@ -24,6 +24,11 @@ captured/failed/refunded, currency mix 85/10/5 INR/USD/EUR.
 Primary matchable pair: **invoice ledger ↔ gateway export** (1:1 per payment).
 The bank statement adds settlement reconciliation and the unmatched exceptions.
 
+The bank statement is derived from the **post-injection** gateway rows, so every
+settlement credit foots exactly to the payments it covers. Partial-capture and
+duplicate payments are held back from settlement (a real processor holds flagged
+payments pending review), which keeps the N:1 answer key clean.
+
 ## Structural discrepancies (inherent to the flow, not injected)
 
 | # | Case | Why it's realistic | Expected pipeline behaviour |

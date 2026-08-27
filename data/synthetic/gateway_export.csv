@@ -1,308 +1,308 @@
 pg_payment_id,pg_order_id,captured_at,amount,currency,method,status,customer_name,fee,tax
-pay_0S2YZRFvLYTCbd,order_NNXiyMtfjG8ZV0,2026-05-29T21:59:10+00:00,388200,INR,upi,refunded,Dev Mehta Industries,10093,1817
-pay_518Y2bTu5X1YqW,order_g21nYCsXoblu17,2026-05-29T23:41:42+00:00,176600,INR,card,refunded,Aadhya Mehta Industries,4592,827
-pay_BpDmH5RiMKpPGN,order_dzSgVaI5z52Dm7,2026-05-30T03:46:57+00:00,2769900,INR,card,captured,Aadhya Rao LLP,72017,12963
-pay_S8RpLRl9XFrA62,order_Ys16ztfeT6kdUI,2026-05-30T16:45:25+00:00,846400,INR,netbanking,captured,Diya Das Solutions,22006,3961
-pay_GubDZzstveWEcs,order_9EN406gnZi91So,2026-05-30T17:42:20+00:00,487000,INR,card,failed,Sara Nair Enterprises,,
-pay_neuDE3RYfNcYxW,order_5u2A5hVU05NNdG,2026-05-30T18:03:41+00:00,4229400,INR,card,captured,Sara Iyer LLP,109964,19794
-pay_5zZ5cZWlU2rcsL,order_5uCNG3iFqYuTOS,2026-05-31T04:54:05+00:00,744400,INR,card,captured,Vihaan Sharma Pvt Ltd,19354,3484
-pay_HOl0amiYY5sIJ0,order_PHxTXQeUvgoeLM,2026-06-01T13:19:59+00:00,230600,USD,netbanking,captured,Reyansh Das Enterprises,5996,1079
-pay_gQBLdxmp4mabaY,order_Qd7fZPScFYuMM5,2026-06-01T18:41:47+00:00,4825600,INR,card,failed,Diya Rao Industries,,
-pay_uWzUZsStHmQX3v,order_8rb8M0JyK1URtb,2026-06-01T21:12:58+00:00,489800,INR,netbanking,captured,Ananya Iyer Enterprises,12735,2292
-pay_CqDGvhIvnyAuBw,order_dx5mlkrLGgdpgh,2026-06-02T01:28:53+00:00,63500,INR,upi,captured,Reyansh Das Enterprises,1651,297
-pay_qRFd3RMrmi8oTn,order_xYi8ROChEcrxZf,2026-06-02T04:05:25+00:00,3952700,INR,card,captured,Ananya Patel Enterprises,102770,18499
-pay_EnOCBLa2rMYmld,order_vjcJLufg9krORJ,2026-06-03T04:02:03+00:00,4484400,INR,netbanking,captured,Vivaan Gupta Pvt Ltd,116594,20987
-pay_Z8i5hzcqtRQVJJ,order_8PuGRfPpvPx0I9,2026-06-03T10:26:54+00:00,4985700,INR,card,failed,Kiara Patel Industries,,
-pay_RtSUBYv4Yne8qP,order_AbyaOCzOUTsYMQ,2026-06-03T17:53:35+00:00,390900,INR,wallet,failed,Aarav Singh LLP,,
-pay_iOnsd624MAE86P,order_WtzjxUD0sRX4I8,2026-06-03T19:03:04+00:00,297200,INR,netbanking,captured,Rohan Nair Technologies,7727,1391
-pay_ArXxtG7gGv0LOq,order_qXpKCPoPVGQ9ta,2026-06-04T08:59:13+00:00,484500,INR,card,captured,Anika Singh Technologies,12597,2267
-pay_osUVtTLfB4zEGx,order_dXeRzWGJk2mdcd,2026-06-04T12:11:50+00:00,1143600,INR,card,captured,Kabir Kapoor Industries,29734,5352
-pay_PPy0IfyqhwUqxN,order_xPDM6uLONCROhc,2026-06-05T08:36:29+00:00,234800,INR,card,captured,Diya Mehta Solutions,6105,1099
-pay_mcpRiPCCfOSBDr,order_kZLkhTkPaqBlS3,2026-06-05T18:47:06+00:00,377100,INR,netbanking,failed,Reyansh Jain Pvt Ltd,,
-pay_6A9qQCwV2nrABa,order_mfJbT8AepktMfD,2026-06-05T23:14:36+00:00,92400,INR,upi,captured,Anika Chauhan Enterprises,2402,432
-pay_xHZdxLceXKPnm4,order_s4nlTUU4RRyotr,2026-06-06T14:55:02+00:00,3447700,INR,netbanking,captured,Kabir Mehta Solutions,89640,16135
-pay_483BS4ez5FbLRh,order_cJXRTyQ18kUxWy,2026-06-06T17:21:11+00:00,49744700,INR,card,captured,Anika Bose Enterprises,1293362,232805
-pay_TYeoxQWhH9usd9,order_Ow0v0VrmI7Osyg,2026-06-06T22:06:14+00:00,380800,INR,upi,failed,Rohan Mehta Industries,,
-pay_TXd4PpxNR3QHoB,order_a754s6Us1jBtYN,2026-06-07T04:06:25+00:00,78500,INR,upi,failed,Vivaan Sharma LLP,,
-pay_HVhssnTJns5NZc,order_CMEwMuva3lvgEf,2026-06-08T02:49:05+00:00,205600,USD,netbanking,captured,Reyansh Sharma Solutions,5346,962
-pay_Auyf8D6axBquKJ,order_qwoPCjQ53VQN6w,2026-06-08T13:51:18+00:00,382100,INR,card,failed,Diya Rao Pvt Ltd,,
-pay_idXKZ5BDsyqHBL,order_3TLboP1KbVYJVk,2026-06-08T14:41:27+00:00,267600,INR,netbanking,captured,Ananya Singh LLP,6958,1252
-pay_wTrpaO16KSQ6pM,order_LmBumN1yBTAjDE,2026-06-08T20:58:51+00:00,9500,USD,netbanking,captured,Dev Das Pvt Ltd,247,44
-pay_9HUVBnATOp2bq1,order_f1hYnTQ1LAMWYX,2026-06-08T22:29:35+00:00,494900,INR,netbanking,captured,Vivaan Bose Enterprises,12867,2316
-pay_XCkKYgEXnXAY8Q,order_u8JiZXVKuhizRI,2026-06-09T04:25:12+00:00,301700,INR,netbanking,captured,Aadhya Kapoor Pvt Ltd,7844,1412
-pay_kujdQMhZgsFZi4,order_bAjOo2x2Zgkgg7,2026-06-09T16:42:36+00:00,3411900,INR,card,captured,Vivaan Chauhan Industries,88709,15968
-pay_Qxy435LkB2XiVp,order_zmss5ClWZfGRFQ,2026-06-10T01:27:42+00:00,204700,EUR,card,refunded,Aadhya Patel Enterprises,5322,958
-pay_VvMwBE0W0Hrc9y,order_oUf0fueXDnXOsX,2026-06-10T02:02:55+00:00,187726,INR,netbanking,captured,Kabir Sharma Industries,12007,2161
-pay_8D04wzInjq5Jzj,order_uxZEOQpY7NEkXk,2026-06-10T22:10:58+00:00,130700,INR,upi,captured,Reyansh Nair Industries,3398,612
-pay_rfwyxZJbbILofC,order_q0dMLj7kJaGV5Z,2026-06-11T05:50:39+00:00,318300,INR,netbanking,failed,Ananya Reddy Enterprises,,
-pay_oXnlpUVQigMcWc,order_wi4uzmW2wFqk46,2026-06-11T07:24:07+00:00,45671100,INR,wallet,failed,Aarav Iyer Enterprises,,
-pay_RknyuIRRj7afj5,order_Adnecx9MGSL6YN,2026-06-12T20:06:15+00:00,3426800,INR,netbanking,captured,Anika Rao LLP,89097,16037
-pay_AzjKV65IgrHvzx,order_ELcriLRc3uoU53,2026-06-12T23:25:17+00:00,478000,INR,card,refunded,Arjun Nair Technologies,12428,2237
-pay_gGweRPKuu8TBNE,order_tRI3MwPYxTslaR,2026-06-13T16:28:34+00:00,1428300,INR,netbanking,captured,Vivaan Rao LLP,37136,6684
-pay_YTo3k3UAdLh0eV,order_L05tRx9JmpBrmk,2026-06-13T22:35:19+00:00,190600,USD,upi,captured,Diya Jain Enterprises,4956,892
-pay_0jr7MjHlkR4Xjh,order_9JBwmRP8jB8Hhb,2026-06-14T03:14:03+00:00,286000,INR,wallet,captured,Ananya Gupta Industries,7436,1338
-pay_7A4dhjkuRv630p,order_NIhsHFk6jOSL0I,2026-06-14T07:49:12+00:00,199000,INR,upi,captured,Ananya Nair Pvt Ltd,5174,931
-pay_AUMspFhHJsUyya,order_Y2CddZOugsDudT,2026-06-14T10:10:41+00:00,71600,INR,upi,refunded,Ishani Bose LLP,1862,335
-pay_XMRqOGqleigCCR,order_Etj8b8rhBafanA,2026-06-14T15:22:39+00:00,3885600,INR,upi,captured,Aadhya Das Pvt Ltd,101026,18185
-pay_6I5NBldlDkCh3E,order_B9ICgSjvmrZUYI,2026-06-14T17:23:18+00:00,452400,INR,upi,refunded,Aarav Bose Solutions,11762,2117
-pay_H2MGlEOZ6qNY04,order_5TdmCoUV0z14N0,2026-06-14T17:55:54+00:00,4901100,INR,card,captured,Vivaan Nair LLP,127429,22937
-pay_yeTr5RHguX1d5s,order_OJBD3nXmOw1gW1,2026-06-15T07:16:44+00:00,2782600,INR,card,captured,Myra Jain Solutions,72348,13023
-pay_WNyDLzErVgpEMi,order_gdeQ8xQjMfeUVX,2026-06-15T10:34:03+00:00,273600,INR,card,captured,Aarav Patel Enterprises,7114,1281
-pay_IJQ2N9u8tBDNXK,order_veCcwrN8fKxJ7T,2026-06-15T14:53:41+00:00,381000,USD,card,captured,Ishani Nair Industries,9906,1783
-pay_Eo8dnNzoCXB1Bh,order_EOgzIafLMsFmP6,2026-06-15T21:55:20+00:00,8925000,INR,card,refunded,Ishani Nair Enterprises,232050,41769
-pay_kjyA6CSpJso5qf,order_x6UydyY8LeQDOz,2026-06-15T22:36:52+00:00,2910054,INR,card,captured,Diya Singh Industries,115947,20870
-pay_ekgd2IbyVfqjO2,order_tprMiZbP1uD8Hq,2026-06-16T01:51:39+00:00,41736600,INR,netbanking,captured,Myra Jain Industries,1085152,195327
-pay_3MsHarAJOCBnD3,order_XkfFNuYUPnmbpD,2026-06-16T05:36:04+00:00,40510900,INR,upi,captured,Aarav Gupta LLP,1053283,189591
-pay_Ei1L9rPzzjrqM4,order_wQCaiuQQSRTpfd,2026-06-16T09:32:34+00:00,2387100,INR,card,refunded,Arjun Chauhan Industries,62065,11172
-pay_8AHkxv78JaYb3F,order_1ROCzvHGVhkAkK,2026-06-16T11:15:23+00:00,174959,INR,netbanking,refunded,Aadhya Chauhan Solutions,5954,1072
-pay_e71imARDL6KFQr,order_aidyYG42CJTr2C,2026-06-16T17:13:58+00:00,3634200,INR,upi,captured,Kabir Singh Pvt Ltd,94489,17008
-pay_LeI6qccFOAs08b,order_dVYH1QTIdVRAAi,2026-06-17T02:12:43+00:00,491000,USD,netbanking,refunded,Vivaan Kapoor Solutions,12766,2298
-pay_2pAn5643zc9TFA,order_yYRgEfUQznwo9a,2026-06-17T09:27:36+00:00,400700,INR,upi,failed,Diya Jain Solutions,,
-pay_FxAIiKpuSjjud5,order_MPEJwWtnleFzHf,2026-06-17T12:01:18+00:00,192300,INR,card,refunded,Ishani Nair Solutions,5000,900
-pay_REJpxYyhIKHQI7,order_CRBsQYXzENpOSW,2026-06-17T12:29:59+00:00,20280200,INR,card,refunded,Rohan Das Technologies,527285,94911
-pay_8NR0Xy8ZEurHi0,order_W3VcMZb5jC9A94,2026-06-17T21:41:10+00:00,1110400,INR,upi,refunded,Anika Gupta LLP,28870,5197
-pay_2qFl41sNLjVHWG,order_aub52Ztd26fEeV,2026-06-18T18:17:04+00:00,52600,INR,upi,captured,Reyansh Mehta Technologies,1368,246
-pay_E2AUYMLAJxNdkc,order_FKsZN7vbluXweO,2026-06-18T18:21:30+00:00,218600,INR,card,failed,Reyansh Rao Solutions,,
-pay_U4arG5RBmHWOR3,order_WzmscuSTh9rfIG,2026-06-18T19:32:43+00:00,2494400,INR,upi,captured,Arjun Das Industries,64854,11674
-pay_BzPoBrUBHtYDZw,order_69CrxG7YXipN2I,2026-06-18T20:24:10+00:00,1584800,INR,card,captured,Dev Sharma Solutions,41205,7417
-pay_TfRNfRT8LjIcku,order_21kiVdtT7rl37a,2026-06-19T02:56:48+00:00,1574700,INR,upi,captured,Kabir Nair LLP,40942,7370
-pay_8MEFd1kjV3PhTa,order_1acw5l7cXSOnp4,2026-06-19T17:02:51+00:00,2223200,INR,card,captured,Ishani Nair Pvt Ltd,57803,10405
-pay_jIIf94ChZESFqZ,order_8pIx5F21rWz5FY,2026-06-19T22:58:02+00:00,197000,EUR,card,captured,Reyansh Iyer Solutions,5122,922
-pay_UcpMsyw8IJqF52,order_itGihch2ZU5r2M,2026-06-19T23:28:21+00:00,491000,USD,upi,refunded,Aarav Reddy Enterprises,12766,2298
-pay_BsRllvTrZ4Iejs,order_qwaNxlb1WoSOHy,2026-06-20T06:19:23+00:00,18362764,INR,netbanking,captured,Ishani Patel Pvt Ltd,791539,142477
-pay_d6X7U8WL1gIFkh,order_mwTRVE1jwYhm8V,2026-06-20T06:50:18+00:00,1182500,INR,card,refunded,Vihaan Jain Solutions,30745,5534
-pay_M519XgOMzEU5gB,order_KcrAnCxmDh74zY,2026-06-20T16:53:12+00:00,282000,INR,upi,captured,Arjun Singh Industries,7332,1320
-pay_IDHPnpU2fBReId,order_HFJjuGhmKfFYCF,2026-06-20T17:14:26+00:00,3225200,INR,netbanking,failed,Aarav Gupta Industries,,
-pay_79ISjs8JHUdKF0,order_j7elKPoh3pKMzK,2026-06-21T05:42:18+00:00,396500,INR,netbanking,failed,Kabir Singh Solutions,,
-pay_81mOOBMWlsCDbk,order_jR7D1KmJZdaNS8,2026-06-21T07:00:28+00:00,63000,INR,upi,captured,Ishani Rao Pvt Ltd,1638,295
-pay_e8danYlgmKG1Vt,order_CjF4nw81FWlrkt,2026-06-21T09:29:42+00:00,1849300,INR,upi,captured,Aarav Gupta Industries,48082,8655
-pay_45kkrl0M17EmxI,order_OzESBkJXncnrWJ,2026-06-21T13:03:55+00:00,490200,INR,upi,captured,Ananya Jain Technologies,12745,2294
-pay_E5GXTeLYHteOtL,order_AQvc1v9r86eNwX,2026-06-21T16:14:40+00:00,31015300,INR,upi,captured,Aadhya Sharma Enterprises,806398,145152
-pay_vP8O7FRthvDJPz,order_U0r0YGbjPmUjrp,2026-06-22T04:57:38+00:00,2404300,INR,upi,captured,Diya Iyer Industries,62512,11252
-pay_I1uTwWGxOnx3iU,order_hK4OlR5eHvS9mS,2026-06-22T13:27:55+00:00,61100,INR,card,captured,Reyansh Singh Enterprises,1589,286
-pay_bxKl1Kvk3UQrxk,order_J71OQqzbWVa4OL,2026-06-22T17:37:47+00:00,151400,INR,card,captured,Kiara Kapoor Pvt Ltd,3936,708
-pay_CLjPXRLt9h9RDZ,order_ERx8uZnTYRd1lE,2026-06-22T20:24:38+00:00,3775700,INR,card,refunded,Ishani Sharma Pvt Ltd,98168,17670
-pay_41odbJIqO3hMOB,order_BkTDBFKQ50SD2S,2026-06-22T23:28:12+00:00,4507400,INR,card,captured,Vihaan Gupta Industries,117192,21095
-pay_nQjENGsB4Djh30,order_GscecgAfOJppfF,2026-06-23T04:39:41+00:00,3537700,INR,card,captured,Myra Chauhan Pvt Ltd,91980,16556
-pay_SAxoCjl2VbOM63,order_oeKBP2pcBHUWi9,2026-06-23T11:30:45+00:00,29274700,INR,card,failed,Arjun Singh LLP,,
-pay_OC56aMIgHFivep,order_rBHs8YGPI5g2q3,2026-06-23T15:43:46+00:00,157200,INR,upi,captured,Sara Kapoor Enterprises,4087,736
-pay_QzkChMbyIbNiCd,order_xnuVxUZpfbH9vO,2026-06-23T22:17:33+00:00,325300,INR,upi,captured,Ananya Das LLP,8458,1522
-pay_veH30S5NXFhmiX,order_bIwXILft9SGVZe,2026-06-24T00:42:05+00:00,262800,USD,wallet,failed,Reyansh Mehta Industries,,
-pay_p7QDffAUxid7IP,order_z26A4drtgFjD0v,2026-06-24T07:04:02+00:00,306000,INR,netbanking,failed,Reyansh Sharma Industries,,
-pay_Z65p2ohYuKyUoA,order_ik8BpKEx6tAQ72,2026-06-24T09:08:34+00:00,32365600,INR,wallet,failed,Ananya Mehta Industries,,
-pay_NI1YnhffT6Uhw0,order_7JadH08twQXGLn,2026-06-25T09:08:16+00:00,313600,USD,card,failed,Kiara Jain Technologies,,
-pay_euPH7M3EHMoQro,order_f8VRgksbudwApz,2026-06-25T18:39:07+00:00,375600,INR,upi,refunded,Arjun Bose Pvt Ltd,9766,1758
-pay_5LaakIREyf2OH3,order_YBh8xLx0Y8hwla,2026-06-26T02:33:32+00:00,159500,INR,upi,refunded,Reyansh Nair Enterprises,4147,746
-pay_J6iUo8k2fRN2Bq,order_pepgaxT82ExHgD,2026-06-26T18:23:45+00:00,16581200,INR,upi,refunded,Kabir Reddy Pvt Ltd,431111,77600
-pay_3tlrtBhjqaMFmv,order_tiRrpeMvBiDPgd,2026-06-26T20:15:02+00:00,305700,INR,netbanking,captured,Ishani Kapoor Technologies,7948,1431
-pay_X4Jyx6dxDu7Nsk,order_PlZLbm4xmsGCwa,2026-06-27T17:14:56+00:00,466400,USD,card,refunded,Anika Rao Pvt Ltd,12126,2183
-pay_mQfDkjEX6EoI9w,order_qPk1FYuhoIE9WV,2026-06-28T11:53:00+00:00,1561800,INR,upi,failed,Rohan Gupta Industries,,
-pay_jhPInRVkLUhY7g,order_btP7ySeQMgV0Lh,2026-06-28T13:03:50+00:00,17600,USD,wallet,captured,Reyansh Jain LLP,458,82
-pay_wumVYe5VJfXRgt,order_NVD6i3pwl4u1uE,2026-06-29T00:45:44+00:00,3421800,INR,card,captured,Aadhya Kapoor Solutions,88967,16014
-pay_1T1UIoWXrP5y78,order_tIapMW1Z4ROUHL,2026-06-29T01:14:36+00:00,1171600,INR,upi,captured,Vihaan Reddy Enterprises,30462,5483
-pay_PILOQbqV5vliOe,order_T8fGxCjtu6K2jU,2026-06-29T07:09:06+00:00,4574500,INR,card,failed,Aadhya Singh Pvt Ltd,,
-pay_fVByODHiyXH7iP,order_4XTx6IIhaKH6sU,2026-06-29T23:28:48+00:00,247800,USD,wallet,captured,Dev Chauhan Pvt Ltd,6443,1160
-pay_jAulA3QMr2qEwq,order_4XW18WjjBX8YhA,2026-06-30T04:16:44+00:00,85500,INR,upi,refunded,Aadhya Sharma Solutions,2223,400
-pay_JFzSgIesCKopjD,order_emRA8JvRkPTSZh,2026-06-30T04:25:59+00:00,335500,INR,netbanking,failed,Rohan Das Enterprises,,
-pay_xyl71f0kWrUOhE,order_AXtQiPZFE2DIAU,2026-06-30T09:26:24+00:00,4085800,INR,upi,failed,Ananya Das LLP,,
-pay_0gwrGhsxsbiWA6,order_srlTaHecDtCuxZ,2026-06-30T11:03:03+00:00,147200,INR,upi,refunded,Vihaan Rao LLP,3827,689
-pay_y5Kcnm1ys3J6xI,order_ifBvKCMACzXtxl,2026-07-02T10:37:04+00:00,269800,INR,card,captured,Myra Chauhan Enterprises,7015,1263
-pay_DBpQ8YxTbqKjCQ,order_wdwN7dsNemMVLk,2026-07-02T10:53:59+00:00,297300,USD,card,captured,Ishani Bose LLP,7730,1391
-pay_viirWz5knFZXIQ,order_70SRXz4hibvQiB,2026-07-02T13:16:28+00:00,487700,INR,wallet,captured,Anika Mehta Industries,12680,2282
-pay_HkOwOZGx4Gv1ED,order_LFikeNnlwShoYS,2026-07-02T16:34:19+00:00,2225600,INR,netbanking,captured,Reyansh Nair Pvt Ltd,57866,10416
-pay_T8wUm7N72Q3B7G,order_qQ3yz9tcGvLAC8,2026-07-02T19:00:44+00:00,250100,INR,upi,captured,Anika Nair Solutions,6503,1171
-pay_leOV911xCZkwPR,order_QeNHpCq5QnuVdY,2026-07-02T19:33:11+00:00,2870000,INR,upi,failed,Vivaan Jain Enterprises,,
-pay_0Xv00kKXR4bR6I,order_Il92EtEfonGa4m,2026-07-02T23:25:16+00:00,229700,INR,card,refunded,Arjun Bose Enterprises,5972,1075
-pay_q19Qf7W491h1pS,order_ZVPEJqzCN2fFr6,2026-07-03T06:18:37+00:00,2396100,INR,card,captured,Kabir Reddy Pvt Ltd,62299,11214
-pay_2De3SF3XQMhUk9,order_8YhA9A9MZp44ey,2026-07-03T06:21:36+00:00,29894400,INR,card,captured,Rohan Das LLP,777254,139906
-pay_GQkqqjkrsWw6SE,order_MCiay0x1BAZOKs,2026-07-03T08:07:00+00:00,248800,INR,upi,captured,Vihaan Gupta Industries,6469,1164
-pay_aOBSMjzQ1fgUKx,order_7tirfILLWQ0OsG,2026-07-04T04:19:02+00:00,435500,USD,netbanking,captured,Arjun Iyer Solutions,11323,2038
-pay_bV92hB0BckOW2k,order_AtyVJEIHDIjdqK,2026-07-05T19:09:50+00:00,4042400,INR,card,captured,Aarav Rao LLP,105102,18918
-pay_EuVx518ox1ztD4,order_x9XOj7h7ug0g4a,2026-07-06T13:53:50+00:00,28411900,INR,card,captured,Anika Singh Solutions,738709,132968
-pay_WDFDTA7Xrc5UTI,order_dDkd9YMrfF0rir,2026-07-06T22:09:47+00:00,2751400,INR,upi,captured,Vihaan Iyer Enterprises,71536,12876
-pay_8A78irco0z3CUK,order_FNyKdPis05yZuC,2026-07-07T10:19:25+00:00,218000,INR,card,failed,Ishani Patel Pvt Ltd,,
-pay_x7CHHP1QXqE7rs,order_68VRQEDI5SrJH3,2026-07-07T20:25:50+00:00,150321600,INR,card,captured,Dev Rao Enterprises,3908362,703505
-pay_zrAkliEFgJnmUY,order_l82B4gNefhdboE,2026-07-07T21:37:51+00:00,343200,EUR,upi,captured,Aadhya Iyer Enterprises,8923,1606
-pay_c06PVz0oRaFxMP,order_MDEaIaGr8bYPX4,2026-07-08T00:00:07+00:00,49100,USD,card,captured,Arjun Patel Industries,1277,230
-pay_T5lbbFj1hnunT6,order_qD7vIsUEFylkQ3,2026-07-08T05:07:07+00:00,1538000,INR,card,captured,Aarav Patel LLP,39988,7198
-pay_H8cyV7lB2Vrks4,order_Q4COfFlK3HyubC,2026-07-08T12:12:58+00:00,17882800,INR,upi,captured,Myra Gupta LLP,464953,83692
-pay_KIDYvf0A6zB0bi,order_2sTEOvnAUVQsKJ,2026-07-08T18:55:15+00:00,241400,INR,card,failed,Rohan Iyer Enterprises,,
-pay_QPHhalZaAHv9O5,order_96QcBk5V4kwivd,2026-07-08T20:49:02+00:00,457800,INR,netbanking,refunded,Vihaan Singh Solutions,11903,2143
-pay_72YJR7IVU7CCKb,order_heN9Pot7GaZpfP,2026-07-09T00:50:11+00:00,47097200,INR,upi,captured,Sara Iyer LLP,1224527,220415
-pay_HerohwHuPpUV0l,order_Li1SHqVrv96YUa,2026-07-09T01:59:29+00:00,412000,USD,upi,captured,Ananya Patel Technologies,10712,1928
-pay_NoK9oM3tTUMdxs,order_jmc5L6TurNVG8O,2026-07-09T06:06:14+00:00,3005900,INR,card,captured,Arjun Bose Enterprises,78153,14068
-pay_UxhdCzEzo2q7Pp,order_IWszfNm8x9WHA4,2026-07-09T11:42:27+00:00,3730700,INR,netbanking,failed,Vivaan Mehta Technologies,,
-pay_uRDr68JjJ4BQT3,order_iIty0BfdNKn6rb,2026-07-09T14:31:56+00:00,448400,USD,netbanking,captured,Kiara Gupta LLP,11658,2098
-pay_E40fAraVNqTIAa,order_e24HZKjht3X13n,2026-07-09T19:11:33+00:00,266200,INR,card,captured,Rohan Sharma Solutions,6921,1246
-pay_hJyV4ZjtfbaVjM,order_H8JbT8NWlOnm0T,2026-07-09T21:52:37+00:00,1327900,INR,upi,captured,Rohan Mehta Technologies,34525,6214
-pay_BIZMLhfx9IwiLy,order_ccSXGj3i5tyM0K,2026-07-09T21:52:50+00:00,366400,INR,netbanking,captured,Rohan Das Solutions,9526,1715
-pay_4iCppaX3QjBvKN,order_Ap0mxDoJJ9s8Or,2026-07-10T13:13:56+00:00,247200,INR,netbanking,captured,Kiara Gupta LLP,6427,1157
-pay_xoNe3awtx0AHkD,order_9eKan56yrSVAyN,2026-07-10T19:42:32+00:00,2068500,INR,netbanking,failed,Kiara Patel Enterprises,,
-pay_yjQ312WnXRCI4h,order_iCGItUBY3A4Bj1,2026-07-10T20:53:55+00:00,364500,INR,netbanking,captured,Diya Gupta Technologies,9477,1706
-pay_9RshuS1HzRyYWG,order_dZHYOUmOh1RaBt,2026-07-11T20:37:59+00:00,3016300,INR,card,captured,Rohan Das Technologies,78424,14116
-pay_mbksf0tyEOfHl2,order_wBqCoqdUPfvH8K,2026-07-12T05:38:05+00:00,492600,EUR,netbanking,captured,Kabir Chauhan Pvt Ltd,12808,2305
-pay_6cv1WChGtaPxgw,order_1lqq7vlAzUwyBJ,2026-07-12T10:18:52+00:00,396600,INR,wallet,captured,Vihaan Reddy Technologies,10312,1856
-pay_9Z8aPB4MM7Qt46,order_xHr4YxXBc3lF6k,2026-07-12T18:23:01+00:00,484500,INR,wallet,captured,Vivaan Mehta Enterprises,12597,2267
-pay_SwCgOawNXHxg3E,order_YUzpmh0nZluUcN,2026-07-12T22:23:59+00:00,4431800,INR,upi,captured,Sara Rao Solutions,115227,20741
-pay_gYJ9ZGkjfsTCT9,order_pEwavS3W13KgQT,2026-07-12T23:43:02+00:00,252700,INR,card,captured,Sara Singh LLP,6570,1183
-pay_U5iaX6fpHuyMwO,order_WYLhJtqlCBC7D0,2026-07-13T11:55:03+00:00,362300,INR,card,failed,Vivaan Patel Pvt Ltd,,
-pay_1dOOdTXglHilC2,order_eY1gOHafUozD13,2026-07-13T12:38:05+00:00,386700,INR,card,captured,Ananya Reddy Pvt Ltd,10054,1810
-pay_QGrIkEesCnZhEa,order_vZdi2WF7I7SiTA,2026-07-13T14:16:57+00:00,121500,USD,wallet,captured,Diya Mehta Industries,3159,569
-pay_0D1K6e3F1xsd0i,order_mzJ4CtSWENkNaq,2026-07-13T20:14:25+00:00,290800,INR,upi,captured,Anika Rao Enterprises,7561,1361
-pay_V2zWwCN1e3ucAq,order_6HXWf2Td6P3gwM,2026-07-13T20:14:25+00:00,422600,INR,card,failed,Reyansh Gupta Enterprises,,
-pay_FSq0sqhnHsN6ri,order_2d89nhON8u62qi,2026-07-14T15:37:36+00:00,3860600,INR,upi,captured,Aarav Patel Industries,100376,18068
-pay_gSZfd3DBwGKGyq,order_EAB5E8ZihSiR1h,2026-07-14T18:15:46+00:00,2867600,INR,card,captured,Myra Kapoor Industries,74558,13420
-pay_CzH7mtqhjQZRcZ,order_ufpwFPq9bzCUpC,2026-07-15T05:18:52+00:00,184600,INR,upi,captured,Diya Iyer Enterprises,4800,864
-pay_wkWolGc97KYZUz,order_xOTkJ0dqYdCDD6,2026-07-15T12:06:13+00:00,4819800,INR,wallet,refunded,Vihaan Gupta Pvt Ltd,125315,22557
-pay_UJfAWjuDUHqyAR,order_VDmyJI9GpqAQJg,2026-07-15T14:31:12+00:00,371800,INR,netbanking,captured,Aarav Kapoor Enterprises,9667,1740
-pay_fHtKE5vlbGxf8H,order_rlVj7Qd7lSsgi3,2026-07-15T17:45:05+00:00,4298100,INR,card,captured,Dev Nair Solutions,111751,20115
-pay_rwQuDBWEgOfrZ3,order_mTMT30NYJVncq3,2026-07-16T12:38:18+00:00,4699700,INR,netbanking,captured,Aarav Jain Solutions,122192,21995
-pay_GNtvHXBwqsaY0v,order_Da56DaAsoaxzIy,2026-07-16T15:18:37+00:00,4196100,INR,card,captured,Rohan Mehta Industries,109099,19638
-pay_98i54tI6ht2TV2,order_zzB535qWglVLqJ,2026-07-17T02:45:31+00:00,1386300,INR,card,captured,Anika Patel Pvt Ltd,36044,6488
-pay_TfVc0PkwBM2fYl,order_y7qx0XOXhRd6jz,2026-07-17T12:14:25+00:00,306100,INR,netbanking,refunded,Aadhya Patel Pvt Ltd,7959,1433
-pay_ZmZ2TAYeQbScel,order_peY4zBztyhaSdU,2026-07-17T16:24:05+00:00,4991800,INR,card,captured,Aarav Das Enterprises,129787,23362
-pay_NMdZEHNJSsavJl,order_PGw7HWFb2cxxUw,2026-07-18T02:37:00+00:00,245300,INR,card,captured,Vihaan Sharma Technologies,6378,1148
-pay_DHW7B4JZI3mSJi,order_PZTZTa35EtXPqS,2026-07-18T04:18:17+00:00,336100,INR,wallet,failed,Kabir Jain Technologies,,
-pay_HXw3HNfVOwOc8Q,order_yU7AaqFGJJByVK,2026-07-18T06:10:11+00:00,41265400,INR,netbanking,captured,Kabir Sharma Industries,1072900,193122
-pay_KXSQbD7WWJSKkM,order_M0jQb6gbtjQzW5,2026-07-18T10:16:18+00:00,139700,INR,upi,failed,Myra Reddy Pvt Ltd,,
-pay_OaN6tN28TQoETX,order_v66DORgxLS12WS,2026-07-18T18:13:34+00:00,31996300,INR,card,captured,Aadhya Reddy LLP,831904,149743
-pay_bn9nbFhSXxNVMK,order_cgZchBhpRmQaAg,2026-07-19T16:54:37+00:00,47572600,INR,netbanking,captured,Myra Singh Solutions,1236888,222640
-pay_OannOrMc2zVE9S,order_X5JpfuNy5VikVQ,2026-07-19T19:49:41+00:00,62200,INR,wallet,captured,Kabir Jain Enterprises,1617,291
-pay_xDALAj7DVAf4sH,order_IkxsrIDuSm4a1T,2026-07-20T04:54:15+00:00,344500,INR,card,refunded,Vihaan Iyer Industries,8957,1612
-pay_ynZQEkmNRral4M,order_T0QkQkuC7PAb82,2026-07-20T19:40:08+00:00,381400,INR,card,captured,Reyansh Jain Pvt Ltd,9916,1785
-pay_rLt8BIs1le0DQl,order_9EgBOfiyKg58e8,2026-07-21T12:16:34+00:00,144700,INR,card,captured,Vivaan Iyer Technologies,3762,677
-pay_ENKzc5xJmBp4SF,order_EQRO5TpcYNPROq,2026-07-21T14:00:32+00:00,306600,USD,netbanking,refunded,Sara Rao Solutions,7972,1435
-pay_PU6zUjzgEz6cwB,order_61gQH8wylh0CPN,2026-07-22T20:21:41+00:00,421600,INR,netbanking,refunded,Myra Singh Industries,10962,1973
-pay_3YV0eDh1uznmdJ,order_8GfSLWRA0qJM5M,2026-07-23T02:03:07+00:00,2615600,INR,netbanking,captured,Rohan Reddy Pvt Ltd,68006,12241
-pay_L0brHeLUtINcq8,order_JIWct6awrymUS8,2026-07-23T15:43:30+00:00,113700,INR,upi,captured,Vivaan Das Industries,2956,532
-pay_NpUGWiA437GQ6B,order_VSGeuyVAyc5jJ8,2026-07-23T20:31:15+00:00,389900,INR,wallet,captured,Myra Chauhan Enterprises,10137,1825
-pay_IxlKxVspeqxWjy,order_wf6BVgfAIFgfIL,2026-07-24T07:46:51+00:00,236800,INR,upi,failed,Ananya Das LLP,,
-pay_Mo8FYM23YbIrj3,order_Ofx7LMooj84uHm,2026-07-24T08:47:24+00:00,338200,INR,card,failed,Diya Gupta LLP,,
-pay_uFWBeMC71N5ALz,order_4evtOSLy3W6UGB,2026-07-24T09:25:01+00:00,283100,INR,card,captured,Kiara Chauhan LLP,7361,1325
-pay_YKVMxA9zdpotfQ,order_1hkHcOAFAbDbtJ,2026-07-24T23:56:21+00:00,236900,INR,card,captured,Aadhya Nair Industries,9103,1639
-pay_9qYle8myOgHAMg,order_BqceTWbEOacyju,2026-07-26T13:44:21+00:00,368300,INR,card,captured,Rohan Gupta Solutions,9576,1724
-pay_aXKyp8KQQjVpEQ,order_u8VdwjHgEtINv3,2026-07-27T08:42:35+00:00,405600,INR,upi,captured,Diya Nair Technologies,10546,1898
-pay_ED8LNi65xIHEHo,order_fSGWYnfwm0wDig,2026-07-27T20:49:17+00:00,2810800,INR,wallet,captured,Diya Mehta Pvt Ltd,73081,13155
-pay_qgv3je68u93RAO,order_LAdu8zI5HOsfyI,2026-07-27T22:13:00+00:00,66400,INR,netbanking,failed,Kabir Sharma Industries,,
-pay_LFdPySAxavtBIn,order_3TzBkT3TzZLis9,2026-07-28T00:27:06+00:00,402700,USD,netbanking,captured,Rohan Singh Solutions,10470,1885
-pay_7BpWqEok2OoOlF,order_BtIo798a00Hcog,2026-07-28T09:08:46+00:00,452700,USD,netbanking,captured,Dev Kapoor Enterprises,11770,2119
-pay_INuhR694fPFbt6,order_vVl9jsWFHTGP2M,2026-07-28T19:30:10+00:00,1055200,INR,netbanking,captured,Vihaan Rao Enterprises,27435,4938
-pay_kxcmfFX4jvD2tu,order_Vg8G9mcy1htc02,2026-07-29T12:25:42+00:00,480100,INR,card,failed,Vivaan Sharma Technologies,,
-pay_C7dDyQE4efLerN,order_Hu9GCLgR0OVSnB,2026-07-29T14:01:53+00:00,428100,EUR,card,failed,Dev Gupta Industries,,
-pay_qzycRJlTnHW4PF,order_002lghqYVlQufw,2026-07-30T04:04:20+00:00,457400,INR,upi,captured,Ishani Bose Industries,11892,2141
-pay_hbuXMZ5f0pKGyt,order_vukFhF4vTYYojm,2026-07-30T18:15:42+00:00,3237300,INR,upi,captured,Anika Gupta Industries,84170,15151
-pay_qOt34Pa4cbX0GT,order_tkJAIyMyd5A6yT,2026-07-31T08:02:05+00:00,416700,USD,netbanking,failed,Sara Bose Technologies,,
-pay_LHpaUaGGxmXzgA,order_KqHJL9ymIIlID9,2026-07-31T08:49:18+00:00,118600,INR,netbanking,captured,Kabir Nair LLP,3084,555
-pay_hgmmqGmRscEm5u,order_aP4ZPjfFSgpo9s,2026-07-31T10:07:35+00:00,1271500,INR,netbanking,captured,Vivaan Kapoor LLP,33059,5951
-pay_UYdg2luCq1GNLL,order_Kv0MYRsMfihslQ,2026-07-31T20:17:26+00:00,1848600,INR,netbanking,captured,Kabir Sharma Pvt Ltd,48064,8652
-pay_AxvpCPZygFP0xO,order_Lsgd9N1qS3sjV3,2026-08-01T03:12:09+00:00,38698100,INR,upi,captured,Vihaan Gupta Enterprises,1006151,181107
-pay_BSou3ejxjnzuCd,order_ZyV6b2JD6sy3ZH,2026-08-01T05:01:21+00:00,245900,INR,upi,failed,Anika Sharma Enterprises,,
-pay_nFvgQKGtn9dm6V,order_VrhEAiHoIPvyUB,2026-08-01T08:21:22+00:00,3214300,INR,netbanking,captured,Dev Singh Enterprises,83572,15043
-pay_Xe7CpRsZe9Obzx,order_DNRf0Nu8834o3Q,2026-08-01T21:58:09+00:00,1564892,INR,netbanking,captured,Vihaan Gupta Enterprises,73393,13211
-pay_OVzNEMr7DXQsed,order_BEmLtST18iwItC,2026-08-02T04:11:17+00:00,473400,EUR,card,captured,Vivaan Chauhan Enterprises,12308,2215
-pay_x4yfpARHeT9Rlx,order_OYLAj9AbLehgHe,2026-08-02T13:27:56+00:00,258800,INR,upi,captured,Aarav Jain Pvt Ltd,6729,1211
-pay_2ccsqQXxR5Khtj,order_K03NPGoDErVDfV,2026-08-02T15:45:53+00:00,44000,USD,upi,refunded,Ananya Jain Industries,1144,206
-pay_oVT9gdxMvcOhsT,order_C8X9J3MHKvrWSP,2026-08-02T18:05:21+00:00,486300,EUR,upi,failed,Dev Singh Solutions,,
-pay_YUJcvd95e5bzVV,order_8OA9x14xQPHOvl,2026-08-03T03:57:10+00:00,3094800,INR,netbanking,failed,Ananya Patel Pvt Ltd,,
-pay_fPOdMTUAffneKG,order_Bavh1RDofXgwsx,2026-08-03T13:25:54+00:00,345200,INR,upi,refunded,Dev Nair LLP,8975,1616
-pay_73Y5Slj9C2EfyC,order_oKdrL0Pragiqwz,2026-08-03T18:22:09+00:00,392500,INR,card,captured,Aarav Iyer LLP,10205,1837
-pay_cJjNcJdql7LIbS,order_PrfB91kZLXYlOq,2026-08-04T05:05:17+00:00,647100,INR,upi,captured,Aarav Jain Technologies,16825,3028
-pay_nnUhRiTRAdgKDK,order_jjipaZzVDiG6DS,2026-08-04T07:49:16+00:00,27076500,INR,netbanking,captured,Anika Bose Solutions,703989,126718
-pay_FeYVGS7kUaS550,order_DRlPgZ8AFzVtCG,2026-08-04T09:23:37+00:00,4517000,INR,netbanking,captured,Reyansh Patel Technologies,117442,21140
-pay_InV5p7ByT8KG9s,order_sn1bYQrII5jcwi,2026-08-04T11:57:24+00:00,4487200,INR,card,captured,Ishani Iyer Industries,116667,21000
-pay_87cERLa9NgrFkm,order_TPLkKUh512Tr0b,2026-08-05T03:01:13+00:00,1949300,INR,wallet,failed,Rohan Kapoor Industries,,
-pay_Dxw3Hq9OBiUa2R,order_griAubP678hEEQ,2026-08-05T22:02:27+00:00,254900,INR,card,captured,Vivaan Mehta Pvt Ltd,6627,1193
-pay_Wx4sKAJd7gVMqf,order_oIjzQDcrr1eoqX,2026-08-05T22:59:31+00:00,4552800,INR,netbanking,captured,Aarav Chauhan Technologies,118373,21307
-pay_3NjMS6XMmej2Gp,order_gbFy5sDlo0qLBO,2026-08-06T03:59:12+00:00,12151400,INR,card,captured,Ananya Patel Technologies,315936,56868
-pay_X87eCr0uIamIsM,order_CKEVm3Vpazov02,2026-08-06T04:49:20+00:00,14402800,INR,wallet,captured,Arjun Nair LLP,374473,67405
-pay_SpcMdK3nLh7fLx,order_VOXlglsOeC9VQP,2026-08-06T13:36:14+00:00,2803600,INR,upi,captured,Ananya Singh Pvt Ltd,72894,13121
-pay_3q6Q4EmT2mmpMj,order_g5PPMVHcDME931,2026-08-06T15:35:06+00:00,290600,USD,netbanking,captured,Vivaan Sharma Industries,7556,1360
-pay_CX3IxLGgrL21e3,order_AUttmXE9AhkuxJ,2026-08-07T02:45:18+00:00,270400,EUR,card,captured,Rohan Kapoor LLP,7030,1265
-pay_Oy4CqpIqK3yn9F,order_fcgMXAdx9G81aS,2026-08-07T05:25:31+00:00,2562200,INR,upi,refunded,Anika Singh Technologies,66617,11991
-pay_5UQSyPx3BpdbIK,order_aRdebuFrEHS2Jp,2026-08-07T07:21:19+00:00,396600,INR,netbanking,captured,Reyansh Reddy LLP,10312,1856
-pay_j7jXkE90GSWsIJ,order_yQdYDNBuwI5pbh,2026-08-08T20:01:14+00:00,2996100,INR,upi,failed,Ishani Gupta Industries,,
-pay_abMh0X9zuINamr,order_WtFuaQvSMbkuuP,2026-08-09T01:51:51+00:00,287900,INR,wallet,refunded,Sara Bose Technologies,7485,1347
-pay_b9oyXNE7Y7bvuS,order_znOG61HToeTEb4,2026-08-09T02:56:32+00:00,79200,INR,upi,captured,Dev Patel Industries,2059,371
-pay_HRtAN5VK0sjpNr,order_hFKETWXMky2UxG,2026-08-09T06:13:52+00:00,205300,INR,card,refunded,Kiara Gupta Enterprises,5338,961
-pay_nZmlX0059CIseg,order_SEuhOgM3tBMsKJ,2026-08-10T00:08:49+00:00,1554800,INR,card,captured,Vihaan Kapoor Enterprises,40425,7276
-pay_zeVP3bQQyK6Zjf,order_ZOC7Ka8O6uTT7J,2026-08-10T08:07:30+00:00,468500,USD,card,captured,Myra Nair LLP,12181,2193
-pay_CAYxnAaETSq5Jc,order_cDwJ7eTG1UrGGL,2026-08-10T09:55:22+00:00,37676100,INR,card,captured,Diya Jain Pvt Ltd,979579,176324
-pay_6hFuAjSphysKkU,order_W9PfCYxNBahhN4,2026-08-10T10:18:22+00:00,389100,USD,card,captured,Anika Sharma Industries,10117,1821
-pay_3TC4lJy6o1qMs4,order_RSnE9I9egVuBpF,2026-08-10T10:26:01+00:00,254000,INR,netbanking,failed,Arjun Patel Pvt Ltd,,
-pay_J8cKvWB9h3lcBG,order_YQ6TmA65MPh3FP,2026-08-10T12:47:16+00:00,18695100,INR,card,captured,Diya Patel LLP,486073,87493
-pay_FRmDrgKwrxXCYj,order_rhyJcOOB4vi2Ca,2026-08-11T06:56:43+00:00,198100,EUR,card,captured,Arjun Mehta Pvt Ltd,5151,927
-pay_9M9BjcYmxU0gd6,order_51YaRgBbmHmGqD,2026-08-11T10:29:15+00:00,2497600,INR,upi,captured,Anika Sharma Enterprises,64938,11689
-pay_37DHpk6Rg9b5ux,order_rSP6PP5NEXunJ5,2026-08-11T13:17:22+00:00,3559200,INR,card,captured,Myra Singh LLP,92539,16657
-pay_HyNZQeRT0dfACL,order_tTThRRk7GWSkhW,2026-08-12T18:49:34+00:00,47365600,INR,card,captured,Vivaan Singh Pvt Ltd,1231506,221671
-pay_1uXPzoyH73TO1R,order_JXRIhIlMJdJlD3,2026-08-13T09:43:35+00:00,417800,INR,card,captured,Diya Rao Pvt Ltd,10863,1955
-pay_Zf4Y25zyxxfntg,order_Sujc4DZVDM4bnj,2026-08-13T13:32:01+00:00,470500,INR,wallet,captured,Myra Mehta Enterprises,12233,2202
-pay_dFZ1Amm4WvPR8L,order_uJ7MzkCWcnanoM,2026-08-13T19:56:16+00:00,4945300,INR,card,captured,Arjun Iyer Pvt Ltd,128578,23144
-pay_TP3fAbnFbmOHnK,order_YaXRvj7uff0LYT,2026-08-14T07:44:03+00:00,232800,INR,netbanking,captured,Myra Sharma LLP,6053,1090
-pay_8ohD6J7nUnvqQr,order_dvEGhSQHsMX6Y6,2026-08-14T10:22:19+00:00,1841600,INR,card,captured,Kiara Mehta Pvt Ltd,47882,8619
-pay_FLSx0EilbVaqzU,order_9Ue591EuCpzcTx,2026-08-14T20:26:11+00:00,3623400,INR,card,captured,Arjun Kapoor Enterprises,94208,16957
-pay_CFyFP0YMkFBl6O,order_7TDwnEdwcm4wDC,2026-08-14T20:54:54+00:00,2407000,INR,card,refunded,Arjun Gupta Solutions,62582,11265
-pay_cHYkWCRNYdWCsc,order_mc5F9HpUlwW1uh,2026-08-14T22:00:51+00:00,2679100,INR,card,failed,Vivaan Bose Enterprises,,
-pay_myQ6fK4e9mOYf0,order_Yh6d5ASExAv4rB,2026-08-15T04:17:33+00:00,183000,EUR,card,failed,Arjun Mehta Technologies,,
-pay_MNz7xcmxatZlPM,order_pQvhxKkZssTKu3,2026-08-15T07:20:36+00:00,1076900,INR,wallet,captured,Dev Reddy Pvt Ltd,27999,5040
-pay_1iohieQWeWUcgX,order_FdhpePUW5m3lvf,2026-08-15T08:57:16+00:00,1957200,INR,upi,captured,Reyansh Singh Pvt Ltd,50887,9160
-pay_ZTvvWGvgSCecSb,order_vgX5TFIuACXNlO,2026-08-16T14:25:11+00:00,9501200,INR,card,captured,Sara Nair Technologies,247031,44466
-pay_rcjDNtbLx6wADd,order_17QqNfezsS2GPq,2026-08-16T18:28:52+00:00,440100,INR,upi,refunded,Dev Singh LLP,11443,2060
-pay_jbXtE9A4mqbWrI,order_NcSWd3tsd73P2y,2026-08-16T20:16:13+00:00,245300,INR,upi,captured,Myra Iyer Pvt Ltd,6378,1148
-pay_XQ8DkPcNrAuXVc,order_T5kWEh3SKumPuW,2026-08-16T22:19:11+00:00,208600,INR,card,captured,Ananya Rao Industries,5424,976
-pay_fOc6lbglbNyEMK,order_dnSa5O5ZDNwU3Y,2026-08-17T03:28:51+00:00,313800,INR,upi,captured,Ishani Kapoor Pvt Ltd,8159,1469
-pay_7XhvaQdZALaDrf,order_AMTlrhqRPADWgT,2026-08-17T05:11:06+00:00,1361200,INR,upi,failed,Reyansh Sharma Solutions,,
-pay_kgjjm7bzQ5DATb,order_lbXZGuJOWEPGIC,2026-08-17T06:02:32+00:00,113000,INR,netbanking,refunded,Vihaan Sharma Enterprises,2938,529
-pay_bG4QZLl3L2GUfO,order_3Ha6QAA2RA6DVv,2026-08-17T07:53:39+00:00,158300,INR,upi,captured,Reyansh Reddy Technologies,4116,741
-pay_YZ8fOcR9GLw4yW,order_QdNuuIxp07LjfP,2026-08-17T19:42:15+00:00,28620300,INR,wallet,captured,Reyansh Reddy LLP,744128,133943
-pay_v6WCulgKeWmJNp,order_ASBpXdtB7Ut2Wj,2026-08-18T00:53:11+00:00,37465500,INR,card,failed,Myra Rao Industries,,
-pay_ZswsRhcds6NUga,order_rDv7p1heEJQjY6,2026-08-18T02:38:17+00:00,2354600,INR,card,refunded,Diya Rao Technologies,61220,11020
-pay_Xi1H8Wfft5krwf,order_lVpDp2OihJc1y1,2026-08-18T09:54:30+00:00,2156978,INR,wallet,refunded,Ishani Sharma Technologies,97773,17599
-pay_nXxG7qEULuQvto,order_wyL82Xa1yZ5bhG,2026-08-18T11:13:23+00:00,774300,INR,wallet,refunded,Ishani Jain Pvt Ltd,20132,3624
-pay_KoU3XJ9aSYehlc,order_vOpsLDhepHETw4,2026-08-18T22:31:37+00:00,240000,INR,card,captured,Sara Singh Pvt Ltd,6240,1123
-pay_DztgjzEPyVcfph,order_V1Za1CdGMEBdqi,2026-08-19T00:16:15+00:00,3722500,INR,card,captured,Dev Reddy Solutions,96785,17421
-pay_aNqkCJ4mZrEZsK,order_ETnXjsNNhPrl4N,2026-08-19T06:46:54+00:00,308800,USD,card,captured,Reyansh Iyer Enterprises,8029,1445
-pay_rim2GNXX9WwHE4,order_Fyltn3Wd9GV98g,2026-08-19T08:28:30+00:00,899600,INR,upi,captured,Myra Patel LLP,23390,4210
-pay_8FwHA6as6GWOBJ,order_RG9vHngYolsZ7L,2026-08-19T15:43:29+00:00,6835200,INR,card,captured,Kabir Chauhan LLP,177715,31989
-pay_QFq2QMNTpYa0sj,order_yeyCfCN3CfT45V,2026-08-19T18:20:02+00:00,24591700,INR,card,failed,Dev Nair LLP,,
-pay_67gSGlGpMlUzgN,order_wCP2klyuj9Bvt9,2026-08-20T07:16:42+00:00,298900,INR,card,captured,Vivaan Bose LLP,7771,1399
-pay_DE3i5CyiSN8mhQ,order_di0Ckv2LWNLk81,2026-08-20T17:32:40+00:00,230700,INR,card,refunded,Vivaan Singh Solutions,5998,1080
-pay_LQKYuNdniKUYUO,order_CsMBm2sXQ46S49,2026-08-21T02:41:00+00:00,382400,INR,netbanking,captured,Vihaan Nair LLP,9942,1790
-pay_ZIKYoWWKr99HXg,order_1iwWKaqhAhdBwK,2026-08-21T05:00:28+00:00,218100,INR,netbanking,captured,Aarav Bose Solutions,5671,1021
-pay_2jrHoGLtMH3K69,order_OcAm3dmYuU4dEX,2026-08-21T06:32:22+00:00,294100,USD,netbanking,captured,Diya Nair Pvt Ltd,7647,1376
-pay_oOw6cjBwBeiwtr,order_7blG4hWRnLR9mi,2026-08-21T08:12:57+00:00,153400,INR,card,captured,Ananya Reddy Enterprises,3988,718
-pay_kjOIC1iWO5e0D7,order_LlRFOqRKKKZebT,2026-08-21T18:37:34+00:00,421200,USD,card,captured,Arjun Singh Technologies,10951,1971
-pay_qyHl3pxa8Sx8p9,order_mTfPmy76jTUIhD,2026-08-22T10:18:08+00:00,169600,INR,card,failed,Aarav Iyer Pvt Ltd,,
-pay_YGoeLBfBh84x3Q,order_WdXdLAgdd0yMz1,2026-08-22T14:02:36+00:00,48647800,INR,upi,captured,Reyansh Jain Solutions,1264843,227672
-pay_4PpQSLxtBa1elN,order_imfKZ5oeStSpkp,2026-08-22T14:52:46+00:00,491800,INR,card,captured,Ishani Singh Solutions,12787,2302
-pay_nxOHObV64UuZqU,order_nbSM1W5UYI75r9,2026-08-23T13:23:07+00:00,364700,EUR,netbanking,captured,Dev Das Industries,9482,1707
-pay_pdmRqC6eOP4wgs,order_2x8FS4ELfm7ISc,2026-08-23T15:33:38+00:00,432500,EUR,wallet,captured,Ishani Patel Solutions,11245,2024
-pay_qljbm1xGR8nAdA,order_dgw6Sp3laOtrrL,2026-08-24T03:28:51+00:00,253194,INR,netbanking,captured,Anika Jain Pvt Ltd,9846,1772
-pay_WFRMPwO8fryPzm,order_aR4ITIKvYo7Cza,2026-08-24T14:33:56+00:00,160500,USD,card,captured,Dev Patel LLP,4173,751
-pay_Y3wzHelT4NEZJD,order_vMIieAxeeWshoL,2026-08-24T15:25:41+00:00,1833900,INR,card,captured,Sara Kapoor LLP,47681,8583
-pay_KxK0rjC2fS2YOV,order_j7GTO5vWvw1A3V,2026-08-25T13:41:25+00:00,173000,INR,card,failed,Vivaan Nair Enterprises,,
-pay_NJgCKgr3fEwZyE,order_be7eQxt4YlalJL,2026-08-25T14:57:32+00:00,37895800,INR,card,captured,Kiara Mehta Pvt Ltd,985291,177352
-pay_t2YQliACNySiUa,order_gxgaZ5iVq6LXaX,2026-08-25T19:50:14+00:00,175131,INR,netbanking,refunded,Sara Singh Industries,7306,1315
-pay_2fa5RKrQXDhiqB,order_okQKSLfZszIl98,2026-08-26T08:27:35+00:00,1533800,INR,upi,failed,Sara Kapoor LLP,,
-pay_0Yg7NZRBT7qYHD,order_BTq0Zf2pCLxb0l,2026-08-26T15:23:58+00:00,329500,INR,card,captured,Myra Bose Industries,8567,1542
-pay_hfSxR8e42kAQFH,order_2KTU51gJXYqmUR,2026-08-26T16:07:58+00:00,1557900,INR,card,captured,Vivaan Kapoor Industries,40505,7291
-pay_GlozIoDSBbszpP,order_wIv9IvCtoStU6Q,2026-08-26T21:13:38+00:00,34139400,INR,card,captured,Anika Singh Industries,887624,159772
-pay_ebhsmKVcbmk2Sv,order_Ilb04bQxWg6soY,2026-08-26T21:49:51+00:00,126088200,INR,upi,captured,Rohan Patel LLP,3278293,590093
-pay_g8n7WhG2KYfvJr,order_qgctUlXQWI2yKq,2026-08-26T21:53:52+00:00,2293300,INR,upi,captured,Kabir Jain Pvt Ltd,59626,10733
-pay_Gd50DF5kJThyL2,order_Fx84Vq78CizRUs,2026-08-27T10:46:25+00:00,3769100,INR,upi,captured,Vivaan Iyer LLP,97997,17639
-pay_RYw11oRytxxHPD,order_lx50j9PieaSEB9,2026-08-27T18:54:57+00:00,7785400,INR,card,captured,Aadhya Sharma Enterprises,202420,36436
-pay_d5qpQ90n0rkHef,order_RZS92nFX26N8Rq,2026-08-27T19:36:57+00:00,138100,USD,upi,captured,Reyansh Patel Pvt Ltd,3591,646
-pay_TUv5XqsyofSPj1,order_TUv4KXWs0Qc8Sk,2026-08-27T20:06:02+00:00,89169,INR,card,captured,Arjun Kapoor Industries,4400,0
-pay_TUvAAV8PyckEVu,order_TUv8ffAA045x6X,2026-08-27T20:10:23+00:00,475000,INR,wallet,captured,Diya Nair Technologies,12332,1882
-pay_TUvDkwEHdWlIlL,order_TUvDQqXHi77znS,2026-08-27T20:13:46+00:00,37000000,INR,netbanking,captured,Ananya Singh Technologies,960520,146520
-pay_TUvHTkz0zsaR2y,order_TUvH71H2K9VTll,2026-08-27T20:17:18+00:00,150000,INR,wallet,failed,Reyansh Gupta Enterprises,,
-pay_TUvIIpzEisUOVb,order_TUvH71H2K9VTll,2026-08-27T20:18:05+00:00,150000,INR,wallet,refunded,Sara Nair LLP,3894,594
-pay_TUvNivrfVQar68,order_TUvLDxbO5rFyOT,2026-08-27T20:23:14+00:00,900000,INR,card,failed,Reyansh Chauhan Enterprises,,
-pay_TUvSHHci4c7cid,order_TUvRVe8OB0wXE9,2026-08-27T20:27:31+00:00,49900,INR,card,failed,Arjun Chauhan Enterprises,,
-pay_TUvTa327TMguwL,order_TUvRVe8OB0wXE9,2026-08-27T20:28:45+00:00,49900,INR,netbanking,captured,Myra Das Solutions,1296,198
-pay_XDxafsxXr4oI5O,order_mwTRVE1jwYhm8V,2026-06-20T06:50:18+00:00,1182500,INR,card,refunded,Vihaan Jain Solutions,30745,5534
-pay_NfFcDAU1Nmt1KZ,order_be7eQxt4YlalJL,2026-08-25T14:57:32+00:00,37895800,INR,card,captured,Kiara Mehta Pvt Ltd,985291,177352
-pay_WcmVbZzlwY67KB,order_96QcBk5V4kwivd,2026-07-08T20:49:02+00:00,457800,INR,netbanking,refunded,Vihaan Singh Solutions,11903,2143
-pay_ebQB8PAfaO4sff,order_9EgBOfiyKg58e8,2026-07-21T12:16:34+00:00,144700,INR,card,captured,Vivaan Iyer Technologies,3762,677
-pay_09nrYHgM5KVDGa,order_70SRXz4hibvQiB,2026-07-02T13:16:28+00:00,487700,INR,wallet,captured,Anika Mehta Industries,12680,2282
-pay_VVAHsiHJMjLWGH,order_vgX5TFIuACXNlO,2026-08-16T14:25:11+00:00,9501200,INR,card,captured,Sara Nair Technologies,247031,44466
+pay_0S2YZRFvLYTCbd,order_NNXiyMtfjG8ZV0,2026-05-29T22:16:10+00:00,388200,INR,upi,refunded,Vivaan Reddy Industries,10093,1817
+pay_518Y2bTu5X1YqW,order_g21nYCsXoblu17,2026-05-29T23:58:42+00:00,176600,INR,card,refunded,Vivaan Rao Pvt Ltd,4592,827
+pay_BpDmH5RiMKpPGN,order_dzSgVaI5z52Dm7,2026-05-30T04:03:57+00:00,2769900,INR,card,captured,Sara Gupta Industries,72017,12963
+pay_S8RpLRl9XFrA62,order_Ys16ztfeT6kdUI,2026-05-30T17:02:25+00:00,846400,INR,netbanking,captured,Dev Gupta Industries,22006,3961
+pay_GubDZzstveWEcs,order_9EN406gnZi91So,2026-05-30T17:59:20+00:00,487000,INR,card,failed,Reyansh Mehta Technologies,,
+pay_neuDE3RYfNcYxW,order_5u2A5hVU05NNdG,2026-05-30T18:20:41+00:00,4229400,INR,card,captured,Kabir Sharma Pvt Ltd,109964,19794
+pay_5zZ5cZWlU2rcsL,order_5uCNG3iFqYuTOS,2026-05-31T05:11:05+00:00,744400,INR,card,captured,Ananya Rao Industries,19354,3484
+pay_HOl0amiYY5sIJ0,order_PHxTXQeUvgoeLM,2026-06-01T13:36:59+00:00,230600,USD,netbanking,captured,Ananya Patel Technologies,5996,1079
+pay_gQBLdxmp4mabaY,order_Qd7fZPScFYuMM5,2026-06-01T18:58:47+00:00,4825600,INR,card,failed,Aadhya Patel Enterprises,,
+pay_uWzUZsStHmQX3v,order_8rb8M0JyK1URtb,2026-06-01T21:29:58+00:00,489800,INR,netbanking,captured,Aarav Bose Solutions,12735,2292
+pay_CqDGvhIvnyAuBw,order_dx5mlkrLGgdpgh,2026-06-02T01:45:53+00:00,63500,INR,upi,captured,Diya Singh Solutions,1651,297
+pay_qRFd3RMrmi8oTn,order_xYi8ROChEcrxZf,2026-06-02T04:22:25+00:00,3952700,INR,card,captured,Aadhya Kapoor Pvt Ltd,102770,18499
+pay_EnOCBLa2rMYmld,order_vjcJLufg9krORJ,2026-06-03T04:19:03+00:00,4484400,INR,netbanking,captured,Vivaan Jain Pvt Ltd,116594,20987
+pay_Z8i5hzcqtRQVJJ,order_8PuGRfPpvPx0I9,2026-06-03T10:43:54+00:00,4985700,INR,card,failed,Ananya Das LLP,,
+pay_RtSUBYv4Yne8qP,order_AbyaOCzOUTsYMQ,2026-06-03T18:10:35+00:00,390900,INR,wallet,failed,Dev Sharma Solutions,,
+pay_iOnsd624MAE86P,order_WtzjxUD0sRX4I8,2026-06-03T19:20:04+00:00,297200,INR,netbanking,captured,Arjun Singh LLP,7727,1391
+pay_ArXxtG7gGv0LOq,order_qXpKCPoPVGQ9ta,2026-06-04T09:16:13+00:00,484500,INR,card,captured,Reyansh Reddy Pvt Ltd,12597,2267
+pay_osUVtTLfB4zEGx,order_dXeRzWGJk2mdcd,2026-06-04T12:28:50+00:00,1143600,INR,card,captured,Dev Patel LLP,29734,5352
+pay_PPy0IfyqhwUqxN,order_xPDM6uLONCROhc,2026-06-05T08:53:29+00:00,234800,INR,card,captured,Rohan Gupta Solutions,6105,1099
+pay_mcpRiPCCfOSBDr,order_kZLkhTkPaqBlS3,2026-06-05T19:04:06+00:00,377100,INR,netbanking,failed,Rohan Mehta Industries,,
+pay_6A9qQCwV2nrABa,order_mfJbT8AepktMfD,2026-06-05T23:31:36+00:00,92400,INR,upi,captured,Ananya Das Technologies,2402,432
+pay_xHZdxLceXKPnm4,order_s4nlTUU4RRyotr,2026-06-06T15:12:02+00:00,3447700,INR,netbanking,captured,Aarav Rao LLP,89640,16135
+pay_483BS4ez5FbLRh,order_cJXRTyQ18kUxWy,2026-06-06T17:38:11+00:00,49744700,INR,card,captured,Aadhya Chauhan Industries,1293362,232805
+pay_TYeoxQWhH9usd9,order_Ow0v0VrmI7Osyg,2026-06-06T22:23:14+00:00,380800,INR,upi,failed,Sara Rao Solutions,,
+pay_TXd4PpxNR3QHoB,order_a754s6Us1jBtYN,2026-06-07T04:23:25+00:00,78500,INR,upi,failed,Diya Mehta Pvt Ltd,,
+pay_HVhssnTJns5NZc,order_CMEwMuva3lvgEf,2026-06-08T03:06:05+00:00,205600,USD,netbanking,captured,Rohan Reddy Pvt Ltd,5346,962
+pay_Auyf8D6axBquKJ,order_qwoPCjQ53VQN6w,2026-06-08T14:08:18+00:00,382100,INR,card,failed,Reyansh Mehta Industries,,
+pay_idXKZ5BDsyqHBL,order_3TLboP1KbVYJVk,2026-06-08T14:58:27+00:00,267600,INR,netbanking,captured,Ananya Singh Pvt Ltd,6958,1252
+pay_wTrpaO16KSQ6pM,order_LmBumN1yBTAjDE,2026-06-08T21:15:51+00:00,9500,USD,netbanking,captured,Reyansh Iyer Enterprises,247,44
+pay_9HUVBnATOp2bq1,order_f1hYnTQ1LAMWYX,2026-06-08T22:46:35+00:00,494900,INR,netbanking,captured,Aadhya Bose LLP,12867,2316
+pay_XCkKYgEXnXAY8Q,order_u8JiZXVKuhizRI,2026-06-09T04:42:12+00:00,123843,INR,netbanking,captured,Reyansh Das Enterprises,7844,1412
+pay_kujdQMhZgsFZi4,order_bAjOo2x2Zgkgg7,2026-06-09T16:59:36+00:00,3411900,INR,card,captured,Sara Nair LLP,88709,15968
+pay_Qxy435LkB2XiVp,order_zmss5ClWZfGRFQ,2026-06-10T01:44:42+00:00,204700,EUR,card,refunded,Arjun Nair Technologies,5322,958
+pay_VvMwBE0W0Hrc9y,order_oUf0fueXDnXOsX,2026-06-10T02:19:55+00:00,461800,INR,netbanking,captured,Rohan Mehta Industries,12007,2161
+pay_8D04wzInjq5Jzj,order_uxZEOQpY7NEkXk,2026-06-10T22:27:58+00:00,130700,INR,upi,captured,Kabir Nair Enterprises,3398,612
+pay_rfwyxZJbbILofC,order_q0dMLj7kJaGV5Z,2026-06-11T06:07:39+00:00,318300,INR,netbanking,failed,Aadhya Nair Industries,,
+pay_oXnlpUVQigMcWc,order_wi4uzmW2wFqk46,2026-06-11T07:41:07+00:00,45671100,INR,wallet,failed,Vihaan Iyer Enterprises,,
+pay_RknyuIRRj7afj5,order_Adnecx9MGSL6YN,2026-06-12T20:23:15+00:00,3426800,INR,netbanking,captured,Ishani Patel Pvt Ltd,89097,16037
+pay_AzjKV65IgrHvzx,order_ELcriLRc3uoU53,2026-06-12T23:42:17+00:00,478000,INR,card,refunded,Aadhya Iyer LLP,12428,2237
+pay_gGweRPKuu8TBNE,order_tRI3MwPYxTslaR,2026-06-13T16:45:34+00:00,1428300,INR,netbanking,captured,Vihaan Singh Solutions,37136,6684
+pay_YTo3k3UAdLh0eV,order_L05tRx9JmpBrmk,2026-06-13T22:52:19+00:00,190600,USD,upi,captured,Aarav Gupta Industries,4956,892
+pay_0jr7MjHlkR4Xjh,order_9JBwmRP8jB8Hhb,2026-06-14T03:31:03+00:00,286000,INR,wallet,captured,Rohan Nair Technologies,7436,1338
+pay_7A4dhjkuRv630p,order_NIhsHFk6jOSL0I,2026-06-14T08:06:12+00:00,199000,INR,upi,captured,Kabir Jain Technologies,5174,931
+pay_AUMspFhHJsUyya,order_Y2CddZOugsDudT,2026-06-14T10:27:41+00:00,71600,INR,upi,refunded,Dev Kapoor Industries,1862,335
+pay_XMRqOGqleigCCR,order_Etj8b8rhBafanA,2026-06-14T15:39:39+00:00,3885600,INR,upi,captured,Kiara Gupta Enterprises,101026,18185
+pay_6I5NBldlDkCh3E,order_B9ICgSjvmrZUYI,2026-06-14T17:40:18+00:00,452400,INR,upi,refunded,Ishani Nair Pvt Ltd,11762,2117
+pay_H2MGlEOZ6qNY04,order_5TdmCoUV0z14N0,2026-06-14T18:12:54+00:00,3849370,INR,card,captured,Myra Singh LLP,127429,22937
+pay_yeTr5RHguX1d5s,order_OJBD3nXmOw1gW1,2026-06-15T07:33:44+00:00,2782600,INR,card,captured,Vivaan Bose Enterprises,72348,13023
+pay_WNyDLzErVgpEMi,order_gdeQ8xQjMfeUVX,2026-06-15T10:51:03+00:00,273600,INR,card,captured,Anika Singh Industries,7114,1281
+pay_IJQ2N9u8tBDNXK,order_veCcwrN8fKxJ7T,2026-06-15T15:10:41+00:00,381000,USD,card,captured,Kiara Gupta LLP,9906,1783
+pay_Eo8dnNzoCXB1Bh,order_EOgzIafLMsFmP6,2026-06-15T22:12:20+00:00,8925000,INR,card,refunded,Ishani Jain Technologies,232050,41769
+pay_kjyA6CSpJso5qf,order_x6UydyY8LeQDOz,2026-06-15T22:53:52+00:00,4459500,INR,card,captured,Reyansh Gupta Enterprises,115947,20870
+pay_ekgd2IbyVfqjO2,order_tprMiZbP1uD8Hq,2026-06-16T02:08:39+00:00,41736600,INR,netbanking,captured,Kabir Jain Enterprises,1085152,195327
+pay_3MsHarAJOCBnD3,order_XkfFNuYUPnmbpD,2026-06-16T05:53:04+00:00,40510900,INR,upi,captured,Anika Kapoor Pvt Ltd,1053283,189591
+pay_Ei1L9rPzzjrqM4,order_wQCaiuQQSRTpfd,2026-06-16T09:49:34+00:00,2387100,INR,card,refunded,Anika Gupta Solutions,62065,11172
+pay_8AHkxv78JaYb3F,order_1ROCzvHGVhkAkK,2026-06-16T11:32:23+00:00,229000,INR,netbanking,refunded,Vivaan Gupta Technologies,5954,1072
+pay_e71imARDL6KFQr,order_aidyYG42CJTr2C,2026-06-16T17:30:58+00:00,3634200,INR,upi,captured,Sara Kapoor Enterprises,94489,17008
+pay_LeI6qccFOAs08b,order_dVYH1QTIdVRAAi,2026-06-17T02:29:43+00:00,491000,USD,netbanking,refunded,Reyansh Sharma Solutions,12766,2298
+pay_2pAn5643zc9TFA,order_yYRgEfUQznwo9a,2026-06-17T09:44:36+00:00,400700,INR,upi,failed,Kiara Singh Technologies,,
+pay_FxAIiKpuSjjud5,order_MPEJwWtnleFzHf,2026-06-17T12:18:18+00:00,192300,INR,card,refunded,Myra Singh Technologies,5000,900
+pay_REJpxYyhIKHQI7,order_CRBsQYXzENpOSW,2026-06-17T12:46:59+00:00,20280200,INR,card,refunded,Anika Sharma Enterprises,527285,94911
+pay_8NR0Xy8ZEurHi0,order_W3VcMZb5jC9A94,2026-06-17T21:58:10+00:00,1110400,INR,upi,refunded,Anika Chauhan Industries,28870,5197
+pay_2qFl41sNLjVHWG,order_aub52Ztd26fEeV,2026-06-18T18:34:04+00:00,52600,INR,upi,captured,Rohan Mehta LLP,1368,246
+pay_E2AUYMLAJxNdkc,order_FKsZN7vbluXweO,2026-06-18T18:38:30+00:00,218600,INR,card,failed,Anika Nair Solutions,,
+pay_U4arG5RBmHWOR3,order_WzmscuSTh9rfIG,2026-06-18T19:49:43+00:00,2494400,INR,upi,captured,Ishani Nair Enterprises,64854,11674
+pay_BzPoBrUBHtYDZw,order_69CrxG7YXipN2I,2026-06-18T20:41:10+00:00,1584800,INR,card,captured,Myra Iyer Technologies,41205,7417
+pay_TfRNfRT8LjIcku,order_21kiVdtT7rl37a,2026-06-19T03:13:48+00:00,1574700,INR,upi,captured,Arjun Chauhan Industries,40942,7370
+pay_8MEFd1kjV3PhTa,order_1acw5l7cXSOnp4,2026-06-19T17:19:51+00:00,1583138,INR,card,captured,Rohan Sharma LLP,57803,10405
+pay_jIIf94ChZESFqZ,order_8pIx5F21rWz5FY,2026-06-19T23:15:02+00:00,197000,EUR,card,captured,Anika Nair Solutions,5122,922
+pay_UcpMsyw8IJqF52,order_itGihch2ZU5r2M,2026-06-19T23:45:21+00:00,491000,USD,upi,refunded,Aarav Patel Industries,12766,2298
+pay_BsRllvTrZ4Iejs,order_qwaNxlb1WoSOHy,2026-06-20T06:36:23+00:00,30443800,INR,netbanking,captured,Kiara Reddy Technologies,791539,142477
+pay_d6X7U8WL1gIFkh,order_mwTRVE1jwYhm8V,2026-06-20T07:07:18+00:00,1182500,INR,card,refunded,Arjun Bose Enterprises,30745,5534
+pay_M519XgOMzEU5gB,order_KcrAnCxmDh74zY,2026-06-20T17:10:12+00:00,282000,INR,upi,captured,Ishani Rao Pvt Ltd,7332,1320
+pay_IDHPnpU2fBReId,order_HFJjuGhmKfFYCF,2026-06-20T17:31:26+00:00,3225200,INR,netbanking,failed,Ishani Singh Solutions,,
+pay_79ISjs8JHUdKF0,order_j7elKPoh3pKMzK,2026-06-21T05:59:18+00:00,396500,INR,netbanking,failed,Myra Iyer Industries,,
+pay_81mOOBMWlsCDbk,order_jR7D1KmJZdaNS8,2026-06-21T07:17:28+00:00,63000,INR,upi,captured,Kiara Sharma Industries,1638,295
+pay_e8danYlgmKG1Vt,order_CjF4nw81FWlrkt,2026-06-21T09:46:42+00:00,1849300,INR,upi,captured,Vivaan Chauhan Enterprises,48082,8655
+pay_45kkrl0M17EmxI,order_OzESBkJXncnrWJ,2026-06-21T13:20:55+00:00,490200,INR,upi,captured,Dev Kapoor Enterprises,12745,2294
+pay_E5GXTeLYHteOtL,order_AQvc1v9r86eNwX,2026-06-21T16:31:40+00:00,15816562,INR,upi,captured,Aadhya Nair Enterprises,806398,145152
+pay_vP8O7FRthvDJPz,order_U0r0YGbjPmUjrp,2026-06-22T05:14:38+00:00,2404300,INR,upi,captured,Myra Mehta Enterprises,62512,11252
+pay_I1uTwWGxOnx3iU,order_hK4OlR5eHvS9mS,2026-06-22T13:44:55+00:00,61100,INR,card,captured,Anika Bose Enterprises,1589,286
+pay_bxKl1Kvk3UQrxk,order_J71OQqzbWVa4OL,2026-06-22T17:54:47+00:00,151400,INR,card,captured,Dev Reddy Pvt Ltd,3936,708
+pay_CLjPXRLt9h9RDZ,order_ERx8uZnTYRd1lE,2026-06-22T20:41:38+00:00,3775700,INR,card,refunded,Vihaan Sharma Pvt Ltd,98168,17670
+pay_41odbJIqO3hMOB,order_BkTDBFKQ50SD2S,2026-06-22T23:45:12+00:00,4507400,INR,card,captured,Arjun Bose Pvt Ltd,117192,21095
+pay_nQjENGsB4Djh30,order_GscecgAfOJppfF,2026-06-23T04:56:41+00:00,3537700,INR,card,captured,Arjun Das Industries,91980,16556
+pay_SAxoCjl2VbOM63,order_oeKBP2pcBHUWi9,2026-06-23T11:47:45+00:00,29274700,INR,card,failed,Diya Jain Pvt Ltd,,
+pay_OC56aMIgHFivep,order_rBHs8YGPI5g2q3,2026-06-23T16:00:46+00:00,157200,INR,upi,captured,Kiara Mehta Pvt Ltd,4087,736
+pay_QzkChMbyIbNiCd,order_xnuVxUZpfbH9vO,2026-06-23T22:34:33+00:00,325300,INR,upi,captured,Rohan Das Solutions,8458,1522
+pay_veH30S5NXFhmiX,order_bIwXILft9SGVZe,2026-06-24T00:59:05+00:00,262800,USD,wallet,failed,Aarav Das Enterprises,,
+pay_p7QDffAUxid7IP,order_z26A4drtgFjD0v,2026-06-24T07:21:02+00:00,306000,INR,netbanking,failed,Aarav Patel Enterprises,,
+pay_Z65p2ohYuKyUoA,order_ik8BpKEx6tAQ72,2026-06-24T09:25:34+00:00,32365600,INR,wallet,failed,Ishani Iyer Industries,,
+pay_NI1YnhffT6Uhw0,order_7JadH08twQXGLn,2026-06-25T09:25:16+00:00,313600,USD,card,failed,Aadhya Chauhan Solutions,,
+pay_euPH7M3EHMoQro,order_f8VRgksbudwApz,2026-06-25T18:56:07+00:00,375600,INR,upi,refunded,Anika Singh Technologies,9766,1758
+pay_5LaakIREyf2OH3,order_YBh8xLx0Y8hwla,2026-06-26T02:50:32+00:00,159500,INR,upi,refunded,Myra Chauhan Solutions,4147,746
+pay_J6iUo8k2fRN2Bq,order_pepgaxT82ExHgD,2026-06-26T18:40:45+00:00,16581200,INR,upi,refunded,Vihaan Sharma Pvt Ltd,431111,77600
+pay_3tlrtBhjqaMFmv,order_tiRrpeMvBiDPgd,2026-06-26T20:32:02+00:00,305700,INR,netbanking,captured,Arjun Patel Enterprises,7948,1431
+pay_X4Jyx6dxDu7Nsk,order_PlZLbm4xmsGCwa,2026-06-27T17:31:56+00:00,466400,USD,card,refunded,Vivaan Nair LLP,12126,2183
+pay_mQfDkjEX6EoI9w,order_qPk1FYuhoIE9WV,2026-06-28T12:10:00+00:00,1561800,INR,upi,failed,Myra Das Solutions,,
+pay_jhPInRVkLUhY7g,order_btP7ySeQMgV0Lh,2026-06-28T13:20:50+00:00,17600,USD,wallet,captured,Arjun Kapoor Industries,458,82
+pay_wumVYe5VJfXRgt,order_NVD6i3pwl4u1uE,2026-06-29T01:02:44+00:00,3421800,INR,card,captured,Diya Nair Technologies,88967,16014
+pay_1T1UIoWXrP5y78,order_tIapMW1Z4ROUHL,2026-06-29T01:31:36+00:00,1171600,INR,upi,captured,Vihaan Singh Enterprises,30462,5483
+pay_PILOQbqV5vliOe,order_T8fGxCjtu6K2jU,2026-06-29T07:26:06+00:00,4574500,INR,card,failed,Vivaan Mehta Enterprises,,
+pay_fVByODHiyXH7iP,order_4XTx6IIhaKH6sU,2026-06-29T23:45:48+00:00,247800,USD,wallet,captured,Dev Nair LLP,6443,1160
+pay_jAulA3QMr2qEwq,order_4XW18WjjBX8YhA,2026-06-30T04:33:44+00:00,85500,INR,upi,refunded,Aarav Patel LLP,2223,400
+pay_JFzSgIesCKopjD,order_emRA8JvRkPTSZh,2026-06-30T04:42:59+00:00,335500,INR,netbanking,failed,Anika Chauhan Enterprises,,
+pay_xyl71f0kWrUOhE,order_AXtQiPZFE2DIAU,2026-06-30T09:43:24+00:00,4085800,INR,upi,failed,Kiara Kapoor Pvt Ltd,,
+pay_0gwrGhsxsbiWA6,order_srlTaHecDtCuxZ,2026-06-30T11:20:03+00:00,147200,INR,upi,refunded,Kiara Singh Solutions,3827,689
+pay_y5Kcnm1ys3J6xI,order_ifBvKCMACzXtxl,2026-07-02T10:54:04+00:00,269800,INR,card,captured,Arjun Patel Industries,7015,1263
+pay_DBpQ8YxTbqKjCQ,order_wdwN7dsNemMVLk,2026-07-02T11:10:59+00:00,297300,USD,card,captured,Diya Singh LLP,7730,1391
+pay_viirWz5knFZXIQ,order_70SRXz4hibvQiB,2026-07-02T13:33:28+00:00,487700,INR,wallet,captured,Diya Rao Technologies,12680,2282
+pay_HkOwOZGx4Gv1ED,order_LFikeNnlwShoYS,2026-07-02T16:51:19+00:00,2225600,INR,netbanking,captured,Vihaan Gupta Industries,57866,10416
+pay_T8wUm7N72Q3B7G,order_qQ3yz9tcGvLAC8,2026-07-02T19:17:44+00:00,165738,INR,upi,captured,Reyansh Das Enterprises,6503,1171
+pay_leOV911xCZkwPR,order_QeNHpCq5QnuVdY,2026-07-02T19:50:11+00:00,2870000,INR,upi,failed,Arjun Chauhan Enterprises,,
+pay_0Xv00kKXR4bR6I,order_Il92EtEfonGa4m,2026-07-02T23:42:16+00:00,229700,INR,card,refunded,Aadhya Das LLP,5972,1075
+pay_q19Qf7W491h1pS,order_ZVPEJqzCN2fFr6,2026-07-03T06:35:37+00:00,2396100,INR,card,captured,Anika Rao Pvt Ltd,62299,11214
+pay_2De3SF3XQMhUk9,order_8YhA9A9MZp44ey,2026-07-03T06:38:36+00:00,21154560,INR,card,captured,Sara Chauhan Solutions,777254,139906
+pay_GQkqqjkrsWw6SE,order_MCiay0x1BAZOKs,2026-07-03T08:24:00+00:00,248800,INR,upi,captured,Rohan Gupta LLP,6469,1164
+pay_aOBSMjzQ1fgUKx,order_7tirfILLWQ0OsG,2026-07-04T04:36:02+00:00,435500,USD,netbanking,captured,Vivaan Nair Enterprises,11323,2038
+pay_bV92hB0BckOW2k,order_AtyVJEIHDIjdqK,2026-07-05T19:26:50+00:00,4042400,INR,card,captured,Vivaan Kapoor Solutions,105102,18918
+pay_EuVx518ox1ztD4,order_x9XOj7h7ug0g4a,2026-07-06T14:10:50+00:00,28411900,INR,card,captured,Vivaan Reddy Pvt Ltd,738709,132968
+pay_WDFDTA7Xrc5UTI,order_dDkd9YMrfF0rir,2026-07-06T22:26:47+00:00,2751400,INR,upi,captured,Vihaan Gupta Industries,71536,12876
+pay_8A78irco0z3CUK,order_FNyKdPis05yZuC,2026-07-07T10:36:25+00:00,218000,INR,card,failed,Ishani Kapoor Industries,,
+pay_x7CHHP1QXqE7rs,order_68VRQEDI5SrJH3,2026-07-07T20:42:50+00:00,150321600,INR,card,captured,Dev Patel Industries,3908362,703505
+pay_zrAkliEFgJnmUY,order_l82B4gNefhdboE,2026-07-07T21:54:51+00:00,343200,EUR,upi,captured,Arjun Iyer Pvt Ltd,8923,1606
+pay_c06PVz0oRaFxMP,order_MDEaIaGr8bYPX4,2026-07-08T00:17:07+00:00,49100,USD,card,captured,Diya Gupta LLP,1277,230
+pay_T5lbbFj1hnunT6,order_qD7vIsUEFylkQ3,2026-07-08T05:24:07+00:00,1538000,INR,card,captured,Rohan Kapoor LLP,39988,7198
+pay_H8cyV7lB2Vrks4,order_Q4COfFlK3HyubC,2026-07-08T12:29:58+00:00,17882800,INR,upi,captured,Aarav Gupta LLP,464953,83692
+pay_KIDYvf0A6zB0bi,order_2sTEOvnAUVQsKJ,2026-07-08T19:12:15+00:00,241400,INR,card,failed,Aarav Bose Solutions,,
+pay_QPHhalZaAHv9O5,order_96QcBk5V4kwivd,2026-07-08T21:06:02+00:00,457800,INR,netbanking,refunded,Vihaan Gupta Enterprises,11903,2143
+pay_72YJR7IVU7CCKb,order_heN9Pot7GaZpfP,2026-07-09T01:07:11+00:00,47097200,INR,upi,captured,Aadhya Kapoor Technologies,1224527,220415
+pay_HerohwHuPpUV0l,order_Li1SHqVrv96YUa,2026-07-09T02:16:29+00:00,412000,USD,upi,captured,Ishani Kapoor Technologies,10712,1928
+pay_NoK9oM3tTUMdxs,order_jmc5L6TurNVG8O,2026-07-09T06:23:14+00:00,3005900,INR,card,captured,Ishani Nair Pvt Ltd,78153,14068
+pay_UxhdCzEzo2q7Pp,order_IWszfNm8x9WHA4,2026-07-09T11:59:27+00:00,3730700,INR,netbanking,failed,Reyansh Patel Technologies,,
+pay_uRDr68JjJ4BQT3,order_iIty0BfdNKn6rb,2026-07-09T14:48:56+00:00,448400,USD,netbanking,captured,Kiara Patel Industries,11658,2098
+pay_E40fAraVNqTIAa,order_e24HZKjht3X13n,2026-07-09T19:28:33+00:00,266200,INR,card,captured,Reyansh Gupta Technologies,6921,1246
+pay_hJyV4ZjtfbaVjM,order_H8JbT8NWlOnm0T,2026-07-09T22:09:37+00:00,1327900,INR,upi,captured,Aadhya Sharma Enterprises,34525,6214
+pay_BIZMLhfx9IwiLy,order_ccSXGj3i5tyM0K,2026-07-09T22:09:50+00:00,366400,INR,netbanking,captured,Reyansh Chauhan Solutions,9526,1715
+pay_4iCppaX3QjBvKN,order_Ap0mxDoJJ9s8Or,2026-07-10T13:30:56+00:00,247200,INR,netbanking,captured,Aadhya Mehta LLP,6427,1157
+pay_xoNe3awtx0AHkD,order_9eKan56yrSVAyN,2026-07-10T19:59:32+00:00,2068500,INR,netbanking,failed,Myra Singh Solutions,,
+pay_yjQ312WnXRCI4h,order_iCGItUBY3A4Bj1,2026-07-10T21:10:55+00:00,364500,INR,netbanking,captured,Aarav Jain Technologies,9477,1706
+pay_9RshuS1HzRyYWG,order_dZHYOUmOh1RaBt,2026-07-11T20:54:59+00:00,3016300,INR,card,captured,Rohan Das Industries,78424,14116
+pay_mbksf0tyEOfHl2,order_wBqCoqdUPfvH8K,2026-07-12T05:55:05+00:00,492600,EUR,netbanking,captured,Vivaan Sharma LLP,12808,2305
+pay_6cv1WChGtaPxgw,order_1lqq7vlAzUwyBJ,2026-07-12T10:35:52+00:00,396600,INR,wallet,captured,Reyansh Das LLP,10312,1856
+pay_9Z8aPB4MM7Qt46,order_xHr4YxXBc3lF6k,2026-07-12T18:40:01+00:00,206102,INR,wallet,captured,Aarav Iyer LLP,12597,2267
+pay_SwCgOawNXHxg3E,order_YUzpmh0nZluUcN,2026-07-12T22:40:59+00:00,4431800,INR,upi,captured,Ishani Sharma Pvt Ltd,115227,20741
+pay_gYJ9ZGkjfsTCT9,order_pEwavS3W13KgQT,2026-07-13T00:00:02+00:00,252700,INR,card,captured,Rohan Das Technologies,6570,1183
+pay_U5iaX6fpHuyMwO,order_WYLhJtqlCBC7D0,2026-07-13T12:12:03+00:00,362300,INR,card,failed,Anika Singh Solutions,,
+pay_1dOOdTXglHilC2,order_eY1gOHafUozD13,2026-07-13T12:55:05+00:00,386700,INR,card,captured,Aarav Reddy Solutions,10054,1810
+pay_QGrIkEesCnZhEa,order_vZdi2WF7I7SiTA,2026-07-13T14:33:57+00:00,121500,USD,wallet,captured,Diya Rao Pvt Ltd,3159,569
+pay_0D1K6e3F1xsd0i,order_mzJ4CtSWENkNaq,2026-07-13T20:31:25+00:00,290800,INR,upi,captured,Anika Sharma Enterprises,7561,1361
+pay_V2zWwCN1e3ucAq,order_6HXWf2Td6P3gwM,2026-07-13T20:31:25+00:00,422600,INR,card,failed,Ishani Nair Solutions,,
+pay_FSq0sqhnHsN6ri,order_2d89nhON8u62qi,2026-07-14T15:54:36+00:00,3860600,INR,upi,captured,Ishani Rao Technologies,100376,18068
+pay_gSZfd3DBwGKGyq,order_EAB5E8ZihSiR1h,2026-07-14T18:32:46+00:00,2867600,INR,card,captured,Ananya Das LLP,74558,13420
+pay_CzH7mtqhjQZRcZ,order_ufpwFPq9bzCUpC,2026-07-15T05:35:52+00:00,184600,INR,upi,captured,Ishani Sharma Solutions,4800,864
+pay_wkWolGc97KYZUz,order_xOTkJ0dqYdCDD6,2026-07-15T12:23:13+00:00,4819800,INR,wallet,refunded,Arjun Iyer Solutions,125315,22557
+pay_UJfAWjuDUHqyAR,order_VDmyJI9GpqAQJg,2026-07-15T14:48:12+00:00,371800,INR,netbanking,captured,Arjun Kapoor Enterprises,9667,1740
+pay_fHtKE5vlbGxf8H,order_rlVj7Qd7lSsgi3,2026-07-15T18:02:05+00:00,4298100,INR,card,captured,Aadhya Singh Pvt Ltd,111751,20115
+pay_rwQuDBWEgOfrZ3,order_mTMT30NYJVncq3,2026-07-16T12:55:18+00:00,4699700,INR,netbanking,captured,Ananya Patel Pvt Ltd,122192,21995
+pay_GNtvHXBwqsaY0v,order_Da56DaAsoaxzIy,2026-07-16T15:35:37+00:00,4196100,INR,card,captured,Vihaan Kapoor Solutions,109099,19638
+pay_98i54tI6ht2TV2,order_zzB535qWglVLqJ,2026-07-17T03:02:31+00:00,1386300,INR,card,captured,Arjun Chauhan Solutions,36044,6488
+pay_TfVc0PkwBM2fYl,order_y7qx0XOXhRd6jz,2026-07-17T12:31:25+00:00,306100,INR,netbanking,refunded,Vivaan Gupta Pvt Ltd,7959,1433
+pay_ZmZ2TAYeQbScel,order_peY4zBztyhaSdU,2026-07-17T16:41:05+00:00,4991800,INR,card,captured,Rohan Iyer Enterprises,129787,23362
+pay_NMdZEHNJSsavJl,order_PGw7HWFb2cxxUw,2026-07-18T02:54:00+00:00,245300,INR,card,captured,Kabir Chauhan LLP,6378,1148
+pay_DHW7B4JZI3mSJi,order_PZTZTa35EtXPqS,2026-07-18T04:35:17+00:00,336100,INR,wallet,failed,Reyansh Iyer Solutions,,
+pay_HXw3HNfVOwOc8Q,order_yU7AaqFGJJByVK,2026-07-18T06:27:11+00:00,41265400,INR,netbanking,captured,Vivaan Sharma Industries,1072900,193122
+pay_KXSQbD7WWJSKkM,order_M0jQb6gbtjQzW5,2026-07-18T10:33:18+00:00,139700,INR,upi,failed,Vihaan Reddy Technologies,,
+pay_OaN6tN28TQoETX,order_v66DORgxLS12WS,2026-07-18T18:30:34+00:00,20677069,INR,card,captured,Vivaan Bose Enterprises,831904,149743
+pay_bn9nbFhSXxNVMK,order_cgZchBhpRmQaAg,2026-07-19T17:11:37+00:00,47572600,INR,netbanking,captured,Arjun Singh Industries,1236888,222640
+pay_OannOrMc2zVE9S,order_X5JpfuNy5VikVQ,2026-07-19T20:06:41+00:00,62200,INR,wallet,captured,Anika Sharma Enterprises,1617,291
+pay_xDALAj7DVAf4sH,order_IkxsrIDuSm4a1T,2026-07-20T05:11:15+00:00,344500,INR,card,refunded,Reyansh Reddy Technologies,8957,1612
+pay_ynZQEkmNRral4M,order_T0QkQkuC7PAb82,2026-07-20T19:57:08+00:00,381400,INR,card,captured,Reyansh Patel Pvt Ltd,9916,1785
+pay_rLt8BIs1le0DQl,order_9EgBOfiyKg58e8,2026-07-21T12:33:34+00:00,144700,INR,card,captured,Sara Kapoor LLP,3762,677
+pay_ENKzc5xJmBp4SF,order_EQRO5TpcYNPROq,2026-07-21T14:17:32+00:00,306600,USD,netbanking,refunded,Kiara Patel Technologies,7972,1435
+pay_PU6zUjzgEz6cwB,order_61gQH8wylh0CPN,2026-07-22T20:38:41+00:00,421600,INR,netbanking,refunded,Ishani Bose LLP,10962,1973
+pay_3YV0eDh1uznmdJ,order_8GfSLWRA0qJM5M,2026-07-23T02:20:07+00:00,2615600,INR,netbanking,captured,Ananya Chauhan Industries,68006,12241
+pay_L0brHeLUtINcq8,order_JIWct6awrymUS8,2026-07-23T16:00:30+00:00,113700,INR,upi,captured,Aarav Iyer LLP,2956,532
+pay_NpUGWiA437GQ6B,order_VSGeuyVAyc5jJ8,2026-07-23T20:48:15+00:00,389900,INR,wallet,captured,Anika Gupta LLP,10137,1825
+pay_IxlKxVspeqxWjy,order_wf6BVgfAIFgfIL,2026-07-24T08:03:51+00:00,236800,INR,upi,failed,Reyansh Reddy LLP,,
+pay_Mo8FYM23YbIrj3,order_Ofx7LMooj84uHm,2026-07-24T09:04:24+00:00,338200,INR,card,failed,Ishani Patel Pvt Ltd,,
+pay_uFWBeMC71N5ALz,order_4evtOSLy3W6UGB,2026-07-24T09:42:01+00:00,283100,INR,card,captured,Ananya Mehta Industries,7361,1325
+pay_YKVMxA9zdpotfQ,order_1hkHcOAFAbDbtJ,2026-07-25T00:13:21+00:00,350100,INR,card,captured,Reyansh Singh Enterprises,9103,1639
+pay_9qYle8myOgHAMg,order_BqceTWbEOacyju,2026-07-26T14:01:21+00:00,368300,INR,card,captured,Myra Rao Technologies,9576,1724
+pay_aXKyp8KQQjVpEQ,order_u8VdwjHgEtINv3,2026-07-27T08:59:35+00:00,405600,INR,upi,captured,Vivaan Das Industries,10546,1898
+pay_ED8LNi65xIHEHo,order_fSGWYnfwm0wDig,2026-07-27T21:06:17+00:00,2810800,INR,wallet,captured,Vivaan Patel Industries,73081,13155
+pay_qgv3je68u93RAO,order_LAdu8zI5HOsfyI,2026-07-27T22:30:00+00:00,66400,INR,netbanking,failed,Aadhya Das Pvt Ltd,,
+pay_LFdPySAxavtBIn,order_3TzBkT3TzZLis9,2026-07-28T00:44:06+00:00,402700,USD,netbanking,captured,Kabir Singh Solutions,10470,1885
+pay_7BpWqEok2OoOlF,order_BtIo798a00Hcog,2026-07-28T09:25:46+00:00,452700,USD,netbanking,captured,Vihaan Jain Solutions,11770,2119
+pay_INuhR694fPFbt6,order_vVl9jsWFHTGP2M,2026-07-28T19:47:10+00:00,1055200,INR,netbanking,captured,Aadhya Mehta Industries,27435,4938
+pay_kxcmfFX4jvD2tu,order_Vg8G9mcy1htc02,2026-07-29T12:42:42+00:00,480100,INR,card,failed,Reyansh Chauhan Enterprises,,
+pay_C7dDyQE4efLerN,order_Hu9GCLgR0OVSnB,2026-07-29T14:18:53+00:00,428100,EUR,card,failed,Ananya Das Solutions,,
+pay_qzycRJlTnHW4PF,order_002lghqYVlQufw,2026-07-30T04:21:20+00:00,457400,INR,upi,captured,Ishani Sharma Technologies,11892,2141
+pay_hbuXMZ5f0pKGyt,order_vukFhF4vTYYojm,2026-07-30T18:32:42+00:00,3237300,INR,upi,captured,Anika Rao LLP,84170,15151
+pay_qOt34Pa4cbX0GT,order_tkJAIyMyd5A6yT,2026-07-31T08:19:05+00:00,416700,USD,netbanking,failed,Arjun Nair LLP,,
+pay_LHpaUaGGxmXzgA,order_KqHJL9ymIIlID9,2026-07-31T09:06:18+00:00,118600,INR,netbanking,captured,Ananya Nair Pvt Ltd,3084,555
+pay_hgmmqGmRscEm5u,order_aP4ZPjfFSgpo9s,2026-07-31T10:24:35+00:00,1271500,INR,netbanking,captured,Diya Das Solutions,33059,5951
+pay_UYdg2luCq1GNLL,order_Kv0MYRsMfihslQ,2026-07-31T20:34:26+00:00,1848600,INR,netbanking,captured,Arjun Mehta Pvt Ltd,48064,8652
+pay_AxvpCPZygFP0xO,order_Lsgd9N1qS3sjV3,2026-08-01T03:29:09+00:00,38698100,INR,upi,captured,Vivaan Das Industries,1006151,181107
+pay_BSou3ejxjnzuCd,order_ZyV6b2JD6sy3ZH,2026-08-01T05:18:21+00:00,245900,INR,upi,failed,Ishani Patel Solutions,,
+pay_nFvgQKGtn9dm6V,order_VrhEAiHoIPvyUB,2026-08-01T08:38:22+00:00,3214300,INR,netbanking,captured,Aadhya Patel Pvt Ltd,83572,15043
+pay_Xe7CpRsZe9Obzx,order_DNRf0Nu8834o3Q,2026-08-01T22:15:09+00:00,2822800,INR,netbanking,captured,Kabir Sharma Industries,73393,13211
+pay_OVzNEMr7DXQsed,order_BEmLtST18iwItC,2026-08-02T04:28:17+00:00,473400,EUR,card,captured,Anika Patel Pvt Ltd,12308,2215
+pay_x4yfpARHeT9Rlx,order_OYLAj9AbLehgHe,2026-08-02T13:44:56+00:00,258800,INR,upi,captured,Sara Bose Technologies,6729,1211
+pay_2ccsqQXxR5Khtj,order_K03NPGoDErVDfV,2026-08-02T16:02:53+00:00,44000,USD,upi,refunded,Anika Nair Industries,1144,206
+pay_oVT9gdxMvcOhsT,order_C8X9J3MHKvrWSP,2026-08-02T18:22:21+00:00,486300,EUR,upi,failed,Kabir Sharma Industries,,
+pay_YUJcvd95e5bzVV,order_8OA9x14xQPHOvl,2026-08-03T04:14:10+00:00,3094800,INR,netbanking,failed,Ishani Nair Industries,,
+pay_fPOdMTUAffneKG,order_Bavh1RDofXgwsx,2026-08-03T13:42:54+00:00,345200,INR,upi,refunded,Myra Singh Industries,8975,1616
+pay_73Y5Slj9C2EfyC,order_oKdrL0Pragiqwz,2026-08-03T18:39:09+00:00,392500,INR,card,captured,Reyansh Das Technologies,10205,1837
+pay_cJjNcJdql7LIbS,order_PrfB91kZLXYlOq,2026-08-04T05:22:17+00:00,647100,INR,upi,captured,Kiara Mehta Pvt Ltd,16825,3028
+pay_nnUhRiTRAdgKDK,order_jjipaZzVDiG6DS,2026-08-04T08:06:16+00:00,27076500,INR,netbanking,captured,Aarav Reddy Enterprises,703989,126718
+pay_FeYVGS7kUaS550,order_DRlPgZ8AFzVtCG,2026-08-04T09:40:37+00:00,4517000,INR,netbanking,captured,Ishani Patel LLP,117442,21140
+pay_InV5p7ByT8KG9s,order_sn1bYQrII5jcwi,2026-08-04T12:14:24+00:00,4487200,INR,card,captured,Reyansh Nair Enterprises,116667,21000
+pay_87cERLa9NgrFkm,order_TPLkKUh512Tr0b,2026-08-05T03:18:13+00:00,1949300,INR,wallet,failed,Vihaan Bose LLP,,
+pay_Dxw3Hq9OBiUa2R,order_griAubP678hEEQ,2026-08-05T22:19:27+00:00,254900,INR,card,captured,Ishani Gupta Industries,6627,1193
+pay_Wx4sKAJd7gVMqf,order_oIjzQDcrr1eoqX,2026-08-05T23:16:31+00:00,4552800,INR,netbanking,captured,Sara Nair Enterprises,118373,21307
+pay_3NjMS6XMmej2Gp,order_gbFy5sDlo0qLBO,2026-08-06T04:16:12+00:00,12151400,INR,card,captured,Anika Chauhan Technologies,315936,56868
+pay_X87eCr0uIamIsM,order_CKEVm3Vpazov02,2026-08-06T05:06:20+00:00,14402800,INR,wallet,captured,Myra Gupta LLP,374473,67405
+pay_SpcMdK3nLh7fLx,order_VOXlglsOeC9VQP,2026-08-06T13:53:14+00:00,2803600,INR,upi,captured,Arjun Gupta Solutions,72894,13121
+pay_3q6Q4EmT2mmpMj,order_g5PPMVHcDME931,2026-08-06T15:52:06+00:00,290600,USD,netbanking,captured,Dev Gupta Pvt Ltd,7556,1360
+pay_CX3IxLGgrL21e3,order_AUttmXE9AhkuxJ,2026-08-07T03:02:18+00:00,270400,EUR,card,captured,Rohan Sharma Industries,7030,1265
+pay_Oy4CqpIqK3yn9F,order_fcgMXAdx9G81aS,2026-08-07T05:42:31+00:00,2562200,INR,upi,refunded,Rohan Das Technologies,66617,11991
+pay_5UQSyPx3BpdbIK,order_aRdebuFrEHS2Jp,2026-08-07T07:38:19+00:00,396600,INR,netbanking,captured,Reyansh Nair Technologies,10312,1856
+pay_j7jXkE90GSWsIJ,order_yQdYDNBuwI5pbh,2026-08-08T20:18:14+00:00,2996100,INR,upi,failed,Sara Rao Solutions,,
+pay_abMh0X9zuINamr,order_WtFuaQvSMbkuuP,2026-08-09T02:08:51+00:00,287900,INR,wallet,refunded,Rohan Singh Solutions,7485,1347
+pay_b9oyXNE7Y7bvuS,order_znOG61HToeTEb4,2026-08-09T03:13:32+00:00,79200,INR,upi,captured,Kabir Nair LLP,2059,371
+pay_HRtAN5VK0sjpNr,order_hFKETWXMky2UxG,2026-08-09T06:30:52+00:00,205300,INR,card,refunded,Arjun Patel Pvt Ltd,5338,961
+pay_nZmlX0059CIseg,order_SEuhOgM3tBMsKJ,2026-08-10T00:25:49+00:00,1554800,INR,card,captured,Aarav Kapoor Enterprises,40425,7276
+pay_zeVP3bQQyK6Zjf,order_ZOC7Ka8O6uTT7J,2026-08-10T08:24:30+00:00,468500,USD,card,captured,Vihaan Jain Solutions,12181,2193
+pay_CAYxnAaETSq5Jc,order_cDwJ7eTG1UrGGL,2026-08-10T10:12:22+00:00,37676100,INR,card,captured,Diya Gupta Enterprises,979579,176324
+pay_6hFuAjSphysKkU,order_W9PfCYxNBahhN4,2026-08-10T10:35:22+00:00,389100,USD,card,captured,Anika Jain Enterprises,10117,1821
+pay_3TC4lJy6o1qMs4,order_RSnE9I9egVuBpF,2026-08-10T10:43:01+00:00,254000,INR,netbanking,failed,Vivaan Jain Technologies,,
+pay_J8cKvWB9h3lcBG,order_YQ6TmA65MPh3FP,2026-08-10T13:04:16+00:00,18695100,INR,card,captured,Vivaan Bose LLP,486073,87493
+pay_FRmDrgKwrxXCYj,order_rhyJcOOB4vi2Ca,2026-08-11T07:13:43+00:00,198100,EUR,card,captured,Aadhya Jain Pvt Ltd,5151,927
+pay_9M9BjcYmxU0gd6,order_51YaRgBbmHmGqD,2026-08-11T10:46:15+00:00,2497600,INR,upi,captured,Anika Nair Enterprises,64938,11689
+pay_37DHpk6Rg9b5ux,order_rSP6PP5NEXunJ5,2026-08-11T13:34:22+00:00,3559200,INR,card,captured,Kiara Gupta LLP,92539,16657
+pay_HyNZQeRT0dfACL,order_tTThRRk7GWSkhW,2026-08-12T19:06:34+00:00,47365600,INR,card,captured,Ananya Jain Technologies,1231506,221671
+pay_1uXPzoyH73TO1R,order_JXRIhIlMJdJlD3,2026-08-13T10:00:35+00:00,417800,INR,card,captured,Kiara Nair Pvt Ltd,10863,1955
+pay_Zf4Y25zyxxfntg,order_Sujc4DZVDM4bnj,2026-08-13T13:49:01+00:00,470500,INR,wallet,captured,Rohan Das Enterprises,12233,2202
+pay_dFZ1Amm4WvPR8L,order_uJ7MzkCWcnanoM,2026-08-13T20:13:16+00:00,4945300,INR,card,captured,Myra Chauhan Enterprises,128578,23144
+pay_TP3fAbnFbmOHnK,order_YaXRvj7uff0LYT,2026-08-14T08:01:03+00:00,232800,INR,netbanking,captured,Diya Iyer Enterprises,6053,1090
+pay_8ohD6J7nUnvqQr,order_dvEGhSQHsMX6Y6,2026-08-14T10:39:19+00:00,1841600,INR,card,captured,Kiara Gupta Pvt Ltd,47882,8619
+pay_FLSx0EilbVaqzU,order_9Ue591EuCpzcTx,2026-08-14T20:43:11+00:00,3623400,INR,card,captured,Ananya Rao Enterprises,94208,16957
+pay_CFyFP0YMkFBl6O,order_7TDwnEdwcm4wDC,2026-08-14T21:11:54+00:00,2407000,INR,card,refunded,Anika Jain Solutions,62582,11265
+pay_cHYkWCRNYdWCsc,order_mc5F9HpUlwW1uh,2026-08-14T22:17:51+00:00,2679100,INR,card,failed,Kiara Jain Technologies,,
+pay_myQ6fK4e9mOYf0,order_Yh6d5ASExAv4rB,2026-08-15T04:34:33+00:00,183000,EUR,card,failed,Kabir Nair LLP,,
+pay_MNz7xcmxatZlPM,order_pQvhxKkZssTKu3,2026-08-15T07:37:36+00:00,1076900,INR,wallet,captured,Rohan Kapoor Industries,27999,5040
+pay_1iohieQWeWUcgX,order_FdhpePUW5m3lvf,2026-08-15T09:14:16+00:00,1957200,INR,upi,captured,Aadhya Bose LLP,50887,9160
+pay_ZTvvWGvgSCecSb,order_vgX5TFIuACXNlO,2026-08-16T14:42:11+00:00,9501200,INR,card,captured,Diya Patel LLP,247031,44466
+pay_rcjDNtbLx6wADd,order_17QqNfezsS2GPq,2026-08-16T18:45:52+00:00,286561,INR,upi,refunded,Reyansh Jain Solutions,11443,2060
+pay_jbXtE9A4mqbWrI,order_NcSWd3tsd73P2y,2026-08-16T20:33:13+00:00,245300,INR,upi,captured,Myra Sharma LLP,6378,1148
+pay_XQ8DkPcNrAuXVc,order_T5kWEh3SKumPuW,2026-08-16T22:36:11+00:00,208600,INR,card,captured,Reyansh Sharma Solutions,5424,976
+pay_fOc6lbglbNyEMK,order_dnSa5O5ZDNwU3Y,2026-08-17T03:45:51+00:00,313800,INR,upi,captured,Diya Mehta Solutions,8159,1469
+pay_7XhvaQdZALaDrf,order_AMTlrhqRPADWgT,2026-08-17T05:28:06+00:00,1361200,INR,upi,failed,Arjun Bose Solutions,,
+pay_kgjjm7bzQ5DATb,order_lbXZGuJOWEPGIC,2026-08-17T06:19:32+00:00,113000,INR,netbanking,refunded,Diya Nair Technologies,2938,529
+pay_bG4QZLl3L2GUfO,order_3Ha6QAA2RA6DVv,2026-08-17T08:10:39+00:00,158300,INR,upi,captured,Vihaan Nair LLP,4116,741
+pay_YZ8fOcR9GLw4yW,order_QdNuuIxp07LjfP,2026-08-17T19:59:15+00:00,28620300,INR,wallet,captured,Vihaan Rao Enterprises,744128,133943
+pay_v6WCulgKeWmJNp,order_ASBpXdtB7Ut2Wj,2026-08-18T01:10:11+00:00,37465500,INR,card,failed,Sara Nair Technologies,,
+pay_ZswsRhcds6NUga,order_rDv7p1heEJQjY6,2026-08-18T02:55:17+00:00,2354600,INR,card,refunded,Myra Reddy Pvt Ltd,61220,11020
+pay_Xi1H8Wfft5krwf,order_lVpDp2OihJc1y1,2026-08-18T10:11:30+00:00,3760500,INR,wallet,refunded,Ananya Patel Technologies,97773,17599
+pay_nXxG7qEULuQvto,order_wyL82Xa1yZ5bhG,2026-08-18T11:30:23+00:00,774300,INR,wallet,refunded,Vivaan Patel Pvt Ltd,20132,3624
+pay_KoU3XJ9aSYehlc,order_vOpsLDhepHETw4,2026-08-18T22:48:37+00:00,240000,INR,card,captured,Anika Sharma Industries,6240,1123
+pay_DztgjzEPyVcfph,order_V1Za1CdGMEBdqi,2026-08-19T00:33:15+00:00,3722500,INR,card,captured,Ananya Jain Solutions,96785,17421
+pay_aNqkCJ4mZrEZsK,order_ETnXjsNNhPrl4N,2026-08-19T07:03:54+00:00,308800,USD,card,captured,Sara Singh Pvt Ltd,8029,1445
+pay_rim2GNXX9WwHE4,order_Fyltn3Wd9GV98g,2026-08-19T08:45:30+00:00,899600,INR,upi,captured,Diya Jain Enterprises,23390,4210
+pay_8FwHA6as6GWOBJ,order_RG9vHngYolsZ7L,2026-08-19T16:00:29+00:00,3269928,INR,card,captured,Sara Reddy LLP,177715,31989
+pay_QFq2QMNTpYa0sj,order_yeyCfCN3CfT45V,2026-08-19T18:37:02+00:00,24591700,INR,card,failed,Anika Singh Technologies,,
+pay_67gSGlGpMlUzgN,order_wCP2klyuj9Bvt9,2026-08-20T07:33:42+00:00,298900,INR,card,captured,Arjun Das LLP,7771,1399
+pay_DE3i5CyiSN8mhQ,order_di0Ckv2LWNLk81,2026-08-20T17:49:40+00:00,230700,INR,card,refunded,Vihaan Singh Enterprises,5998,1080
+pay_LQKYuNdniKUYUO,order_CsMBm2sXQ46S49,2026-08-21T02:58:00+00:00,382400,INR,netbanking,captured,Dev Kapoor Enterprises,9942,1790
+pay_ZIKYoWWKr99HXg,order_1iwWKaqhAhdBwK,2026-08-21T05:17:28+00:00,218100,INR,netbanking,captured,Kabir Reddy Pvt Ltd,5671,1021
+pay_2jrHoGLtMH3K69,order_OcAm3dmYuU4dEX,2026-08-21T06:49:22+00:00,294100,USD,netbanking,captured,Rohan Rao Technologies,7647,1376
+pay_oOw6cjBwBeiwtr,order_7blG4hWRnLR9mi,2026-08-21T08:29:57+00:00,153400,INR,card,captured,Reyansh Gupta Enterprises,3988,718
+pay_kjOIC1iWO5e0D7,order_LlRFOqRKKKZebT,2026-08-21T18:54:34+00:00,421200,USD,card,captured,Ananya Singh Technologies,10951,1971
+pay_qyHl3pxa8Sx8p9,order_mTfPmy76jTUIhD,2026-08-22T10:35:08+00:00,169600,INR,card,failed,Vihaan Gupta Enterprises,,
+pay_YGoeLBfBh84x3Q,order_WdXdLAgdd0yMz1,2026-08-22T14:19:36+00:00,48647800,INR,upi,captured,Vivaan Singh Pvt Ltd,1264843,227672
+pay_4PpQSLxtBa1elN,order_imfKZ5oeStSpkp,2026-08-22T15:09:46+00:00,491800,INR,card,captured,Ishani Jain Industries,12787,2302
+pay_nxOHObV64UuZqU,order_nbSM1W5UYI75r9,2026-08-23T13:40:07+00:00,364700,EUR,netbanking,captured,Vivaan Mehta Technologies,9482,1707
+pay_pdmRqC6eOP4wgs,order_2x8FS4ELfm7ISc,2026-08-23T15:50:38+00:00,432500,EUR,wallet,captured,Aarav Chauhan Technologies,11245,2024
+pay_qljbm1xGR8nAdA,order_dgw6Sp3laOtrrL,2026-08-24T03:45:51+00:00,378700,INR,netbanking,captured,Ananya Rao Industries,9846,1772
+pay_WFRMPwO8fryPzm,order_aR4ITIKvYo7Cza,2026-08-24T14:50:56+00:00,160500,USD,card,captured,Vivaan Iyer LLP,4173,751
+pay_Y3wzHelT4NEZJD,order_vMIieAxeeWshoL,2026-08-24T15:42:41+00:00,1833900,INR,card,captured,Reyansh Nair Pvt Ltd,47681,8583
+pay_KxK0rjC2fS2YOV,order_j7GTO5vWvw1A3V,2026-08-25T13:58:25+00:00,173000,INR,card,failed,Sara Iyer LLP,,
+pay_NJgCKgr3fEwZyE,order_be7eQxt4YlalJL,2026-08-25T15:14:32+00:00,37895800,INR,card,captured,Reyansh Nair Industries,985291,177352
+pay_t2YQliACNySiUa,order_gxgaZ5iVq6LXaX,2026-08-25T20:07:14+00:00,281000,INR,netbanking,refunded,Reyansh Reddy LLP,7306,1315
+pay_2fa5RKrQXDhiqB,order_okQKSLfZszIl98,2026-08-26T08:44:35+00:00,1533800,INR,upi,failed,Sara Das Enterprises,,
+pay_0Yg7NZRBT7qYHD,order_BTq0Zf2pCLxb0l,2026-08-26T15:40:58+00:00,329500,INR,card,captured,Arjun Nair Industries,8567,1542
+pay_hfSxR8e42kAQFH,order_2KTU51gJXYqmUR,2026-08-26T16:24:58+00:00,1557900,INR,card,captured,Aarav Singh LLP,40505,7291
+pay_GlozIoDSBbszpP,order_wIv9IvCtoStU6Q,2026-08-26T21:30:38+00:00,34139400,INR,card,captured,Diya Jain Solutions,887624,159772
+pay_ebhsmKVcbmk2Sv,order_Ilb04bQxWg6soY,2026-08-26T22:06:51+00:00,126088200,INR,upi,captured,Aadhya Reddy LLP,3278293,590093
+pay_g8n7WhG2KYfvJr,order_qgctUlXQWI2yKq,2026-08-26T22:10:52+00:00,2293300,INR,upi,captured,Diya Mehta Industries,59626,10733
+pay_Gd50DF5kJThyL2,order_Fx84Vq78CizRUs,2026-08-27T11:03:25+00:00,3769100,INR,upi,captured,Diya Nair Pvt Ltd,97997,17639
+pay_RYw11oRytxxHPD,order_lx50j9PieaSEB9,2026-08-27T19:11:57+00:00,7785400,INR,card,captured,Aadhya Rao LLP,202420,36436
+pay_d5qpQ90n0rkHef,order_RZS92nFX26N8Rq,2026-08-27T19:53:57+00:00,138100,USD,upi,captured,Vihaan Sharma Technologies,3591,646
+pay_TUv5XqsyofSPj1,order_TUv4KXWs0Qc8Sk,2026-08-27T20:06:02+00:00,200000,INR,card,captured,Ishani Bose LLP,4400,0
+pay_TUvAAV8PyckEVu,order_TUv8ffAA045x6X,2026-08-27T20:10:23+00:00,475000,INR,wallet,captured,Vivaan Singh Solutions,12332,1882
+pay_TUvDkwEHdWlIlL,order_TUvDQqXHi77znS,2026-08-27T20:13:46+00:00,37000000,INR,netbanking,captured,Kabir Jain Technologies,960520,146520
+pay_TUvHTkz0zsaR2y,order_TUvH71H2K9VTll,2026-08-27T20:17:18+00:00,150000,INR,wallet,failed,Vivaan Mehta Pvt Ltd,,
+pay_TUvIIpzEisUOVb,order_TUvH71H2K9VTll,2026-08-27T20:18:05+00:00,150000,INR,wallet,refunded,Dev Reddy Solutions,3894,594
+pay_TUvNivrfVQar68,order_TUvLDxbO5rFyOT,2026-08-27T20:23:14+00:00,900000,INR,card,failed,Reyansh Rao Solutions,,
+pay_TUvSHHci4c7cid,order_TUvRVe8OB0wXE9,2026-08-27T20:27:31+00:00,49900,INR,card,failed,Rohan Sharma Solutions,,
+pay_TUvTa327TMguwL,order_TUvRVe8OB0wXE9,2026-08-27T20:28:45+00:00,49900,INR,netbanking,captured,Aadhya Sharma Enterprises,1296,198
+pay_8EGxjM4FSjZtJE,order_7TDwnEdwcm4wDC,2026-08-14T21:11:54+00:00,2407000,INR,card,refunded,Anika Jain Solutions,62582,11265
+pay_UXGQaNQXwR2P1U,order_BqceTWbEOacyju,2026-07-26T14:01:21+00:00,368300,INR,card,captured,Myra Rao Technologies,9576,1724
+pay_yTuCcPk3kU0qlG,order_pQvhxKkZssTKu3,2026-08-15T07:37:36+00:00,1076900,INR,wallet,captured,Rohan Kapoor Industries,27999,5040
+pay_CyiZLlp7QT0WZn,order_3Ha6QAA2RA6DVv,2026-08-17T08:10:39+00:00,158300,INR,upi,captured,Vihaan Nair LLP,4116,741
+pay_6H3JgzqQ4lVS5l,order_x9XOj7h7ug0g4a,2026-07-06T14:10:50+00:00,28411900,INR,card,captured,Vivaan Reddy Pvt Ltd,738709,132968
+pay_6y8k6nRvLQg16g,order_vukFhF4vTYYojm,2026-07-30T18:32:42+00:00,3237300,INR,upi,captured,Anika Rao LLP,84170,15151
 pay_MALFORMED0001,order_MALFORMED01,2026-13-45T99:99:99,N/A,INR,card,captured,,,

@@ -194,38 +194,7 @@ def build_base_transactions(rng: random.Random, target: int) -> dict:
                 }
             )
 
-    settlements = _synth_settlements(payments, rng)
-    return {"payments": payments, "orders": orders, "refunds": refunds, "settlements": settlements}
-
-
-def _synth_settlements(payments: list[dict], rng: random.Random) -> list[dict]:
-    """Batch INR captured/refunded payments by settlement date (T+2), net of fees."""
-    batches: dict[str, list[dict]] = {}
-    for p in payments:
-        if p["currency"] != "INR" or not p["captured"]:
-            continue
-        settle_day = datetime.fromtimestamp(p["created_at"], UTC).date() + timedelta(days=SETTLE_LAG_DAYS)
-        batches.setdefault(settle_day.isoformat(), []).append(p)
-
-    out = []
-    for day in sorted(batches):
-        group = batches[day]
-        gross = sum(p["amount"] for p in group)
-        fees = sum((p["fee"] or 0) + (p["tax"] or 0) for p in group)
-        # refunds are settled as separate bank debits, not netted here (see _derive_bank_rows)
-        out.append(
-            {
-                "id": _rid("setl", rng),
-                "entity": "settlement",
-                "amount": gross - fees,
-                "fees": fees,
-                "currency": "INR",
-                "status": "processed",
-                "created_at": int(datetime.fromisoformat(day).replace(tzinfo=UTC).timestamp()),
-                "payment_ids": sorted(p["id"] for p in group),
-            }
-        )
-    return out
+    return {"payments": payments, "orders": orders, "refunds": refunds}
 
 
 # --- step 4: derive the three source files (clean) ------------------------
@@ -235,7 +204,11 @@ def _iso(ts: int) -> str:
 
 
 def derive_sources(txns: dict, rng: random.Random):
-    """Return (gateway_rows, invoice_rows, bank_rows, parties) — all still clean."""
+    """Return (gateway_rows, invoice_rows, parties) — all still clean.
+
+    The bank statement is derived later (``derive_bank``) from the *injected*
+    gateway rows, so a settlement always reflects what was really captured.
+    """
     payments = txns["payments"]
     parties = {p["id"]: (_company(rng), _gstin(rng)) for p in sorted(payments, key=lambda p: p["id"])}
 
@@ -254,6 +227,7 @@ def derive_sources(txns: dict, rng: random.Random):
                 "customer_name": parties[p["id"]][0],   # clean; invoice side gets name-drifted
                 "fee": p["fee"] if p["fee"] is not None else "",
                 "tax": p["tax"] if p["tax"] is not None else "",
+                "_settles": p["currency"] == "INR" and p["captured"],
             }
         )
         if not p["captured"]:
@@ -284,25 +258,59 @@ def derive_sources(txns: dict, rng: random.Random):
             }
         )
 
-    bank_rows = _derive_bank_rows(txns, rng)
-    return gateway_rows, invoice_rows, bank_rows, parties
+    return gateway_rows, invoice_rows, parties
 
 
-def _derive_bank_rows(txns: dict, rng: random.Random) -> list[dict]:
-    rows: list[dict] = []
-    balance = 5_000_000.0  # opening balance, rupees
+def _paise(gw_row: dict) -> int | None:
+    try:
+        return int(gw_row["amount"])
+    except (TypeError, ValueError):
+        return None  # the malformed row
 
-    events: list[tuple[int, str, dict]] = []
-    for s in txns["settlements"]:
-        events.append((s["created_at"], "settlement", s))
-    for r in txns["refunds"]:
+
+def derive_bank(gateway_rows: list[dict], refunds: list[dict], rng: random.Random):
+    """Build the bank statement from the *post-injection* gateway rows.
+
+    Settlements batch the INR payments that actually settled (``_settles`` and not
+    held back by a gateway-side anomaly), T+2, net of processor fees — so the
+    credit always equals the sum of its members. Returns
+    ``(bank_rows, settlement_groups)``.
+    """
+    batches: dict[str, list[dict]] = {}
+    for g in gateway_rows:
+        if not g.get("_settles") or g.get("_held"):
+            continue
+        paise = _paise(g)
+        if paise is None:
+            continue
+        settle_day = date.fromisoformat(g["captured_at"][:10]) + timedelta(days=SETTLE_LAG_DAYS)
+        batches.setdefault(settle_day.isoformat(), []).append(g)
+
+    settlements = []
+    for day in sorted(batches):
+        group = batches[day]
+        gross = sum(_paise(g) for g in group)
+        fees = sum(int(g["fee"] or 0) + int(g["tax"] or 0) for g in group)
+        settlements.append(
+            {
+                "id": _rid("setl", rng),
+                "amount_paise": gross - fees,
+                "fees_paise": fees,
+                "settle_ts": int(datetime.fromisoformat(day).replace(tzinfo=UTC).timestamp()),
+                "payment_ids": sorted(g["pg_payment_id"] for g in group),
+            }
+        )
+
+    events: list[tuple[int, str, dict]] = [(s["settle_ts"], "settlement", s) for s in settlements]
+    for r in refunds:
         events.append((r["created_at"], "refund", r))
-    # a handful of non-Razorpay bank charges with no counterpart anywhere
     now = int(datetime.now(UTC).timestamp())
-    for _ in range(5):
+    for _ in range(5):  # non-Razorpay bank charges with no counterpart anywhere
         ts = now - rng.randrange(0, WINDOW_DAYS * 86_400)
         events.append((ts, "charge", {"amount": rng.choice([59000, 17700, 82600, 23600])}))
 
+    rows: list[dict] = []
+    balance = 5_000_000.0
     for ts, kind, obj in sorted(events, key=lambda e: e[0]):
         dt = datetime.fromtimestamp(ts, UTC)
         row = {
@@ -314,10 +322,8 @@ def _derive_bank_rows(txns: dict, rng: random.Random) -> list[dict]:
         }
         if kind == "settlement":
             row["narration"] = f"RAZORPAY SETTLEMENT {obj['id']}"
-            row["credit"] = round(obj["amount"] / 100, 2)
-            # N:1 — this credit covers a whole batch of gateway payments. The
-            # member payment ids are the real answer key; see settlement_groups.csv.
-            row["_match"] = obj["id"]
+            row["credit"] = round(obj["amount_paise"] / 100, 2)
+            row["_match"] = obj["id"]      # N:1; members in settlement_groups.csv
             row["_bucket"] = "auto_resolved"
             row["_case"] = "clean"
         elif kind == "refund":
@@ -341,13 +347,26 @@ def _derive_bank_rows(txns: dict, rng: random.Random) -> list[dict]:
         row["balance"] = round(balance, 2)
         row["bank_txn_ref"] = row["ref_no"]
         rows.append(row)
-    return rows
+
+    groups = [
+        {
+            "settlement_id": s["id"],
+            "payment_id": pid,
+            "settlement_amount": round(s["amount_paise"] / 100, 2),
+            "fees_deducted": round(s["fees_paise"] / 100, 2),
+        }
+        for s in settlements
+        for pid in s["payment_ids"]
+    ]
+    return rows, groups
 
 
 # --- step 5: inject discrepancies ----------------------------------------
 
-def inject(gateway_rows, invoice_rows, bank_rows, rng: random.Random) -> dict:
-    """Mutate the row lists in place. Return the injection log + api-timeout target."""
+def inject(gateway_rows, invoice_rows, rng: random.Random) -> dict:
+    """Mutate the gateway/invoice row lists in place. Runs before the bank
+    statement is derived, so gateway-side anomalies flow through to settlements.
+    Returns the injection log + the api-timeout target record id."""
     log: dict[str, list] = {k: [] for k in INJECTION_PLAN}
     # foreign-currency invoices already carry the FX discrepancy; keep them out
     # of the pool so a row never gets two overlapping cases.
@@ -388,12 +407,14 @@ def inject(gateway_rows, invoice_rows, bank_rows, rng: random.Random) -> dict:
     for inv in slice_n(INJECTION_PLAN["partial_capture"]):
         gw = next(g for g in gateway_rows if g["pg_payment_id"] == inv["_pay_id"])
         gw["amount"] = int(gw["amount"] * rng.uniform(0.4, 0.8))  # captured less than invoiced
+        gw["_held"] = True  # a partial capture is held back from settlement pending review
         inv["_case"] = "partial_capture"
         inv["_bucket"] = "escalated"
         log["partial_capture"].append(inv["invoice_no"])
 
     for inv in slice_n(INJECTION_PLAN["duplicate_ref"]):
         gw = next(g for g in gateway_rows if g["pg_payment_id"] == inv["_pay_id"])
+        gw["_held"] = True  # the disputed pair is held back from settlement too
         dupe = dict(gw)
         dupe["pg_payment_id"] = _rid("pay", rng)
         gateway_rows.append(dupe)  # two gateway rows, same order id
@@ -419,8 +440,10 @@ def inject(gateway_rows, invoice_rows, bank_rows, rng: random.Random) -> dict:
             "currency": "INR",
             "method": "card",
             "status": "captured",
+            "customer_name": "",
             "fee": "",
             "tax": "",
+            "_settles": False,
         }
     )
     log["malformed_row"].append("pay_MALFORMED0001")
@@ -473,26 +496,6 @@ def build_ground_truth(gateway_rows, invoice_rows, bank_rows) -> list[dict]:
     return gt
 
 
-def build_settlement_groups(txns: dict) -> list[dict]:
-    """N:1 answer key — which gateway payments each bank settlement credit covers.
-
-    A single ``true_match_id`` column can't express a group, so the settlement
-    membership lives in its own file (data/ground_truth/settlement_groups.csv).
-    """
-    rows = []
-    for s in txns["settlements"]:
-        for pid in s["payment_ids"]:
-            rows.append(
-                {
-                    "settlement_id": s["id"],
-                    "payment_id": pid,
-                    "settlement_amount": round(s["amount"] / 100, 2),
-                    "fees_deducted": round(s["fees"] / 100, 2),
-                }
-            )
-    return rows
-
-
 def _gt(record_id, source, true_match_id, bucket, case) -> dict:
     return {
         "record_id": record_id,
@@ -526,10 +529,10 @@ def main() -> None:
     n = {k: len(v) for k, v in txns.items()}
     print(f"base transactions: {n}")
 
-    gateway_rows, invoice_rows, bank_rows, _ = derive_sources(txns, rng)
-    injection = inject(gateway_rows, invoice_rows, bank_rows, rng)
+    gateway_rows, invoice_rows, _ = derive_sources(txns, rng)
+    injection = inject(gateway_rows, invoice_rows, rng)
+    bank_rows, settlement_groups = derive_bank(gateway_rows, txns["refunds"], rng)
     ground_truth = build_ground_truth(gateway_rows, invoice_rows, bank_rows)
-    settlement_groups = build_settlement_groups(txns)
 
     manifest = {
         "generated_at": datetime.now(UTC).isoformat(),
