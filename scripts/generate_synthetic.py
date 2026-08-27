@@ -260,6 +260,9 @@ def derive_sources(txns: dict, rng: random.Random):
             continue  # failed payments never reach an invoice
         inv_seq += 1
         name, gstin = parties[p["id"]]
+        # The ledger is kept in the company's functional currency (INR). A foreign
+        # payment is booked at the "true" rate; the bank later settles it at a
+        # slightly different one, which is the FX discrepancy (catalogue #7).
         if p["currency"] == "INR":
             gross = round(p["amount"] / 100, 2)
         else:
@@ -274,9 +277,10 @@ def derive_sources(txns: dict, rng: random.Random):
                 "gross_amount": gross,
                 "tax_amount": tax_component,
                 "net_amount": round(gross - tax_component, 2),
-                "currency": p["currency"],
+                "currency": "INR",              # always: the ledger is INR-denominated
                 "pg_reference": p["order_id"],
                 "_pay_id": p["id"],             # dropped before writing; used for ground truth
+                "_src_currency": p["currency"],  # what the gateway actually charged in
             }
         )
 
@@ -311,14 +315,18 @@ def _derive_bank_rows(txns: dict, rng: random.Random) -> list[dict]:
         if kind == "settlement":
             row["narration"] = f"RAZORPAY SETTLEMENT {obj['id']}"
             row["credit"] = round(obj["amount"] / 100, 2)
-            row["_match"] = f"SETTLE:{obj['id']}"
+            # N:1 — this credit covers a whole batch of gateway payments. The
+            # member payment ids are the real answer key; see settlement_groups.csv.
+            row["_match"] = obj["id"]
             row["_bucket"] = "auto_resolved"
             row["_case"] = "clean"
         elif kind == "refund":
             row["narration"] = f"RAZORPAY REFUND {obj['payment_id']}"
             row["debit"] = round(obj["amount"] / 100, 2)
-            row["_match"] = obj["id"]
-            row["_bucket"] = "exception"      # a refund debit has no invoice -> RAG (credit-note rule)
+            # Deliberately no true_match_id: a refund debit has no invoice
+            # counterpart, so it is explained (RAG / credit-note rule), not matched.
+            row["_match"] = ""
+            row["_bucket"] = "exception"
             row["_case"] = "unmatched_refund"
         else:  # charge
             row["narration"] = rng.choice(
@@ -341,7 +349,9 @@ def _derive_bank_rows(txns: dict, rng: random.Random) -> list[dict]:
 def inject(gateway_rows, invoice_rows, bank_rows, rng: random.Random) -> dict:
     """Mutate the row lists in place. Return the injection log + api-timeout target."""
     log: dict[str, list] = {k: [] for k in INJECTION_PLAN}
-    clean_invoices = [r for r in invoice_rows if r["currency"] == "INR"]
+    # foreign-currency invoices already carry the FX discrepancy; keep them out
+    # of the pool so a row never gets two overlapping cases.
+    clean_invoices = [r for r in invoice_rows if r["_src_currency"] == "INR"]
     rng.shuffle(clean_invoices)
 
     cursor = 0
@@ -391,9 +401,10 @@ def inject(gateway_rows, invoice_rows, bank_rows, rng: random.Random) -> dict:
         inv["_bucket"] = "escalated"
         log["duplicate_ref"].append(inv["invoice_no"])
 
-    # FX slip: every non-INR invoice was built at FX_TO_INR; the bank used BANK_FX_SLIP
+    # FX slip: every foreign-currency invoice was booked at FX_TO_INR; the bank
+    # settled it at BANK_FX_SLIP, so invoice INR != gateway amount x settled rate.
     for inv in invoice_rows:
-        if inv["currency"] != "INR":
+        if inv["_src_currency"] != "INR":
             inv["_case"] = "fx_rounding"
             inv["_bucket"] = "escalated"
             log["fx_rounding"].append(inv["invoice_no"])
@@ -416,16 +427,16 @@ def inject(gateway_rows, invoice_rows, bank_rows, rng: random.Random) -> dict:
 
     # failure mode 2 — one ambiguous record the llm_client will time out on (once)
     timeout_target = ""
-    partial = log["partial_capture"] or log["duplicate_ref"]
-    if partial:
-        tgt_inv = inv_by_pay_lookup(invoice_rows, partial[0])
+    ambiguous = log["partial_capture"] or log["duplicate_ref"]
+    if ambiguous:
+        tgt_inv = _invoice_by_no(invoice_rows, ambiguous[0])
         timeout_target = tgt_inv["_pay_id"] if tgt_inv else ""
         log["api_timeout"].append(timeout_target)
 
     return {"log": log, "api_timeout_record_id": timeout_target}
 
 
-def inv_by_pay_lookup(invoice_rows, invoice_no):
+def _invoice_by_no(invoice_rows, invoice_no):
     for r in invoice_rows:
         if r["invoice_no"] == invoice_no:
             return r
@@ -460,6 +471,26 @@ def build_ground_truth(gateway_rows, invoice_rows, bank_rows) -> list[dict]:
     for b in bank_rows:
         gt.append(_gt(b["bank_txn_ref"], "bank", b["_match"], b["_bucket"], b["_case"]))
     return gt
+
+
+def build_settlement_groups(txns: dict) -> list[dict]:
+    """N:1 answer key — which gateway payments each bank settlement credit covers.
+
+    A single ``true_match_id`` column can't express a group, so the settlement
+    membership lives in its own file (data/ground_truth/settlement_groups.csv).
+    """
+    rows = []
+    for s in txns["settlements"]:
+        for pid in s["payment_ids"]:
+            rows.append(
+                {
+                    "settlement_id": s["id"],
+                    "payment_id": pid,
+                    "settlement_amount": round(s["amount"] / 100, 2),
+                    "fees_deducted": round(s["fees"] / 100, 2),
+                }
+            )
+    return rows
 
 
 def _gt(record_id, source, true_match_id, bucket, case) -> dict:
@@ -498,6 +529,7 @@ def main() -> None:
     gateway_rows, invoice_rows, bank_rows, _ = derive_sources(txns, rng)
     injection = inject(gateway_rows, invoice_rows, bank_rows, rng)
     ground_truth = build_ground_truth(gateway_rows, invoice_rows, bank_rows)
+    settlement_groups = build_settlement_groups(txns)
 
     manifest = {
         "generated_at": datetime.now(UTC).isoformat(),
@@ -509,6 +541,7 @@ def main() -> None:
             "invoice_ledger": len(invoice_rows),
             "bank_statement": len(bank_rows),
             "ground_truth": len(ground_truth),
+            "settlement_groups": len(settlement_groups),
         },
         "injection_plan": INJECTION_PLAN,
         "injection_log": {k: len(v) for k, v in injection["log"].items()},
@@ -523,6 +556,7 @@ def main() -> None:
     _write_csv(settings.SYNTHETIC_DIR / "invoice_ledger.csv", invoice_rows)
     _write_csv(settings.SYNTHETIC_DIR / "bank_statement.csv", bank_rows)
     _write_csv(settings.GROUND_TRUTH_DIR / "matches.csv", ground_truth, drop_private=False)
+    _write_csv(settings.GROUND_TRUTH_DIR / "settlement_groups.csv", settlement_groups, drop_private=False)
     (settings.SYNTHETIC_DIR / "base_transactions.json").write_text(
         json.dumps(txns, indent=2), encoding="utf-8"
     )

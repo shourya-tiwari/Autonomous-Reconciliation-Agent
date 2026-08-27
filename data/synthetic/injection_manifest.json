@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-27T20:45:06.838501+00:00",
+  "generated_at": "2026-08-27T20:52:51.133038+00:00",
   "seed": 42,
   "target": 300,
   "base_counts": {
@@ -12,7 +12,8 @@
     "gateway_export": 307,
     "invoice_ledger": 245,
     "bank_statement": 128,
-    "ground_truth": 680
+    "ground_truth": 680,
+    "settlement_groups": 208
   },
   "injection_plan": {
     "amount_rounding": 0.15,

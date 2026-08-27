@@ -17,9 +17,9 @@ captured/failed/refunded, currency mix 85/10/5 INR/USD/EUR.
 
 | Source | File | Represents | Grain | Amount unit | Date format |
 |--------|------|-----------|-------|-------------|-------------|
-| Gateway export | `gateway_export.csv` | Razorpay's own record | one row per payment | minor units (paise/cents) | ISO-8601 |
-| Invoice ledger | `invoice_ledger.csv` | what finance expected to receive | one row per captured/refunded payment | rupees, tax split out | `YYYY-MM-DD` |
-| Bank statement | `bank_statement.csv` | what hit the current account | one row per settlement / refund / bank charge | rupees | `DD-MM-YYYY` |
+| Gateway export | `gateway_export.csv` | Razorpay's own record | one row per payment | minor units (paise/cents), native currency | ISO-8601 |
+| Invoice ledger | `invoice_ledger.csv` | what finance expected to receive | one row per captured/refunded payment | rupees, tax split out; **always INR** (functional currency) | `YYYY-MM-DD` |
+| Bank statement | `bank_statement.csv` | what hit the current account | one row per settlement / refund / bank charge | rupees, separate debit/credit columns | `DD-MM-YYYY` |
 
 Primary matchable pair: **invoice ledger ↔ gateway export** (1:1 per payment).
 The bank statement adds settlement reconciliation and the unmatched exceptions.
@@ -43,8 +43,8 @@ The bank statement adds settlement reconciliation and the unmatched exceptions.
 | 4 | **missing_pg_ref** | invoice `pg_reference` blanked | export gaps, integration bugs | `auto_resolved` via amount+date, else `escalated` |
 | 5 | **partial_capture** | gateway `amount` reduced to 40–80% of invoiced | authorised > captured | `escalated` (LLM reasons about the gap) |
 | 6 | **duplicate_ref** | extra gateway row cloned with a new `pg_payment_id`, same `pg_order_id` | client retry / idempotency slip | `escalated` (1:many, can't auto-pick) |
-| 7 | **fx_rounding** | invoice built at the "true" rate (`FX_TO_INR`), bank settled at a slipped rate (`BANK_FX_SLIP`) | conversion-timing differences | `escalated` (LLM weighs the FX delta) |
-| 8 | **unmatched_refund** | bank debit `RAZORPAY REFUND pay_…` with no invoice counterpart | refunds aren't re-invoiced | `exception` → RAG cites the GST credit-note rule |
+| 7 | **fx_rounding** | gateway charges in USD/EUR; invoice booked in INR at the "true" rate (`FX_TO_INR`); the bank settled at a slipped rate (`BANK_FX_SLIP`) | conversion-timing differences | `escalated` (ref matches, amounts differ by the FX delta — LLM weighs it) |
+| 8 | **unmatched_refund** | bank debit `RAZORPAY REFUND pay_…` with no invoice counterpart | refunds aren't re-invoiced | `exception` → RAG cites the GST credit-note rule. Ground truth deliberately carries **no** `true_match_id`: the row is explained, not matched |
 | 9 | **unmatched_bank_fee** | bank debit for account maintenance / NEFT / GST-on-charges, no counterpart anywhere | routine bank charges | `exception` → RAG cites expense / input-tax-credit treatment |
 | 10 | **malformed_row** (failure mode 1) | one gateway row with `amount="N/A"`, `captured_at="2026-13-45T99:99:99"` | corrupt export line | `recon.ingest.validate` rejects it with a reason, logs it, run continues → bucket `failed` |
 | 11 | **api_timeout** (failure mode 2) | one ambiguous record id recorded in `injection_manifest.json`; `llm_client` raises a timeout for it once | transient LLM/API failure | `recon.agent.retry` retries with backoff, then `escalated`, run continues |
@@ -53,4 +53,12 @@ The bank statement adds settlement reconciliation and the unmatched exceptions.
 
 `data/ground_truth/matches.csv` — one row per source record:
 `record_id, source, true_match_id, expected_bucket, case`. `expected_bucket` ∈
-`auto_resolved | escalated | exception | ignored | failed`.
+`auto_resolved | escalated | exception | ignored | failed`. An empty
+`true_match_id` means the record genuinely has no counterpart (exceptions,
+failed payments, the malformed row) — not that the answer is unknown.
+
+`data/ground_truth/settlement_groups.csv` — the **N:1 answer key**
+(`settlement_id, payment_id, settlement_amount, fees_deducted`). A single
+`true_match_id` column can't express "this one bank credit covers these 12
+gateway payments", so settlement membership lives here. The bank row's
+`true_match_id` is the `setl_…` id, which is also discoverable in its narration.
