@@ -9,6 +9,9 @@ venv/
 # local agent instructions — not part of the project
 CLAUDE.md
 
+# personal learning notes — not part of the project
+learning_log.md
+
 # live data pulls — the COMMITTED frozen copy lives in data/snapshot/
 data/raw/
 

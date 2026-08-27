@@ -20,7 +20,7 @@ Keep entries short — this exists so a new session has continuity without re-re
 **Date:** 2026-08-27
 **Done:**
 - Read all four docs; confirmed problem / stack / phase structure.
-- Created repo skeleton matching architecture.md: `src/recon/` with one package per
+- Created repo skeleton matching ARCHITECTURE.md: `src/recon/` with one package per
   pipeline stage (ingest, matching, reasoning, rag, agent, audit) + `eval`, plus
   `scripts/`, `tests/`, `data/{snapshot,raw,policy,synthetic,ground_truth}`, `outputs/{audit,reports}`.
 - All modules are docstring + TODO stubs — no pipeline logic yet (per instruction).
@@ -41,7 +41,7 @@ Keep entries short — this exists so a new session has continuity without re-re
 4. **Vector store / embeddings.** Chose ChromaDB (embedded, no server) + local
    sentence-transformers embeddings (no API key, offline, reproducible) over API embeddings.
    Confirm — API embeddings would be higher quality but break clean-clone/offline.
-5. **Source count.** architecture.md says "2-3 sources"; skeleton assumes exactly 3
+5. **Source count.** ARCHITECTURE.md says "2-3 sources"; skeleton assumes exactly 3
    (bank statement, invoice ledger, gateway export).
 6. **Python 3.11+** assumed; `pandas` + `pydantic v2` + `rapidfuzz` as the core stack.
 
@@ -52,5 +52,30 @@ Keep entries short — this exists so a new session has continuity without re-re
   catalogue (amount rounding, split payments, duplicate refs, missing fields, malformed
   row, API-timeout case) with `data/ground_truth/` labels.
 - Write the metric definitions in `src/recon/eval/metrics.py` (define now, run Day 6).
+
+---
+
+## Session 2 — git + task planning
+**Date:** 2026-08-27
+**Done:**
+- `git init` on `main`; pushed to `github.com/shourya-tiwari/razorpay-buildathon`.
+  Two commits: `docs: add project documentation`, `chore: scaffold repo skeleton`.
+  Author = Shourya Tiwari, no AI co-author trailer. `CLAUDE.md` + `learning_log.md` gitignored.
+- Added `docs/TASKS.md` (committed) — build structured into Phase 1 (core pipeline, tasks
+  1.1–1.8), Phase 2 (polish + pitch), Phase 3 (stretch), Phase 4 (future scope). Each
+  task has a definition of done. This is the entry point for "start implementing phase N".
+- Added `learning_log.md` (gitignored) — running per-prompt log of what changed + what
+  to learn.
+- Reviewed all `.md` files for consistency; updated `CLAUDE.md` (git status, pointers to
+  docs/TASKS.md / learning_log.md, commit convention).
+- Renamed `docs/architecture.md` → `docs/ARCHITECTURE.md`; moved `tasks.md` → `docs/TASKS.md`.
+
+**Blocked / open questions:**
+- The 6 design questions from Session 1 are still unconfirmed (see above + `docs/TASKS.md`
+  bottom). They gate a clean Phase 1 start — will confirm at "start implementing phase 1".
+
+**Next:**
+- On "start implementing phase 1": begin at task 1.1 (dataset). First confirm the 6 open
+  questions, then implement `scripts/pull_razorpay_sandbox.py`.
 
 ---

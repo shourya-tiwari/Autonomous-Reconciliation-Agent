@@ -44,7 +44,7 @@ Ingest → Deterministic Match → LLM Reasoning → RAG Grounding → Agent Orc
 - `scripts/` — `pull_razorpay_sandbox.py`, `generate_synthetic.py`, `build_rag_index.py`, `run_pipeline.py`
 - `data/` — `snapshot/` (committed), `raw/` (live pulls, gitignored), `policy/`, `synthetic/`, `ground_truth/`
 - `outputs/` — `audit/` trail, `reports/` metrics
-- `docs/` — `PROJECT.md`, `architecture.md`, `PLAN.md`, `PROGRESS.md`
+- `docs/` — `PROJECT.md`, `ARCHITECTURE.md`, `PLAN.md`, `PROGRESS.md`, `TASKS.md`
 
 ## Dev
 
