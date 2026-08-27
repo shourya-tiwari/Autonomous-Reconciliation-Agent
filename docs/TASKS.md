@@ -104,22 +104,35 @@ payments are `_held` back from settlement.
 - [x] **DoD:** a matching run writes 679 entries; every decision is explained
       in-line without re-running.
 
-### 1.5 LLM reasoning layer (Day 3)
-- [ ] `src/recon/reasoning/llm_client.py` — structured-output call returning
-      `{decision: match|no_match|unsure, confidence: 0..1, rationale}`. Google
-      Gemini via the `google-genai` SDK, `response_schema` for structured output,
-      model `gemini-2.5-flash` (`config.settings.LLM_MODEL`).
-- [ ] **Replay cache**: hash the request → store/lookup response under
-      `data/llm_cache/`. `RECON_LLM_REPLAY_ONLY=1` (default) never hits network;
-      live mode records new entries. Commit the cache.
-- [ ] `src/recon/reasoning/prompts.py` — versioned prompt + output schema; audit
-      records the prompt version.
-- [ ] Route `unmatched-ambiguous` only. `confidence < LLM_CONFIDENCE_MIN` →
-      escalate, don't force.
-- [ ] Log every call (input context, raw output, parsed result) to the trail.
-- [ ] `tests/test_reasoning.py` — runs fully offline against the cache.
-- [ ] **DoD:** ambiguous records get a structured decision or an escalation;
-      pipeline still runs with no API key.
+### 1.5 LLM reasoning layer (Day 3) — DONE
+- [x] `src/recon/reasoning/llm_client.py` — `GeminiReasoner`. `response_schema`
+      (`ReasoningOutput`: `decision ∈ {match,no_match,unsure}`, `matched_candidate_id`,
+      `confidence`, `rationale`) via `google-genai`. Model **`gemini-3.6-flash`**
+      — `gemini-2.5-flash` is 404 for new API keys now.
+- [x] **Replay cache** — SHA-256 of `{prompt_version, model, request}` →
+      `data/llm_cache/<key>.json`. Three paths: cache hit / cache-miss+replay
+      (deterministic `unsure` fallback, run continues) / live (calls Gemini, writes
+      cache). `RECON_LLM_REPLAY_ONLY=1` default. `scripts/populate_llm_cache.py`
+      fills it live (rate-limit backoff for the free tier's 5 rpm).
+- [x] `src/recon/reasoning/prompts.py` — `PROMPT_VERSION = "recon-reason-v1"`,
+      system instruction, output schema. Version stamped on every audit entry and
+      folded into the cache key.
+- [x] Routes `unmatched-ambiguous` only. `confidence < LLM_CONFIDENCE_MIN` (0.60)
+      → escalate. A confident match with a residual amount variance
+      (cross-currency / partial) also escalates, but with the LLM's finding
+      attached to the rationale — it doesn't force money to move.
+- [x] Every call logged to the trail (stage `reason`): record, candidate ids,
+      raw model output, mapped outcome, source (`cache|gemini|fallback`).
+- [x] `tests/test_reasoning.py` — 14 tests, fully offline (fallback path + seeded
+      cache fixtures).
+- [x] `fail_once_ids` hook on the reasoner — raises `ReasoningTimeout` once per id
+      (the wiring point for task 1.7's retry demo).
+- [x] **DoD:** in replay mode with no key, all 112 ambiguous records get a
+      structured `unsure`/escalation and the run completes. With the cache
+      populated, they get real Gemini judgments.
+
+**Cache population:** `scripts/populate_llm_cache.py` run live over all 112; cache
+committed. (In progress / done — see PROGRESS.md.)
 
 ### 1.6 RAG grounding layer (Day 4)
 - [ ] Collect 5–10 real GST/tax invoicing docs from cbic-gst.gov.in →

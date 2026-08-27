@@ -22,9 +22,13 @@ Ingest -> Deterministic Match -> LLM Reasoning (ambiguous cases only) -> RAG Gro
   deterministically
 
 ### 3. LLM Reasoning Layer
-- Input: unmatched-ambiguous records only (not the full dataset — cost/latency control)
-- Output: structured decision (match/no-match) + confidence score
-- Low-confidence outputs escalate rather than force a decision
+- Input: `unmatched-ambiguous` records only (not the full dataset — cost/latency control)
+- Google Gemini (`gemini-3.6-flash`) via `google-genai`, `response_schema` for
+  structured output: `{decision, matched_candidate_id, confidence, rationale}`
+- Content-addressed replay cache (`data/llm_cache/`, committed) — the pipeline
+  runs offline with no API key; a cache miss falls back to a safe `unsure`/escalate
+- Low confidence, or a confident match with a residual amount variance, escalates
+  to a human — with the model's finding attached, never forcing money to move
 
 ### 4. RAG Grounding Layer
 - Input: unmatched-exception records
