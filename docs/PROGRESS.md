@@ -79,3 +79,38 @@ Keep entries short — this exists so a new session has continuity without re-re
   questions, then implement `scripts/pull_razorpay_sandbox.py`.
 
 ---
+
+## Session 3 — Phase 1 start (task 1.1, dataset)
+**Date:** 2026-08-28
+**Done:**
+- Resolved all 6 design questions (recorded in `docs/TASKS.md` "Design decisions").
+  LLM provider = **Google Gemini** (`google-genai`, `gemini-2.5-flash`) — not Claude.
+  Updated `requirements.txt` (google-genai + razorpay, dropped anthropic), `.env.example`
+  (GEMINI_API_KEY), `config/settings.py` (LLM_MODEL, LLM_CACHE_DIR), `CLAUDE.md`.
+- Implemented `scripts/pull_razorpay_sandbox.py` — paginated pull of payments/orders/
+  refunds/settlements to `data/raw/` + `manifest.json`. Refuses non-`rzp_test_` keys.
+  Fails cleanly with guidance when keys/deps missing. Smoke-tested.
+- Wrote `data/synthetic/mismatch_catalogue.md` — 13 injected discrepancy cases (incl. the
+  2 mandatory failure modes: malformed row, simulated API timeout), each with rationale +
+  expected pipeline behaviour.
+- Implemented `src/recon/eval/metrics.py` — metric set DEFINED (match P/R/F1, bucket
+  accuracy, %auto/escalated/exception/failed, throughput, llm/rag call counts). compute()
+  is a stub for Day 6.
+- Scaffolded `scripts/generate_synthetic.py` — CLI, INJECTION_PLAN, snapshot loader,
+  schema-derivation helpers. Row construction (`build_rows`) is a NotImplementedError
+  stub — deliberately left until a real snapshot exists so transforms match real fields.
+- `pyproject.toml`: pythonpath += "." so `config` imports resolve in tests.
+
+**Blocked / waiting on user:**
+- **Need Razorpay test-mode keys** in `.env` to run `pull_razorpay_sandbox.py`. Also may
+  need to create a few test payments/refunds first (test accounts start empty).
+- Dev deps not installed here (`pytest`, `ruff` missing) — run `pip install -r requirements.txt`
+  (heavy: pulls torch via sentence-transformers; consider a venv).
+
+**Next:**
+1. User runs the pull script → `data/raw/` populated.
+2. Curate `data/snapshot/{payments,refunds,settlements}.json` (~300–800 txns) together.
+3. Finish `generate_synthetic.py` `build_rows` against real fields → 3 CSVs + `matches.csv`.
+4. Then task 1.2 (ingest + canonical schema).
+
+---

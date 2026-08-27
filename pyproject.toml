@@ -5,9 +5,9 @@ description = "Autonomous Reconciliation Agent — Razorpay AI Buildathon 2026"
 requires-python = ">=3.11"
 
 [tool.pytest.ini_options]
-pythonpath = ["src"]
+pythonpath = ["src", "."]   # "src" for the recon package, "." for the config package
 testpaths = ["tests"]
 
 [tool.ruff]
 line-length = 100
-src = ["src", "scripts", "tests"]
+src = ["src", "scripts", "tests", "."]
