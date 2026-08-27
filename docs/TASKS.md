@@ -17,28 +17,25 @@ The whole pipeline must run end-to-end from a clean clone with no keys/network
 by the end of this phase. Audit logging starts at task 1.4 and every stage after
 it writes to the trail.
 
-### 1.1 Dataset & ground truth (Day 1)
-- [ ] `scripts/pull_razorpay_sandbox.py` — pull test-mode transactions (payments,
-      refunds, settlements, orders). Cover multi-currency, refunds, partial
-      captures, failed settlements. Write raw JSON to `data/raw/`, record pull
-      timestamp + query params.
-- [ ] Curate a frozen subset → `data/snapshot/` (committed). Target ~300–800
-      transactions — enough for real metrics, small enough to run fast.
-- [ ] `scripts/generate_synthetic.py` — derive the 3 source files from the
-      snapshot, each with its own schema/column names/date formats:
-      `bank_statement.csv`, `invoice_ledger.csv`, `gateway_export.csv` in
-      `data/synthetic/`.
-- [ ] Inject documented mismatches, config-driven, each written to
-      `data/synthetic/mismatch_catalogue.md` (what + why + expected pipeline
-      behaviour): amount rounding, split/partial payments, duplicate refs,
-      missing fields, FX rounding, timing offset, one malformed row, one
-      simulated API-timeout marker.
-- [ ] `data/ground_truth/matches.csv` — the true match mapping + expected
-      resolution bucket (auto / escalate / exception) for every record.
-- [ ] `src/recon/eval/metrics.py` — define (not run) the metric set: match
-      precision/recall, % auto-resolved, % escalated, throughput (records/sec).
-- [ ] **DoD:** `data/snapshot/` + `data/synthetic/` + `data/ground_truth/`
-      committed; mismatch catalogue explains every injected error.
+### 1.1 Dataset & ground truth (Day 1) — DONE
+- [x] `scripts/pull_razorpay_sandbox.py` — pulls payments/orders/refunds/
+      settlements to `data/raw/` + manifest. **Only 8 payments / 6 orders / 1
+      refund available** (S2S payment creation not enabled on the test account).
+- [x] Curated `data/snapshot/` — the 8 real txns as the schema anchor +
+      `provenance.md`. Corpus expanded synthetically (user-approved).
+- [x] `scripts/generate_synthetic.py` — generates a ~300-record corpus from the
+      real templates, then derives `gateway_export.csv` (paise/ISO),
+      `invoice_ledger.csv` (rupees/`YYYY-MM-DD`), `bank_statement.csv`
+      (rupees/`DD-MM-YYYY`, settlement-level). Deterministic (`--seed`).
+- [x] Injected discrepancies — 4 structural + 11 injected cases, all documented
+      in `data/synthetic/mismatch_catalogue.md` with expected buckets; counts in
+      `data/synthetic/injection_manifest.json`. Includes both failure modes.
+- [x] `data/ground_truth/matches.csv` — `record_id, source, true_match_id,
+      expected_bucket, case` for all 680 source records.
+- [x] `src/recon/eval/metrics.py` — metric set defined; `compute()` stubbed for Day 6.
+- [x] **DoD:** `data/{snapshot,synthetic,ground_truth}/` generated; catalogue
+      complete. Corpus buckets: ~464 auto / ~112 escalated / ~48 exception /
+      ~55 ignored / 1 failed.
 
 ### 1.2 Ingest + canonical schema (Day 2 AM)
 - [ ] `src/recon/ingest/schema.py` — pydantic `CanonicalTxn` model: `txn_id`,

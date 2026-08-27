@@ -96,23 +96,29 @@ Keep entries short — this exists so a new session has continuity without re-re
 - Implemented `src/recon/eval/metrics.py` — metric set DEFINED (match P/R/F1, bucket
   accuracy, %auto/escalated/exception/failed, throughput, llm/rag call counts). compute()
   is a stub for Day 6.
-- Scaffolded `scripts/generate_synthetic.py` — CLI, INJECTION_PLAN, snapshot loader,
-  schema-derivation helpers. Row construction (`build_rows`) is a NotImplementedError
-  stub — deliberately left until a real snapshot exists so transforms match real fields.
 - `pyproject.toml`: pythonpath += "." so `config` imports resolve in tests.
-
 - `.venv/` created (Python 3.13), `requirements.txt` installed. `pytest` (6 skipped stubs)
-  and `ruff` both green. Note resolved versions: `google-genai` 2.20, `razorpay` 2.0.1,
-  pandas 3.0.5.
+  and `ruff` both green. Resolved versions: `google-genai` 2.20, `razorpay` 2.0.1, pandas 3.0.5.
 
-**Blocked / waiting on user:**
-- **Need Razorpay test-mode keys** in `.env` to run `pull_razorpay_sandbox.py`. Also may
-  need to create a few test payments/refunds first (test accounts start empty).
+**Task 1.1 completed later same session:**
+- User ran the pull → **only 8 payments / 6 orders / 1 refund** (S2S payment creation not
+  enabled on the test account; probed `createPaymentJson` → 404). All INR.
+- Decision (user-approved): use the 8 real txns as the *schema anchor* in `data/snapshot/`
+  + `provenance.md`; expand synthetically to ~300 for the eval corpus. Provenance stated
+  honestly — 300 not claimed as real.
+- Curated `data/snapshot/` (payments/orders/refunds/pull_manifest + provenance.md).
+- Fully implemented `scripts/generate_synthetic.py`: generates Razorpay-shaped payments
+  calibrated from the real pull → orders/refunds/T+2 settlement batches → 3 source CSVs
+  with independent schemas → injects 11 documented cases → `matches.csv` (680 rows) +
+  `injection_manifest.json`. Deterministic. `--dry-run` supported.
+- Rewrote `mismatch_catalogue.md` to match the implementation (4 structural + 11 injected
+  cases, expected buckets). Added `ignored` bucket to `metrics.py` (failed payments).
+- Corpus (seed 42): 307 gateway / 245 invoice / 128 bank rows. GT buckets:
+  464 auto_resolved / 112 escalated / 48 exception / 55 ignored / 1 failed.
+- `data/` is committed (generated corpus + snapshot). ruff + pytest green.
 
 **Next:**
-1. User runs the pull script → `data/raw/` populated.
-2. Curate `data/snapshot/{payments,refunds,settlements}.json` (~300–800 txns) together.
-3. Finish `generate_synthetic.py` `build_rows` against real fields → 3 CSVs + `matches.csv`.
-4. Then task 1.2 (ingest + canonical schema).
+- Task 1.2 — ingest + canonical `CanonicalTxn` pydantic schema, one loader per source,
+  malformed-row rejection path. `tests/test_ingest.py`.
 
 ---

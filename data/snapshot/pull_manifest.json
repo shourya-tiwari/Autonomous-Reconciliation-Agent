@@ -1,0 +1,17 @@
+{
+  "pulled_at": "2026-08-27T20:30:49.097911+00:00",
+  "key_mode": "test",
+  "key_id": "rzp_test_TUuSvzHn0SK8AB",
+  "window": {
+    "from": "2026-05-29T20:30:49+00:00",
+    "to": "2026-08-27T20:30:49+00:00",
+    "days": 90
+  },
+  "max_per_resource": 1000,
+  "counts": {
+    "payments": 8,
+    "orders": 6,
+    "refunds": 1,
+    "settlements": 0
+  }
+}

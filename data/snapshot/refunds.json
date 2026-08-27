@@ -1,0 +1,21 @@
+[
+  {
+    "acquirer_data": {
+      "arn": "10000000000000"
+    },
+    "amount": 150000,
+    "batch_id": null,
+    "created_at": 1787862350,
+    "currency": "INR",
+    "entity": "refund",
+    "id": "rfnd_TUvQVYN9MSrR1i",
+    "notes": {
+      "comment": ""
+    },
+    "payment_id": "pay_TUvIIpzEisUOVb",
+    "receipt": null,
+    "speed_processed": "normal",
+    "speed_requested": "normal",
+    "status": "processed"
+  }
+]

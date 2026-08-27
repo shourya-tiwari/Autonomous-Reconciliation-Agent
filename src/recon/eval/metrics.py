@@ -8,7 +8,9 @@ Ground-truth columns (see scripts/generate_synthetic.py)
 -------------------------------------------------------
 * ``record_id``        — id of a record in one of the 3 source files
 * ``true_match_id``    — id of the record it truly reconciles with, or "" if none
-* ``expected_bucket``  — one of: auto_resolved | escalated | exception
+* ``expected_bucket``  — one of: auto_resolved | escalated | exception | ignored | failed
+                         (``ignored`` = correctly filtered pre-matching, e.g. a failed
+                          payment; ``failed`` = the pipeline errored on the record)
 
 Pipeline output (per record), produced by recon.agent.orchestrator
 ------------------------------------------------------------------
@@ -27,6 +29,7 @@ match_f1          : harmonic mean of the two
 auto_resolved_pct : records ending in auto_resolved / total
 escalated_pct     : records ending in escalated / total
 exception_pct     : records ending in exception / total
+ignored_pct       : records ending in ignored / total
 failed_pct        : records ending in failed / total
 bucket_accuracy   : predicted_bucket == expected_bucket / total
 throughput_rps    : total records / wall-clock seconds for the full run
@@ -50,6 +53,7 @@ class ReconMetrics:
     auto_resolved_pct: float
     escalated_pct: float
     exception_pct: float
+    ignored_pct: float
     failed_pct: float
     bucket_accuracy: float
     throughput_rps: float

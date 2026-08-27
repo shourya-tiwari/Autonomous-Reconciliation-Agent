@@ -15,6 +15,9 @@ learning_log.md
 # live data pulls — the COMMITTED frozen copy lives in data/snapshot/
 data/raw/
 
+# regenerable from scripts/generate_synthetic.py (the 3 source CSVs + manifest are committed)
+data/synthetic/base_transactions.json
+
 # generated at runtime
 outputs/audit/*.jsonl
 outputs/reports/*
