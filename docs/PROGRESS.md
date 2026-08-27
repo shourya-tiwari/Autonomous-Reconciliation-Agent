@@ -244,3 +244,63 @@ churn now.
   with retry, and demonstrate both injected failure modes handled.
 
 ---
+
+## Session 7 — tasks 1.7 + 1.8, and a Phase 1 scan. **PHASE 1 COMPLETE.**
+**Date:** 2026-08-28
+**Done — 1.7 (agent orchestration):**
+- `src/recon/agent/orchestrator.py` — `run_pipeline()` drives ingest → match → reason →
+  ground → log and reduces every input row to one terminal bucket
+  (`auto_resolved | escalated | exception | ignored | failed`). Nothing dropped, nothing guessed.
+- `src/recon/agent/retry.py` — bounded retry + exponential backoff. Only genuinely
+  transient errors retry; a malformed request does not. `RetryingReasoner` reports which
+  record it retried so the retry lands in the trail.
+- `RejectedRow.record_id` added — a rejected row is now nameable in the trail and
+  scoreable against ground truth.
+- `scripts/run_pipeline.py` — the clean-clone entrypoint. Warms the policy index first so
+  the one-off model load doesn't silently inflate throughput.
+
+**Done — 1.8 (evaluation):**
+- `src/recon/eval/metrics.py` — `compute()` + `render_summary()`. N:1 settlements scored
+  separately; setup time reported beside throughput rather than folded in.
+- `outputs/reports/{metrics.json,summary.md}` now **committed** as the evidence for the
+  numbers we quote (the ~480KB per-run audit JSONL stays ignored, regenerable).
+
+### Measured results — 680 records, no cherry-picking
+| Metric | Value | Basis |
+|---|---|---|
+| Bucket accuracy | **100.0%** | 680/680 in the expected terminal bucket |
+| Match precision | **100.0%** | 384/384 asserted 1:1 pairings correct |
+| Match recall | **78.4%** | 384/490 true pairings auto-paired |
+| Match F1 | **87.9%** | |
+| Settlement accuracy | **100.0%** | 80/80 N:1 batches matched to the exact set |
+| Throughput | **99.2 rec/s** | after a one-off 15.9s model load |
+| LLM usage | **112 (16%)** | deterministic layer absorbs the rest |
+| Retries absorbed | **1** | the injected timeout |
+
+Workload: 68.2% auto-resolved / 16.5% escalated / 7.1% exception / 8.1% ignored /
+0.1% failed. Recall is below 100% **by design** — partial captures, duplicate refs and
+FX variances escalate rather than being guessed. The summary states that trade-off
+explicitly so a judge isn't left wondering.
+
+**Phase 1 scan — one real bug found and fixed:**
+- The README claimed "no API keys and **no network**". False: RAG downloads a ~90MB
+  embedding model on first run, and if it couldn't, `run_pipeline` **crashed** — breaking
+  the project's #1 non-negotiable. Now `run_grounding` degrades: exceptions are still
+  reported (without citations, with a message saying how to fix it) and the run
+  completes. README reworded honestly. Test added.
+- Also refreshed: README (real metrics, failure-mode table, data provenance),
+  `ARCHITECTURE.md` (matches what was built), `PLAN.md` Days 2–6, `TASKS.md` 1.7/1.8,
+  stale `config/settings.py` docstring.
+
+**Totals:** 117 tests passing, ruff clean, 3113 lines across `src/`.
+
+**Still open (carried into Phase 2):**
+- LLM cache is 20/112 (Gemini free-tier daily quota). Not blocking — uncached records
+  fall back to a safe escalation, which is where they belong anyway. Enabling billing
+  (~$0.01) or waiting out the quota fills it.
+- Clean-clone re-verification on a *separate* clone + fresh venv → task 2.5.
+
+**Next:** Phase 2 — repo/docs polish, architecture diagram, audit-trail presentation,
+pitch video.
+
+---

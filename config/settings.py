@@ -1,9 +1,11 @@
 """Central configuration: paths, matching thresholds, model + RAG settings.
 
-Values here are read from environment variables (see .env.example) with safe
-defaults so the pipeline runs from a clean clone with no setup.
-TODO: fill in as components land. Keep every tunable (fuzzy tolerances,
-confidence cutoffs, top-k) in this file, not scattered across modules.
+Values are read from environment variables (see .env.example) with safe defaults,
+so the pipeline runs from a clean clone with no setup and no API key.
+
+Every tunable lives here rather than being scattered across modules — the
+matching thresholds in particular are the knobs that decide what gets
+auto-resolved versus escalated, and they should be reviewable in one place.
 """
 from __future__ import annotations
 

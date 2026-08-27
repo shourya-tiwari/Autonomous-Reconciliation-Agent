@@ -1,8 +1,15 @@
-# Architecture (Draft — refine as built)
+# Architecture
+
+Phase 1 is complete; this describes what was actually built. Measured results are
+in [`../outputs/reports/summary.md`](../outputs/reports/summary.md).
 
 ## Pipeline Flow
 
 Ingest -> Deterministic Match -> LLM Reasoning (ambiguous cases only) -> RAG Grounding (exceptions only) -> Agent Orchestration (retry / escalate / log) -> Audit Trail Output
+
+Each stage narrows what the next one sees. That is the core cost-control
+decision: the deterministic layer resolves 68% of the corpus, so only **16%** of
+records ever reach the LLM and **7%** reach RAG.
 
 ## Components
 
@@ -41,10 +48,21 @@ Ingest -> Deterministic Match -> LLM Reasoning (ambiguous cases only) -> RAG Gro
 - refund debit → s.34 credit-note rule · bank charge → s.16 / s.17 / r.38 ITC
 
 ### 5. Agent Orchestration
-- Coordinates the full loop: ingest -> match -> reason -> ground -> log
-- Retry logic for transient failures (e.g. API timeout)
-- Escalation path for anything the pipeline can't confidently resolve
-- At least one deliberate failure mode demonstrated as gracefully handled
+- `run_pipeline()` coordinates the full loop and reduces every input row to one
+  terminal bucket: `auto_resolved | escalated | exception | ignored | failed`
+- Bounded retry with exponential backoff on transient failures only; a malformed
+  request is not retried
+- Anything unresolved escalates — with the LLM's finding, or the reason one could
+  not be obtained, attached
+- **Two** injected failure modes demonstrated end to end (see below)
+
+## Failure modes handled
+
+| Injected | Where | Behaviour |
+|----------|-------|-----------|
+| Malformed row | ingest | Rejected with a per-field reason, logged, run continues → `failed` |
+| LLM API timeout | reasoning | Retried with backoff and absorbed; retry appears in the trail. Exhausted retries escalate that record only |
+| *(unplanned)* policy store unavailable | RAG | Exceptions still reported, without citations, rather than failing the run |
 
 ### 6. Audit Trail
 - `src/recon/audit/logger.py` — append-only JSONL, one object per decision:
@@ -59,4 +77,5 @@ Ingest -> Deterministic Match -> LLM Reasoning (ambiguous cases only) -> RAG Gro
 - DL-based confidence calibration, replacing/augmenting LLM confidence scoring in step 3
 
 ## Diagram
-TODO: convert flow above into a visual diagram for the README / pitch deck once pipeline is stable.
+TODO (task 2.2): convert the flow above into a visual diagram for the README /
+pitch deck.

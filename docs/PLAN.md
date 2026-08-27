@@ -10,30 +10,30 @@ Time budget: ~6-8 hrs/day, solo build.
 
 ## Day 2 — Deterministic Matching Layer
 - [x] Ingest + canonical schema (prerequisite, task 1.2) — 680 rows → 679 normalised + 1 rejected
-- [ ] Exact match (ref/amount/date)
-- [ ] Fuzzy match (tolerant amount/date/name matching)
-- [ ] This is the accuracy floor / baseline — log everything from this point on
+- [x] Exact match (ref + amount + currency + day); ambiguous keys deferred to fuzzy
+- [x] Fuzzy match (rapidfuzz name similarity, amount/date tolerance) + N:1 settlement subset-sum
+- [x] The accuracy floor: 100% bucket accuracy, 68% of the corpus resolved deterministically. Audit logging wired in from here on
 
-## Day 3 — LLM Reasoning Layer
-- [ ] Route deterministic-layer punts (ambiguous cases) to LLM
-- [ ] Structured output only: decision + confidence score (no free-form prose as the primary output)
-- [ ] Log every LLM decision + input context for audit trail
+## Day 3 — LLM Reasoning Layer — DONE
+- [x] Only deterministic-layer punts (112 ambiguous records, 16% of the corpus) go to the LLM
+- [x] Structured output only — Gemini `response_schema` → `{decision, matched_candidate_id, confidence, rationale}`
+- [x] Every call logged with its input context, raw output and mapped outcome; committed replay cache keeps it reproducible offline
 
-## Day 4 — RAG Layer
-- [ ] Build vector store from 5-10 real GST/tax policy documents
-- [ ] Wire exception explanations to cite retrieved clauses
-- [ ] Validate retrieval quality (does the cited clause actually match the exception?)
+## Day 4 — RAG Layer — DONE
+- [x] Vector store from 9 real GST documents (CGST Act ss.16/17/31/34/54, Rules 38/46/53, Circular 160/16/2021)
+- [x] Exception explanations quote the retrieved clause verbatim, with document title and source URL
+- [x] Retrieval quality gate in `build_rag_index.py --check`: refund → s.34, bank charge → s.16/r.38
 
-## Day 5 — Agent Orchestration
-- [ ] Full loop: ingest → match → escalate → log
-- [ ] Retry logic for transient failures
-- [ ] Inject at least one deliberate failure mode (malformed row, API timeout, etc.) and handle it gracefully — this must be demonstrable, not theoretical
+## Day 5 — Agent Orchestration — DONE
+- [x] Full loop: ingest → match → reason → ground → log; every row lands in exactly one terminal bucket
+- [x] Bounded retry with exponential backoff; only genuinely transient errors are retried
+- [x] **Two** failure modes injected and demonstrated: malformed row rejected with a reason, LLM timeout retried and absorbed — both visible in the run output and the audit trail
 
-## Day 6 — Evaluation
-- [ ] Run full pipeline on complete dataset
-- [ ] Compute real metrics (precision/recall/throughput/% auto-resolved/% escalated)
-- [ ] Fix whatever breaks
-- [ ] Confirm the failure-handling case is demo-ready
+## Day 6 — Evaluation — DONE
+- [x] Full pipeline run on the complete 680-record dataset
+- [x] Real metrics: bucket accuracy 100%, match precision 100% (384/384), recall 78.4%, settlement accuracy 100% (80/80), 99 rec/s, 68.2% auto-resolved / 16.5% escalated
+- [x] Fixed in the Phase-1 scan: an offline first run could not fetch the embedding model and killed the pipeline; it now degrades instead
+- [x] Failure-handling demo is clean and printed by `run_pipeline.py`
 
 ## Day 7 — Repo & Docs Polish
 - [ ] Clean repo structure, clear README
