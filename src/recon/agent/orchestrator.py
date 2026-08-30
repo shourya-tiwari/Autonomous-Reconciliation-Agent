@@ -36,7 +36,7 @@ from pathlib import Path
 from config import settings
 from recon.audit import AuditLogger
 from recon.ingest import IngestResult, load_all
-from recon.matching import Bucket, MatchReport, reconcile
+from recon.matching import ALL_STAGES, Bucket, MatchReport, MatchStages, reconcile
 from recon.rag import GroundingReport, PolicyIndex, run_grounding
 from recon.reasoning import GeminiReasoner, Outcome, ReasoningReport, run_reasoning
 
@@ -114,7 +114,16 @@ def run_pipeline(
     retry_policy: RetryPolicy = DEFAULT_POLICY,
     inject_timeout: bool = True,
     live_llm: bool = False,
+    stages: MatchStages = ALL_STAGES,
+    use_llm: bool = True,
+    use_rag: bool = True,
 ) -> PipelineResult:
+    """Run the whole loop and reduce every input row to one terminal bucket.
+
+    ``stages`` / ``use_llm`` / ``use_rag`` exist for the ablation (task 3.3),
+    which measures what each layer buys by removing it. They all default to on,
+    so the shipped pipeline is the default call.
+    """
     directory = Path(data_dir) if data_dir is not None else settings.SYNTHETIC_DIR
     if audit is None:
         audit = AuditLogger(path=None)
@@ -148,7 +157,7 @@ def run_pipeline(
         )
 
     # 2 — deterministic matching.
-    matching = reconcile(ingest, audit)
+    matching = reconcile(ingest, audit, stages)
     result.matching = matching
     for decision in matching.decisions:
         if decision.bucket is Bucket.MATCHED:
@@ -169,7 +178,19 @@ def run_pipeline(
             )
 
     # 3 — LLM reasoning over the ambiguous bucket only, behind retry.
-    if reasoner is None:
+    by_source = {d.record_id: d.source for d in matching.decisions}
+    if not use_llm:
+        # Ablation: no reasoning layer. Ambiguity is real either way, so those
+        # records escalate to a human unexamined rather than vanishing.
+        for decision in matching.in_bucket(Bucket.AMBIGUOUS):
+            result.outcomes.append(
+                RecordOutcome(
+                    decision.record_id, decision.source, FinalBucket.ESCALATED,
+                    "match", decision.method, decision.confidence,
+                    rationale=f"{decision.rationale} (no reasoning layer)",
+                )
+            )
+    if use_llm and reasoner is None:
         reasoner = GeminiReasoner(
             replay_only=not live_llm,
             fail_once_ids=_armed_timeout_ids(directory) if inject_timeout else None,
@@ -189,12 +210,12 @@ def run_pipeline(
             ),
         )
 
-    retrying = RetryingReasoner(reasoner, policy=retry_policy, on_retry=_log_retry)
-    reasoning = run_reasoning(matching, ingest, audit, retrying)
-    result.reasoning = reasoning
-    result.retries = list(retrying.retries)
-    by_source = {d.record_id: d.source for d in matching.decisions}
-    for outcome in reasoning.outcomes:
+    if use_llm:
+        retrying = RetryingReasoner(reasoner, policy=retry_policy, on_retry=_log_retry)
+        reasoning = run_reasoning(matching, ingest, audit, retrying)
+        result.reasoning = reasoning
+        result.retries = list(retrying.retries)
+    for outcome in (result.reasoning.outcomes if result.reasoning else ()):
         bucket = (
             FinalBucket.AUTO_RESOLVED
             if outcome.outcome is Outcome.RESOLVED_MATCH
@@ -209,9 +230,20 @@ def run_pipeline(
         )
 
     # 4 — RAG grounding over the exception bucket only.
-    grounding = run_grounding(matching, ingest, audit, index)
-    result.grounding = grounding
-    for explanation in grounding.explanations:
+    if not use_rag:
+        # Ablation: no policy layer. The exception is still reported, just
+        # without the clause that explains what to do about it.
+        for decision in matching.in_bucket(Bucket.EXCEPTION):
+            result.outcomes.append(
+                RecordOutcome(
+                    decision.record_id, decision.source, FinalBucket.EXCEPTION,
+                    "match", decision.method, decision.confidence,
+                    rationale=f"{decision.rationale} (no policy layer — uncited)",
+                )
+            )
+    else:
+        result.grounding = run_grounding(matching, ingest, audit, index)
+    for explanation in (result.grounding.explanations if result.grounding else ()):
         primary = explanation.primary
         result.outcomes.append(
             RecordOutcome(

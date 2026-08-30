@@ -35,13 +35,19 @@ from recon.ingest import CanonicalTxn, IngestResult, Source
 
 from .exact import exact_pairs
 from .fuzzy import candidates_for, net_of_fees, score_pair
-from .types import Bucket, Candidate, MatchDecision, MatchReport
+from .types import ALL_STAGES, Bucket, Candidate, MatchDecision, MatchReport, MatchStages
 
 SETTLE_LAG = timedelta(days=2)
 _SUBSET_MAX = 14  # groups larger than this only get the all-members check
 
 
-def reconcile(ingest: IngestResult, audit: AuditLogger | None = None) -> MatchReport:
+def reconcile(
+    ingest: IngestResult,
+    audit: AuditLogger | None = None,
+    stages: MatchStages = ALL_STAGES,
+) -> MatchReport:
+    """Bucket every money-moving record. ``stages`` is for the ablation only —
+    the default runs the whole layer, which is what the pipeline always uses."""
     # note: `audit or ...` would be wrong — an empty AuditLogger is falsy (__len__)
     if audit is None:
         audit = AuditLogger(path=None)
@@ -52,9 +58,9 @@ def reconcile(ingest: IngestResult, audit: AuditLogger | None = None) -> MatchRe
     bank = ingest.by_source(Source.BANK)
 
     live_gateway = _filter_dead(gateway, report, audit)
-    _match_invoice_gateway(invoice, live_gateway, report, audit)
+    _match_invoice_gateway(invoice, live_gateway, report, audit, stages)
     _match_settlements(
-        [b for b in bank if b.status == "settlement"], live_gateway, report, audit
+        [b for b in bank if b.status == "settlement"], live_gateway, report, audit, stages
     )
     _bank_exceptions([b for b in bank if b.status != "settlement"], report, audit)
     return report
@@ -91,8 +97,12 @@ def _match_invoice_gateway(
     gateways: list[CanonicalTxn],
     report: MatchReport,
     audit: AuditLogger,
+    stages: MatchStages = ALL_STAGES,
 ) -> None:
-    pairs, inv_left, gw_left = exact_pairs(invoices, gateways)
+    if stages.exact:
+        pairs, inv_left, gw_left = exact_pairs(invoices, gateways)
+    else:
+        pairs, inv_left, gw_left = [], list(invoices), list(gateways)
     for inv, gw in pairs:
         for record, other in ((inv, gw), (gw, inv)):
             decision = MatchDecision(
@@ -106,7 +116,10 @@ def _match_invoice_gateway(
             )
             _record(decision, report, audit, inputs={"counterpart": other.txn_id})
 
-    _fuzzy_assign(inv_left, gw_left, report, audit)
+    if stages.fuzzy:
+        _fuzzy_assign(inv_left, gw_left, report, audit)
+    else:
+        _unresolved(inv_left + gw_left, report, audit, "fuzzy matching disabled")
 
 
 def _margin(cands: list[Candidate]) -> float:
@@ -211,7 +224,11 @@ def _match_settlements(
     gateways: list[CanonicalTxn],
     report: MatchReport,
     audit: AuditLogger,
+    stages: MatchStages = ALL_STAGES,
 ) -> None:
+    if not stages.settlement:
+        _unresolved(settlements, report, audit, "N:1 settlement matching disabled")
+        return
     by_date: dict[object, list[CanonicalTxn]] = defaultdict(list)
     for gw in gateways:
         if gw.currency == "INR":
@@ -286,6 +303,27 @@ def _find_settling_subset(
         if len(unique) > 1:
             return None
     return None
+
+
+def _unresolved(
+    records: list[CanonicalTxn], report: MatchReport, audit: AuditLogger, why: str
+) -> None:
+    """Records a disabled layer would have handled — ambiguous, never dropped.
+
+    Ablation-only path. Routing them to ``unmatched-ambiguous`` is the honest
+    reading of "this layer is missing": nothing is resolved and nothing is
+    discarded, so a person (or the LLM stage) still has to settle each one.
+    """
+    for txn in records:
+        decision = MatchDecision(
+            record_id=txn.txn_id,
+            source=str(txn.source),
+            bucket=Bucket.AMBIGUOUS,
+            method="stage-disabled",
+            confidence=0.0,
+            rationale=f"{why} — left unresolved for review",
+        )
+        _record(decision, report, audit, inputs={"disabled": why})
 
 
 # --- step 5: bank exceptions ---------------------------------------

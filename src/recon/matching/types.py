@@ -79,6 +79,29 @@ class MatchDecision:
         }
 
 
+@dataclass(frozen=True)
+class MatchStages:
+    """Which deterministic layers to run. All on is the real pipeline.
+
+    Exists so the ablation (task 3.3) can measure what each layer actually buys
+    by turning it off and re-scoring, rather than asserting a contribution. A
+    disabled layer never silently drops records: whatever it would have resolved
+    falls through to ``unmatched-ambiguous``, i.e. "a human still has to look".
+    """
+
+    exact: bool = True
+    fuzzy: bool = True
+    settlement: bool = True
+
+    @property
+    def label(self) -> str:
+        on = [name for name in ("exact", "fuzzy", "settlement") if getattr(self, name)]
+        return "+".join(on) if on else "none"
+
+
+ALL_STAGES = MatchStages()
+
+
 @dataclass
 class MatchReport:
     """The full output of the matching layer for one run."""

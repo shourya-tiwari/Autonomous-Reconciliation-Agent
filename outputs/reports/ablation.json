@@ -1,0 +1,1928 @@
+{
+  "n_records": 680,
+  "money_moving": 624,
+  "variants": [
+    {
+      "key": "exact",
+      "label": "Exact only",
+      "blurb": "Reference id + amount + currency + day must all agree. This is the naive baseline: a join on the reference column.",
+      "stages": {
+        "exact": true,
+        "fuzzy": false,
+        "settlement": false,
+        "llm": false,
+        "rag": false
+      },
+      "counts": {
+        "auto_resolved": 256,
+        "escalated": 320,
+        "exception": 48,
+        "ignored": 55,
+        "failed": 1
+      },
+      "seconds": 0.095,
+      "findings_attached": 0,
+      "citations_attached": 0,
+      "metrics": {
+        "bucket_accuracy": 0.6941,
+        "match_precision": 1.0,
+        "match_recall": 0.5224,
+        "match_f1": 0.6863,
+        "settlement_accuracy": 0.0,
+        "auto_resolved_pct": 0.3765,
+        "escalated_pct": 0.4706,
+        "exception_pct": 0.0706,
+        "ignored_pct": 0.0809,
+        "failed_pct": 0.0015,
+        "throughput_rps": 7202.0,
+        "throughput_rps_incl_setup": 7202.0,
+        "elapsed_seconds": 0.09,
+        "setup_seconds": 0.0,
+        "llm_call_count": 0,
+        "rag_call_count": 0,
+        "retry_count": 0,
+        "n_records": 680,
+        "matches_asserted": 256,
+        "matches_correct": 256,
+        "matches_expected": 490,
+        "settlements_correct": 0,
+        "settlements_total": 80,
+        "misbucketed": [
+          {
+            "record_id": "INV-2026-00004",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00009",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00012",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00013",
+            "case": "missing_pg_ref",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00016",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00017",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00029",
+            "case": "missing_pg_ref",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00030",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00035",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00041",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00043",
+            "case": "missing_pg_ref",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00047",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00052",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00053",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00054",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00055",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00064",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00074",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00084",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00085",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00090",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00091",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00093",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00097",
+            "case": "missing_pg_ref",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00098",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00101",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00103",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00109",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00111",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00115",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00121",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00126",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00128",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00130",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00131",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00138",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00144",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00157",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00159",
+            "case": "missing_pg_ref",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00161",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00163",
+            "case": "missing_pg_ref",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00167",
+            "case": "missing_pg_ref",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00169",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00179",
+            "case": "missing_pg_ref",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00187",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00189",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00190",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00194",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00195",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00201",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00204",
+            "case": "missing_pg_ref",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00205",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00208",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00213",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00218",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00220",
+            "case": "missing_pg_ref",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00222",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00231",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00233",
+            "case": "missing_pg_ref",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00234",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00235",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00237",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00242",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "INV-2026-00245",
+            "case": "missing_pg_ref",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_S8RpLRl9XFrA62",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_CqDGvhIvnyAuBw",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_iOnsd624MAE86P",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_ArXxtG7gGv0LOq",
+            "case": "missing_pg_ref",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_6A9qQCwV2nrABa",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_xHZdxLceXKPnm4",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_AzjKV65IgrHvzx",
+            "case": "missing_pg_ref",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_gGweRPKuu8TBNE",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_XMRqOGqleigCCR",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_Eo8dnNzoCXB1Bh",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_ekgd2IbyVfqjO2",
+            "case": "missing_pg_ref",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_e71imARDL6KFQr",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_2qFl41sNLjVHWG",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_U4arG5RBmHWOR3",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_BzPoBrUBHtYDZw",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_TfRNfRT8LjIcku",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_45kkrl0M17EmxI",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_euPH7M3EHMoQro",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_0gwrGhsxsbiWA6",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_y5Kcnm1ys3J6xI",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_0Xv00kKXR4bR6I",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_q19Qf7W491h1pS",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_GQkqqjkrsWw6SE",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_WDFDTA7Xrc5UTI",
+            "case": "missing_pg_ref",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_x7CHHP1QXqE7rs",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_T5lbbFj1hnunT6",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_QPHhalZaAHv9O5",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_hJyV4ZjtfbaVjM",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_4iCppaX3QjBvKN",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_6cv1WChGtaPxgw",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_0D1K6e3F1xsd0i",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_UJfAWjuDUHqyAR",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_rwQuDBWEgOfrZ3",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_98i54tI6ht2TV2",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_TfVc0PkwBM2fYl",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_xDALAj7DVAf4sH",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_L0brHeLUtINcq8",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_hgmmqGmRscEm5u",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_AxvpCPZygFP0xO",
+            "case": "missing_pg_ref",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_Xe7CpRsZe9Obzx",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_x4yfpARHeT9Rlx",
+            "case": "missing_pg_ref",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_cJjNcJdql7LIbS",
+            "case": "missing_pg_ref",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_FeYVGS7kUaS550",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_5UQSyPx3BpdbIK",
+            "case": "missing_pg_ref",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_J8cKvWB9h3lcBG",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_9M9BjcYmxU0gd6",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_37DHpk6Rg9b5ux",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_dFZ1Amm4WvPR8L",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_TP3fAbnFbmOHnK",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_ZTvvWGvgSCecSb",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_XQ8DkPcNrAuXVc",
+            "case": "missing_pg_ref",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_fOc6lbglbNyEMK",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_YZ8fOcR9GLw4yW",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_DztgjzEPyVcfph",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_DE3i5CyiSN8mhQ",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_ZIKYoWWKr99HXg",
+            "case": "missing_pg_ref",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_oOw6cjBwBeiwtr",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_NJgCKgr3fEwZyE",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_0Yg7NZRBT7qYHD",
+            "case": "missing_pg_ref",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_hfSxR8e42kAQFH",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_GlozIoDSBbszpP",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_g8n7WhG2KYfvJr",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_TUvAAV8PyckEVu",
+            "case": "timing_offset",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "pay_TUvTa327TMguwL",
+            "case": "missing_pg_ref",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR380370543651",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR385011729646",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR329917059601",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR687635059953",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR171676278373",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR763465551655",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR338884109955",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR875028293612",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR804441507436",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR815911951246",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR898006869456",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR455062876651",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR235702740542",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR664798246305",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR382012150325",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR786352546265",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR682338835286",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR952613252925",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR629631753559",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR213727904828",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR355021595241",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR695274810862",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR290063612483",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR242884111368",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR713457229303",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR596465547165",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR263652012242",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR224450052888",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR704128085439",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR330066714617",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR293202255204",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR881896116608",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR259634413517",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR147764874987",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR301927470105",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR289966487016",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR860479926433",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR523148860519",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR578722677486",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR226183572600",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR658473740586",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR837002929702",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR713612681983",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR631187533573",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR701343542614",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR998007273115",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR307427471528",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR522507406246",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR202206733669",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR814336060257",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR805422473796",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR660878201350",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR154782811039",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR631657546626",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR560748473227",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR927996845029",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR806738292187",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR311047188326",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR440654737695",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR748464650651",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR314764041079",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR949258208209",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR301502682635",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR503741993903",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR996863773845",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR582664943234",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR185186772816",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR122898220618",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR576939269929",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR838291507022",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR199938187638",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR113201981079",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR428010811873",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR348861555518",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR694625427197",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR208765455495",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR776022798408",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR752475574006",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR947263321802",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR618053001377",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          }
+        ]
+      }
+    },
+    {
+      "key": "exact_fuzzy",
+      "label": "+ fuzzy",
+      "blurb": "Adds tolerant scoring over amount / date / counterparty name / reference, gated on a confidence threshold and a margin over the runner-up.",
+      "stages": {
+        "exact": true,
+        "fuzzy": true,
+        "settlement": false,
+        "llm": false,
+        "rag": false
+      },
+      "counts": {
+        "auto_resolved": 384,
+        "escalated": 192,
+        "exception": 48,
+        "ignored": 55,
+        "failed": 1
+      },
+      "seconds": 0.347,
+      "findings_attached": 0,
+      "citations_attached": 0,
+      "metrics": {
+        "bucket_accuracy": 0.8824,
+        "match_precision": 1.0,
+        "match_recall": 0.7837,
+        "match_f1": 0.8787,
+        "settlement_accuracy": 0.0,
+        "auto_resolved_pct": 0.5647,
+        "escalated_pct": 0.2824,
+        "exception_pct": 0.0706,
+        "ignored_pct": 0.0809,
+        "failed_pct": 0.0015,
+        "throughput_rps": 1966.0,
+        "throughput_rps_incl_setup": 1966.0,
+        "elapsed_seconds": 0.35,
+        "setup_seconds": 0.0,
+        "llm_call_count": 0,
+        "rag_call_count": 0,
+        "retry_count": 0,
+        "n_records": 680,
+        "matches_asserted": 384,
+        "matches_correct": 384,
+        "matches_expected": 490,
+        "settlements_correct": 0,
+        "settlements_total": 80,
+        "misbucketed": [
+          {
+            "record_id": "UTR380370543651",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR385011729646",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR329917059601",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR687635059953",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR171676278373",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR763465551655",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR338884109955",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR875028293612",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR804441507436",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR815911951246",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR898006869456",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR455062876651",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR235702740542",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR664798246305",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR382012150325",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR786352546265",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR682338835286",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR952613252925",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR629631753559",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR213727904828",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR355021595241",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR695274810862",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR290063612483",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR242884111368",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR713457229303",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR596465547165",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR263652012242",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR224450052888",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR704128085439",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR330066714617",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR293202255204",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR881896116608",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR259634413517",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR147764874987",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR301927470105",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR289966487016",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR860479926433",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR523148860519",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR578722677486",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR226183572600",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR658473740586",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR837002929702",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR713612681983",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR631187533573",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR701343542614",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR998007273115",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR307427471528",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR522507406246",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR202206733669",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR814336060257",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR805422473796",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR660878201350",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR154782811039",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR631657546626",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR560748473227",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR927996845029",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR806738292187",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR311047188326",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR440654737695",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR748464650651",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR314764041079",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR949258208209",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR301502682635",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR503741993903",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR996863773845",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR582664943234",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR185186772816",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR122898220618",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR576939269929",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR838291507022",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR199938187638",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR113201981079",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR428010811873",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR348861555518",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR694625427197",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR208765455495",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR776022798408",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR752475574006",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR947263321802",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          },
+          {
+            "record_id": "UTR618053001377",
+            "case": "clean",
+            "expected": "auto_resolved",
+            "got": "escalated"
+          }
+        ]
+      }
+    },
+    {
+      "key": "deterministic",
+      "label": "+ N:1 settlements",
+      "blurb": "Adds subset-sum matching of a bank settlement credit against the batch of gateway payments behind it. The complete no-model pipeline.",
+      "stages": {
+        "exact": true,
+        "fuzzy": true,
+        "settlement": true,
+        "llm": false,
+        "rag": false
+      },
+      "counts": {
+        "auto_resolved": 464,
+        "escalated": 112,
+        "exception": 48,
+        "ignored": 55,
+        "failed": 1
+      },
+      "seconds": 0.341,
+      "findings_attached": 0,
+      "citations_attached": 0,
+      "metrics": {
+        "bucket_accuracy": 1.0,
+        "match_precision": 1.0,
+        "match_recall": 0.7837,
+        "match_f1": 0.8787,
+        "settlement_accuracy": 1.0,
+        "auto_resolved_pct": 0.6824,
+        "escalated_pct": 0.1647,
+        "exception_pct": 0.0706,
+        "ignored_pct": 0.0809,
+        "failed_pct": 0.0015,
+        "throughput_rps": 2001.5,
+        "throughput_rps_incl_setup": 2001.5,
+        "elapsed_seconds": 0.34,
+        "setup_seconds": 0.0,
+        "llm_call_count": 0,
+        "rag_call_count": 0,
+        "retry_count": 0,
+        "n_records": 680,
+        "matches_asserted": 384,
+        "matches_correct": 384,
+        "matches_expected": 490,
+        "settlements_correct": 80,
+        "settlements_total": 80,
+        "misbucketed": []
+      }
+    },
+    {
+      "key": "full",
+      "label": "+ LLM + RAG (shipped)",
+      "blurb": "Adds structured LLM reasoning over the ambiguous bucket and RAG grounding over the exception bucket.",
+      "stages": {
+        "exact": true,
+        "fuzzy": true,
+        "settlement": true,
+        "llm": true,
+        "rag": true
+      },
+      "counts": {
+        "auto_resolved": 464,
+        "escalated": 112,
+        "exception": 48,
+        "ignored": 55,
+        "failed": 1
+      },
+      "seconds": 1.746,
+      "findings_attached": 20,
+      "citations_attached": 48,
+      "metrics": {
+        "bucket_accuracy": 1.0,
+        "match_precision": 1.0,
+        "match_recall": 0.7837,
+        "match_f1": 0.8787,
+        "settlement_accuracy": 1.0,
+        "auto_resolved_pct": 0.6824,
+        "escalated_pct": 0.1647,
+        "exception_pct": 0.0706,
+        "ignored_pct": 0.0809,
+        "failed_pct": 0.0015,
+        "throughput_rps": 389.7,
+        "throughput_rps_incl_setup": 389.7,
+        "elapsed_seconds": 1.75,
+        "setup_seconds": 0.0,
+        "llm_call_count": 112,
+        "rag_call_count": 48,
+        "retry_count": 0,
+        "n_records": 680,
+        "matches_asserted": 384,
+        "matches_correct": 384,
+        "matches_expected": 490,
+        "settlements_correct": 80,
+        "settlements_total": 80,
+        "misbucketed": []
+      }
+    }
+  ]
+}
