@@ -273,7 +273,7 @@ churn now.
 | Match recall | **78.4%** | 384/490 true pairings auto-paired |
 | Match F1 | **87.9%** | |
 | Settlement accuracy | **100.0%** | 80/80 N:1 batches matched to the exact set |
-| Throughput | **99.2 rec/s** | after a one-off 15.9s model load |
+| Throughput | **94.6 rec/s** | after a one-off 19.1s model load |
 | LLM usage | **112 (16%)** | deterministic layer absorbs the rest |
 | Retries absorbed | **1** | the injected timeout |
 
@@ -302,5 +302,81 @@ explicitly so a judge isn't left wondering.
 
 **Next:** Phase 2 — repo/docs polish, architecture diagram, audit-trail presentation,
 pitch video.
+
+---
+
+## Session 8 — Phase 2 tasks 2.1–2.4, and a clean-clone verification (2.5)
+**Date:** 2026-08-30
+
+**Done — 2.2 (architecture diagram):**
+- `docs/ARCHITECTURE.svg`, hand-authored. Text, not a binary blob: it diffs, needs no
+  rendering toolchain, and stays in sync by being edited rather than re-exported.
+- Shows the three sources with row counts (307/245/128), the four branches out of the
+  deterministic layer with real counts (464 matched / 112 ambiguous / 48 exception /
+  55 ignored), the LLM and RAG subsets, all five terminal buckets, and the audit trail
+  as the collector. Every number is from the committed run, not illustrative.
+- Rendered to PNG with headless Chrome and inspected — the first two drafts had label
+  overflow and a lane crossing a label; fixed before committing.
+- Embedded at the top of the README and in `ARCHITECTURE.md`.
+
+**Done — 2.3 (audit trail presentation):**
+- `scripts/show_audit.py` — a run rendered as 11 numbered scenes. Each scene is a claim
+  plus the entries that prove it, quoted verbatim from the JSONL; nothing is re-derived.
+- Where a record passed through several stages the scene shows the **chain**: why the
+  deterministic layer escalated it, then what the model said about it. The FX case is the
+  good one — capped at 0.55 for a currency mismatch, Gemini identifies the counterpart at
+  0.95 and works out the rate, and the pipeline still escalates.
+- `--record <id>` follows one record end to end; `--run <path>`; `--markdown`.
+- `outputs/reports/audit_walkthrough.md` **committed** — the per-run JSONL is gitignored,
+  so this is what a judge reads from a clean clone.
+- `tests/test_show_audit.py` — 13 tests. The one that matters: a scene with no supporting
+  entry is **dropped, not faked**, so the walkthrough can't claim a failure mode the trail
+  doesn't contain.
+- Bug found while testing: `--run` with a path outside the repo crashed on
+  `Path.relative_to`. Fixed with a `show_path()` fallback.
+
+**Done — 2.1 (repo & docs polish):**
+- README: diagram at the top, plus two new sections it was missing — **"Reading the audit
+  trail"** and **"Future scope"** (CV/OCR, learned calibration, fuller LLM cache,
+  multi-entity netting; patent/IP explicitly a forward-looking note, not a claim).
+- `ARCHITECTURE.md`: diagram embedded, "2-3 sources" corrected to the real 3 with row
+  counts, `show_audit.py` documented, failure-mode table moved below section 6 so the
+  numbering runs 1-6 unbroken. No `TODO` left anywhere in the repo.
+- **One real inconsistency fixed.** README / PLAN / PROGRESS / TASKS all quoted
+  **99 rec/s after a ~16s setup**, from a run that was superseded. The *committed*
+  `outputs/reports/metrics.json` says **94.6 rec/s after 19.08s**. A judge diffing the
+  README against the evidence file would have found it. All four now match the committed
+  numbers.
+- Also caught in the pitch draft: "a settlement that batches forty payments" — the largest
+  real batch is **7** (distribution: 19 singles, 29 pairs, 21 triples, 5×4, 5×5, 1×7).
+  Reworded to "several".
+
+**Done — 2.4 (pitch script):**
+- `docs/PITCH.md` — 5 minutes, timed sections, on-screen cues beside spoken lines:
+  problem → architecture → live demo → metrics → both failure modes → future scope.
+- Pre-recording checklist: warm the embedding model first, or the first 19 seconds on
+  camera is a download with nothing to look at.
+- A **"Do not say"** list of six claims the repo does not support ("trained on real
+  Razorpay data", "100% accurate", "fully autonomous", "no network at all", "every
+  ambiguous case gets a Gemini judgment", "patented"). Recording is the user's step.
+
+**Done — 2.5 (clean-clone verification), the project's #1 non-negotiable:**
+- Copied exactly what git hands out — `git ls-files` + untracked-not-ignored, 101 files.
+  No `.venv`, no prebuilt `data/rag_index/`, no audit JSONL. Fresh venv, installed from
+  `requirements.txt` alone, **no API keys in the environment**.
+- `ruff check .` clean · `pytest` **130 passed** · `run_pipeline.py --report` completed.
+- Every headline number reproduced **exactly**: bucket accuracy 100% (680/680), match
+  precision 100% (384/384), recall 78.4%, settlement 80/80, 112 LLM calls, 1 retry
+  absorbed, 842 audit entries. Both failure modes printed. Only throughput moved —
+  95.9 vs the committed 94.6 rec/s, which is machine variance.
+- **Caveat worth saying out loud:** the ~90 MB embedding model was already in this
+  machine's Hugging Face cache, so the first-ever-download path was *not* exercised here.
+  The degradation path (index unavailable → exceptions reported without citations, run
+  completes) is covered by a test. A genuinely cold machine adds a one-off download.
+
+**Totals:** 130 tests passing, ruff clean, verified on a separate clone.
+
+**Next:** record the video (2.4), then finish 2.5 — repo public, video uploaded, and the
+numbers spoken in the video matching `outputs/reports/metrics.json`.
 
 ---

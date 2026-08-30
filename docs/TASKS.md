@@ -200,38 +200,83 @@ pipeline runs fine meanwhile (cache miss → escalate fallback).
 
 **Measured (680 records):** bucket accuracy **100%** · match precision **100%**
 (384/384) · match recall **78.4%** (384/490 — the rest escalated, not missed) ·
-settlement accuracy **100%** (80/80) · throughput **99 rec/s** · **16%** of
+settlement accuracy **100%** (80/80) · throughput **94.6 rec/s** · **16%** of
 records reach the LLM · 1 retry absorbed · 1 malformed row rejected.
 
-- [ ] Re-verify on a genuinely separate clone + clean venv (deferred to task 2.5;
-      the local venv already proves `pip install -r requirements.txt` works).
+- [x] Re-verified on a separate clone + fresh venv (session 8). Every headline
+      number reproduced exactly; see task 2.5 and PROGRESS.md session 8.
 
 ---
 
 ## Phase 2 — Polish & Submission (Days 7–8) · NON-NEGOTIABLE
 
-### 2.1 Repo & docs polish (Day 7)
-- [ ] README: real quickstart, real metrics table, architecture image,
-      "failure modes handled" section, future scope.
-- [ ] Prune dead stubs; ensure `ruff check .` and `pytest` are green.
-- [ ] `docs/ARCHITECTURE.md` updated to match what was actually built.
+### 2.1 Repo & docs polish (Day 7) — DONE
+- [x] README: quickstart, metrics table, architecture image at the top, failure
+      modes, **"Reading the audit trail"** and **"Future scope"** sections added.
+- [x] No dead stubs left (`grep TODO/FIXME/NotImplementedError` over `src/`,
+      `scripts/`, `config/`, `tests/` is empty). `ruff check .` clean,
+      **130 tests** passing.
+- [x] `docs/ARCHITECTURE.md` — diagram embedded, "2-3 sources" corrected to the
+      real 3 with row counts, `show_audit.py` documented, failure-mode table
+      moved below section 6 so the numbering runs 1-6 unbroken.
+- [x] **Fixed a real inconsistency:** README / PLAN / PROGRESS / TASKS quoted
+      **99 rec/s after ~16s setup** from an earlier run, while the *committed*
+      `outputs/reports/metrics.json` says **94.6 rec/s after 19.08s**. All four
+      now match the committed evidence — a judge diffing the README against
+      `metrics.json` would have caught it.
 
-### 2.2 Architecture diagram (Day 7)
-- [ ] Visual diagram of the pipeline (not ASCII) → `docs/ARCHITECTURE.png` /
-      `.svg`, referenced from README.
+### 2.2 Architecture diagram (Day 7) — DONE
+- [x] `docs/ARCHITECTURE.svg` — hand-authored SVG (diffs as text, no rendering
+      toolchain, no binary in the repo). Shows the three sources with their row
+      counts, the four branches out of the deterministic layer with real counts,
+      the LLM/RAG subsets, all five terminal buckets, and the audit trail as the
+      collector. Every number on it is from the committed run.
+- [x] Embedded at the top of the README and in `docs/ARCHITECTURE.md`.
+      Rendered and visually checked, not just written.
 
-### 2.3 Audit trail presentation (Day 7)
-- [ ] Script or notebook that renders `outputs/audit/*.jsonl` into a readable
-      walkthrough (a few representative decisions of each type).
+### 2.3 Audit trail presentation (Day 7) — DONE
+- [x] `scripts/show_audit.py` — renders a run as 11 numbered scenes, each a
+      claim plus the entries that prove it, quoted verbatim from the JSONL.
+      Where a record passed through several stages (escalation → LLM verdict;
+      exception → grounding) the scene shows the **chain**, not one entry.
+- [x] `--record <id>` follows a single record end to end; `--run <path>` reads
+      any run file; `--markdown` writes the committed walkthrough.
+- [x] `outputs/reports/audit_walkthrough.md` **committed** — the per-run JSONL is
+      gitignored, so this is what a judge reads from a clean clone.
+- [x] `tests/test_show_audit.py` — 13 tests. The one that matters:
+      a scene with no supporting entry is **dropped, not faked**, so the
+      walkthrough cannot claim a failure mode the trail does not contain.
+- [x] **Bug found and fixed while testing:** `--run` with a path outside the repo
+      crashed on `Path.relative_to`.
 
 ### 2.4 Pitch video (Day 8)
-- [ ] 5-min script: problem → architecture → live demo → metrics → one failure
-      case handled → future scope.
-- [ ] Record + buffer for re-takes.
+- [x] `docs/PITCH.md` — 5-min script with timings, on-screen cues and spoken
+      lines: problem → architecture → live demo → metrics → both failure modes →
+      future scope. Includes a pre-recording checklist (warm the embedding model
+      first, or the first 19s on camera is a download) and a **"Do not say"**
+      list of six claims the repo does not support.
+- [ ] Record + buffer for re-takes. **(user)**
 
 ### 2.5 Final submission checklist (Day 8)
-- [ ] Repo public, clean clone works, docs complete, video uploaded, metrics
-      match what the video claims.
+- [x] **Clean clone + fresh venv verified.** Copied exactly what git hands out
+      (`git ls-files` + untracked-not-ignored = 101 files; no `.venv`, no
+      prebuilt `data/rag_index/`, no audit JSONL), built a new venv, installed
+      from `requirements.txt` alone, ran with **no API keys in the environment**:
+      - `ruff check .` clean · `pytest` **130 passed**
+      - `python scripts/run_pipeline.py --report` completed and reproduced every
+        headline number **exactly**: bucket accuracy 100% (680/680), match
+        precision 100% (384/384), recall 78.4%, settlement 80/80, 112 LLM calls,
+        1 retry absorbed, 842 audit entries. Throughput 95.9 vs the committed
+        94.6 rec/s — machine variance, the only number that moved.
+      - `scripts/show_audit.py` works off the fresh run; the committed
+        walkthrough is readable without running anything.
+      - **Caveat, stated rather than hidden:** the ~90 MB embedding model was
+        already in the machine's Hugging Face cache, so this run did *not*
+        exercise the first-ever-download path. That path is covered by the
+        degradation test instead (index unavailable → exceptions still reported,
+        run completes). A truly cold machine would add a one-off download.
+- [ ] Repo public, docs complete, video uploaded, metrics match what the video
+      claims. **(user)**
 
 ---
 

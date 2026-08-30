@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 670" width="1180" height="670" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+
+  <rect x="0" y="0" width="1180" height="670" fill="#FBFCFD"/>
+
+  <text x="24" y="36" font-size="21" font-weight="700" fill="#0F172A">Autonomous Reconciliation Agent — pipeline</text>
+  <text x="24" y="60" font-size="12.5" fill="#64748B">Each stage narrows what the next one sees. Counts are the committed run over 680 records (outputs/reports/metrics.json).</text>
+
+  <!-- orchestration band -->
+  <rect x="24" y="86" width="1132" height="438" rx="10" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="6 4"/>
+  <text x="40" y="107" font-size="11" font-weight="700" fill="#475569" letter-spacing="0.6">AGENT ORCHESTRATION · recon.agent — bounded retry with backoff on transient failures only; anything unresolved escalates</text>
+
+  <!-- sources -->
+  <text x="40" y="208" font-size="10.5" font-weight="700" fill="#64748B" letter-spacing="0.8">SOURCES</text>
+  <rect x="40" y="226" width="162" height="44" rx="6" fill="#F1F5F9" stroke="#94A3B8"/>
+  <text x="52" y="245" font-size="12" font-weight="600" fill="#0F172A">gateway_export.csv</text>
+  <text x="52" y="261" font-size="10.5" fill="#64748B">307 rows · paise, ISO-8601</text>
+
+  <rect x="40" y="278" width="162" height="44" rx="6" fill="#F1F5F9" stroke="#94A3B8"/>
+  <text x="52" y="297" font-size="12" font-weight="600" fill="#0F172A">invoice_ledger.csv</text>
+  <text x="52" y="313" font-size="10.5" fill="#64748B">245 rows · rupees, YYYY-MM-DD</text>
+
+  <rect x="40" y="330" width="162" height="44" rx="6" fill="#F1F5F9" stroke="#94A3B8"/>
+  <text x="52" y="349" font-size="12" font-weight="600" fill="#0F172A">bank_statement.csv</text>
+  <text x="52" y="365" font-size="10.5" fill="#64748B">128 rows · rupees, DD-MM-YYYY</text>
+
+  <path d="M 202 248 H 226 M 202 300 H 226 M 202 352 H 226 M 226 248 V 352 M 226 300 H 244" fill="none" stroke="#475569" stroke-width="1.6"/>
+  <polygon points="248,300 240,295.5 240,304.5" fill="#475569"/>
+
+  <!-- 1 ingest -->
+  <rect x="250" y="240" width="152" height="118" rx="8" fill="#FFFFFF" stroke="#334155" stroke-width="1.6"/>
+  <text x="264" y="264" font-size="13.5" font-weight="700" fill="#0F172A">1 · Ingest</text>
+  <text x="264" y="281" font-size="10.5" fill="#64748B">recon.ingest</text>
+  <line x1="264" y1="291" x2="388" y2="291" stroke="#E2E8F0"/>
+  <text x="264" y="308" font-size="11" fill="#334155">3 dialects → CanonicalTxn</text>
+  <text x="264" y="325" font-size="11" fill="#334155">Decimal, one schema</text>
+  <text x="264" y="345" font-size="11" font-weight="600" fill="#15803D">679 normalised</text>
+
+  <path d="M 402 298 H 446" fill="none" stroke="#475569" stroke-width="1.6"/>
+  <polygon points="450,298 442,293.5 442,302.5" fill="#475569"/>
+
+  <!-- ingest reject -> failed -->
+  <path d="M 326 240 V 132 H 930" fill="none" stroke="#B91C1C" stroke-width="1.6"/>
+  <polygon points="934,132 926,127.5 926,136.5" fill="#B91C1C"/>
+  <text x="344" y="126" font-size="10.5" font-weight="600" fill="#B91C1C">1 malformed row — rejected with a per-field reason, never silently dropped</text>
+
+  <!-- 2 match -->
+  <rect x="450" y="216" width="172" height="164" rx="8" fill="#FFFFFF" stroke="#334155" stroke-width="1.6"/>
+  <text x="464" y="240" font-size="13.5" font-weight="700" fill="#0F172A">2 · Deterministic</text>
+  <text x="464" y="256" font-size="13.5" font-weight="700" fill="#0F172A">Match</text>
+  <text x="464" y="273" font-size="10.5" fill="#64748B">recon.matching</text>
+  <line x1="464" y1="283" x2="608" y2="283" stroke="#E2E8F0"/>
+  <text x="464" y="300" font-size="11" fill="#334155">exact  ref+amt+ccy+day</text>
+  <text x="464" y="317" font-size="11" fill="#334155">fuzzy  rapidfuzz, gated</text>
+  <text x="464" y="334" font-size="11" fill="#334155">N:1    subset-sum</text>
+  <text x="464" y="358" font-size="11" font-weight="600" fill="#15803D">68% resolved, no model</text>
+
+  <!-- branch: matched -->
+  <path d="M 622 248 H 638 V 200 H 930" fill="none" stroke="#15803D" stroke-width="1.8"/>
+  <polygon points="934,200 926,195.5 926,204.5" fill="#15803D"/>
+  <text x="662" y="194" font-size="10.5" font-weight="600" fill="#15803D">matched · 464   exact 256 / fuzzy 128 / settlement 80</text>
+
+  <!-- branch: ignored -->
+  <path d="M 622 350 H 652 V 262 H 930" fill="none" stroke="#64748B" stroke-width="1.6"/>
+  <polygon points="934,262 926,257.5 926,266.5" fill="#64748B"/>
+  <text x="672" y="256" font-size="10.5" font-weight="600" fill="#64748B">ignored · 55   filtered before matching</text>
+
+  <!-- branch: ambiguous -->
+  <path d="M 622 282 H 666 V 340 H 684" fill="none" stroke="#B45309" stroke-width="1.8"/>
+  <polygon points="688,340 680,335.5 680,344.5" fill="#B45309"/>
+  <text x="690" y="294" font-size="10.5" font-weight="600" fill="#B45309">ambiguous · 112</text>
+
+  <!-- branch: exception -->
+  <path d="M 622 316 H 678 V 452 H 684" fill="none" stroke="#6D28D9" stroke-width="1.8"/>
+  <polygon points="688,452 680,447.5 680,456.5" fill="#6D28D9"/>
+  <text x="600" y="404" font-size="10.5" font-weight="600" fill="#6D28D9">exception · 48</text>
+
+  <!-- 3 llm -->
+  <rect x="688" y="302" width="216" height="76" rx="8" fill="#FFFBEB" stroke="#B45309" stroke-width="1.6"/>
+  <text x="702" y="324" font-size="13.5" font-weight="700" fill="#0F172A">3 · LLM Reasoning</text>
+  <text x="702" y="340" font-size="10.5" fill="#92400E">recon.reasoning · Gemini</text>
+  <text x="702" y="357" font-size="11" fill="#334155">structured → {decision, confidence}</text>
+  <text x="702" y="372" font-size="10.5" fill="#92400E">16% of corpus · replayed from cache</text>
+
+  <path d="M 904 340 H 930" fill="none" stroke="#B45309" stroke-width="1.8"/>
+  <polygon points="934,340 926,335.5 926,344.5" fill="#B45309"/>
+
+  <!-- 4 rag -->
+  <rect x="688" y="414" width="216" height="76" rx="8" fill="#F5F3FF" stroke="#6D28D9" stroke-width="1.6"/>
+  <text x="702" y="436" font-size="13.5" font-weight="700" fill="#0F172A">4 · RAG Grounding</text>
+  <text x="702" y="452" font-size="10.5" fill="#5B21B6">recon.rag · 9 real GST docs</text>
+  <text x="702" y="469" font-size="11" fill="#334155">retrieve → verbatim quoted clause</text>
+  <text x="702" y="484" font-size="10.5" fill="#5B21B6">no LLM prose — every claim is a quote</text>
+
+  <path d="M 904 452 H 930" fill="none" stroke="#6D28D9" stroke-width="1.8"/>
+  <polygon points="934,452 926,447.5 926,456.5" fill="#6D28D9"/>
+
+  <!-- terminal buckets -->
+  <text x="934" y="98" font-size="10.5" font-weight="700" fill="#64748B" letter-spacing="0.8">TERMINAL BUCKETS — one per row</text>
+
+  <rect x="934" y="106" width="212" height="52" rx="6" fill="#FEF2F2" stroke="#B91C1C"/>
+  <text x="948" y="127" font-size="12.5" font-weight="700" fill="#7F1D1D">failed · 1</text>
+  <text x="948" y="145" font-size="10.5" fill="#991B1B">unparseable row, reason logged</text>
+
+  <rect x="934" y="174" width="212" height="52" rx="6" fill="#F0FDF4" stroke="#15803D"/>
+  <text x="948" y="195" font-size="12.5" font-weight="700" fill="#14532D">auto_resolved · 464  (68.2%)</text>
+  <text x="948" y="213" font-size="10.5" fill="#166534">reconciled, no human involvement</text>
+
+  <rect x="934" y="236" width="212" height="52" rx="6" fill="#F8FAFC" stroke="#64748B"/>
+  <text x="948" y="257" font-size="12.5" font-weight="700" fill="#334155">ignored · 55  (8.1%)</text>
+  <text x="948" y="275" font-size="10.5" fill="#64748B">failed payments — no money moved</text>
+
+  <rect x="934" y="314" width="212" height="52" rx="6" fill="#FFFBEB" stroke="#B45309"/>
+  <text x="948" y="335" font-size="12.5" font-weight="700" fill="#78350F">escalated · 112  (16.5%)</text>
+  <text x="948" y="353" font-size="10.5" fill="#92400E">to a human, with the finding</text>
+
+  <rect x="934" y="426" width="212" height="52" rx="6" fill="#F5F3FF" stroke="#6D28D9"/>
+  <text x="948" y="447" font-size="12.5" font-weight="700" fill="#4C1D95">exception · 48  (7.1%)</text>
+  <text x="948" y="465" font-size="10.5" fill="#5B21B6">cited: s.34 (43), s.16 (5)</text>
+
+  <!-- audit trail -->
+  <path d="M 590 524 V 548" fill="none" stroke="#475569" stroke-width="1.6" stroke-dasharray="4 3"/>
+  <polygon points="590,554 585.5,546 594.5,546" fill="#475569"/>
+  <text x="602" y="542" font-size="10.5" font-weight="600" fill="#475569">every decision, as it is made</text>
+
+  <rect x="24" y="554" width="1132" height="78" rx="10" fill="#F1F5F9" stroke="#334155" stroke-width="1.4"/>
+  <text x="44" y="580" font-size="13.5" font-weight="700" fill="#0F172A">5 · Audit Trail</text>
+  <text x="152" y="580" font-size="10.5" fill="#64748B">recon.audit → outputs/audit/run-&lt;id&gt;.jsonl</text>
+  <text x="44" y="601" font-size="11" fill="#334155">842 append-only JSON objects for this run — one per decision, from all five stages:</text>
+  <text x="44" y="620" font-size="11" fill="#334155">run_id · seq · ts · record_id · stage · decision · confidence · source · matched_to · inputs · rationale — rationale is never blank.</text>
+
+  <text x="24" y="654" font-size="10.5" fill="#94A3B8">Runs from a clean clone with no API keys. LLM judgments replay from a committed content-addressed cache; a cache miss escalates safely rather than failing.</text>
+</svg>

@@ -5,6 +5,8 @@ in [`../outputs/reports/summary.md`](../outputs/reports/summary.md).
 
 ## Pipeline Flow
 
+![Pipeline architecture](ARCHITECTURE.svg)
+
 Ingest -> Deterministic Match -> LLM Reasoning (ambiguous cases only) -> RAG Grounding (exceptions only) -> Agent Orchestration (retry / escalate / log) -> Audit Trail Output
 
 Each stage narrows what the next one sees. That is the core cost-control
@@ -14,7 +16,8 @@ records ever reach the LLM and **7%** reach RAG.
 ## Components
 
 ### 1. Ingest
-- Reads transaction records from 2-3 sources (bank statement, invoice ledger, gateway export)
+- Reads transaction records from 3 sources: gateway export (307 rows), invoice
+  ledger (245), bank statement (128) -- each with its own amount unit and date format
 - Normalizes schema across sources
 - Validates input; malformed records routed to failure-handling path, not silently dropped
 
@@ -56,6 +59,20 @@ records ever reach the LLM and **7%** reach RAG.
   not be obtained, attached
 - **Two** injected failure modes demonstrated end to end (see below)
 
+### 6. Audit Trail
+- `src/recon/audit/logger.py` — append-only JSONL, one object per decision:
+  `run_id, seq, ts, record_id, stage, decision, confidence, source, matched_to,
+  inputs, rationale`
+- `rationale` is never blank; ambiguous decisions carry the scored candidates so
+  the LLM stage (and a human) can see what was weighed
+- This is the artifact judges will actually inspect — treat it as a first-class output, not incidental logging
+- `scripts/show_audit.py` renders a run as a readable walkthrough: one
+  representative decision of each kind, plus the full chain for records that
+  passed through several stages. The committed output is
+  [`../outputs/reports/audit_walkthrough.md`](../outputs/reports/audit_walkthrough.md)
+  — readable from a clean clone, since the per-run JSONL itself is regenerated
+  rather than committed. `--record <id>` follows a single record end to end.
+
 ## Failure modes handled
 
 | Injected | Where | Behaviour |
@@ -64,18 +81,11 @@ records ever reach the LLM and **7%** reach RAG.
 | LLM API timeout | reasoning | Retried with backoff and absorbed; retry appears in the trail. Exhausted retries escalate that record only |
 | *(unplanned)* policy store unavailable | RAG | Exceptions still reported, without citations, rather than failing the run |
 
-### 6. Audit Trail
-- `src/recon/audit/logger.py` — append-only JSONL, one object per decision:
-  `run_id, seq, ts, record_id, stage, decision, confidence, source, matched_to,
-  inputs, rationale`
-- `rationale` is never blank; ambiguous decisions carry the scored candidates so
-  the LLM stage (and a human) can see what was weighed
-- This is the artifact judges will actually inspect — treat it as a first-class output, not incidental logging
-
 ## Stretch (Phase 3, not core)
 - CV/OCR ingestion for scanned invoices, feeding into step 1
 - DL-based confidence calibration, replacing/augmenting LLM confidence scoring in step 3
 
 ## Diagram
-TODO (task 2.2): convert the flow above into a visual diagram for the README /
-pitch deck.
+[`ARCHITECTURE.svg`](ARCHITECTURE.svg) — hand-authored SVG, so it diffs as text
+and needs no rendering toolchain. Counts on it are the committed run's, not
+illustrative.
