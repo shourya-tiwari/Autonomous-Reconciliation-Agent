@@ -1,7 +1,7 @@
 # Reconciliation run — evaluation summary
 
 Corpus: **680 records** across 3 sources (`gateway_export.csv`, `invoice_ledger.csv`, `bank_statement.csv`).
-Wall clock: **7.19s** (94.6 records/s), after a one-off 19.08s embedding-model load (25.9/s including it).
+Wall clock: **2.02s** (336.3 records/s), after a one-off 15.28s embedding-model load (39.3/s including it).
 
 ## Accuracy
 

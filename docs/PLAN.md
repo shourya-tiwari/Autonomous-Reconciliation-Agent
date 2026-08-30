@@ -31,7 +31,7 @@ Time budget: ~6-8 hrs/day, solo build.
 
 ## Day 6 — Evaluation — DONE
 - [x] Full pipeline run on the complete 680-record dataset
-- [x] Real metrics: bucket accuracy 100%, match precision 100% (384/384), recall 78.4%, settlement accuracy 100% (80/80), 94.6 rec/s, 68.2% auto-resolved / 16.5% escalated
+- [x] Real metrics: bucket accuracy 100%, match precision 100% (384/384), recall 78.4%, settlement accuracy 100% (80/80), 336 rec/s, 68.2% auto-resolved / 16.5% escalated
 - [x] Fixed in the Phase-1 scan: an offline first run could not fetch the embedding model and killed the pipeline; it now degrades instead
 - [x] Failure-handling demo is clean and printed by `run_pipeline.py`
 

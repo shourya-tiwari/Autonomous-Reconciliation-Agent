@@ -273,7 +273,7 @@ churn now.
 | Match recall | **78.4%** | 384/490 true pairings auto-paired |
 | Match F1 | **87.9%** | |
 | Settlement accuracy | **100.0%** | 80/80 N:1 batches matched to the exact set |
-| Throughput | **94.6 rec/s** | after a one-off 19.1s model load |
+| Throughput | ~~94.6 rec/s~~ | **superseded — see session 9.** The entrypoint warmed the policy index and then threw it away, so the embedding-model load was counted twice: once as setup, once again inside the timed run. Corrected to **336 rec/s**. Accuracy numbers are unaffected. |
 | LLM usage | **112 (16%)** | deterministic layer absorbs the rest |
 | Retries absorbed | **1** | the injected timeout |
 
@@ -378,5 +378,86 @@ pitch video.
 
 **Next:** record the video (2.4), then finish 2.5 — repo public, video uploaded, and the
 numbers spoken in the video matching `outputs/reports/metrics.json`.
+
+---
+
+## Session 9 — Phase 3: layer ablation (3.3) + Streamlit review queue
+**Date:** 2026-08-30
+
+**Scope decision first.** 3.1 (CV/OCR) and 3.2 (DL calibration) were **cut on
+purpose**, not skipped for time:
+- CV/OCR needs a system binary (Tesseract) or runtime model downloads, either of
+  which breaks non-negotiable #1. `PROJECT.md` had already cut it once.
+- A calibrator fitted to a corpus we generated learns `generate_synthetic.py`'s
+  parameters, not reconciliation. The number would look good and would collapse
+  under one follow-up question — and "defend design choices live" is scored.
+Both are in README future scope with that reasoning written down.
+
+**Done — 3.3 (layer ablation):**
+- `reconcile()` and `run_pipeline()` gained `stages` / `use_llm` / `use_rag`, all
+  defaulting to on. A test pins that the default path is byte-identical to before,
+  so the ablation cannot quietly alter the pipeline it measures. A disabled layer
+  leaves its records `escalated` — nothing resolved, nothing dropped.
+- `src/recon/eval/ablation.py` + `scripts/run_ablation.py`; every variant scored by
+  the *same* `metrics.compute` against the same ground truth.
+
+| Variant | Auto-resolved | Escalated | Bucket acc. | Recall | LLM calls |
+|---|---:|---:|---:|---:|---:|
+| Exact only (a reference-column join) | 256 | 320 | 69.4% | 52.2% | 0 |
+| + fuzzy | 384 | 192 | 88.2% | 78.4% | 0 |
+| + N:1 settlements | 464 | 112 | 100.0% | 78.4% | 0 |
+| + LLM + RAG (shipped) | 464 | 112 | 100.0% | 78.4% | 112 |
+
+- **Precision is 100% in every row** — the layers buy recall and never trade
+  precision for it.
+- **The finding worth defending: the LLM and RAG layers move the table by zero.**
+  A confident LLM match with a residual amount variance escalates anyway, so the
+  model never converts an escalation into a resolution. What it changes is what a
+  reviewer is handed: 20 of 112 escalations carry the model's real finding, 48 of
+  48 exceptions carry a verbatim statute quote. The report calls that a
+  **review-cost** claim, not an accuracy one, rather than letting the table imply
+  the model raised the score.
+- Routing: 112 to the LLM vs 624 for a no-routing design (5.6×) — labelled as a
+  call-count ratio over measured routing, since the naive variant was not run.
+- `outputs/reports/ablation.{json,md}` committed. 23 tests.
+
+**Done — 3.4 (Streamlit review queue, not in the original plan):**
+- `app.py`: the 32% the terminal can't show. Runs the real pipeline in-process;
+  nothing mocked. Overview / review queue / exceptions / audit trace.
+- Read-only on purpose — triage is session-local and never written back to a
+  ledger, and a test asserts the UI says so out loud.
+- `requirements-app.txt` keeps `streamlit` out of `requirements.txt`: the
+  clean-clone install and the entrypoint must not depend on a UI framework.
+- 9 tests via Streamlit's `AppTest`, skipped when the extra is absent. It runs the
+  real script headlessly, so a broken tab fails the suite instead of the demo.
+- Design note: the bucket distribution is a **table with magnitude bars**, not a
+  five-colour chart. Running the palette validator on the status colours as a
+  5-way categorical set failed three checks (lightness band, normal-vision ΔE
+  13.6, chroma floor), so identity is carried by an icon + row label and colour
+  carries nothing. No custom palette anywhere in the app.
+
+**Two bugs the app test caught:**
+- `Citation` has no `.chunk` — the exceptions tab raised on load.
+- The app showed ~13 rec/s because it let the pipeline build its own policy index
+  inside the timed run.
+
+**And that second one turned out to be in the shipped entrypoint too:**
+`scripts/run_pipeline.py` warmed a `PolicyIndex`, **threw it away**, and let
+`run_grounding` load the embedding model a second time *inside* the timed section
+— so the model load was counted twice, once as `setup_seconds` and again as
+pipeline work. Throughput was understated by ~4x. Fixed by reusing the warmed
+index. **94.6 → 336.3 rec/s**; setup 19.08 → 15.28s. Accuracy numbers are
+completely unaffected (100% / 100% / 78.4% / 80-80). Every doc quoting the old
+figure was updated and the superseded session-7 row is struck through with the
+reason, so the change is traceable rather than silent.
+
+**Totals:** 162 tests passing, ruff clean.
+
+**Not done:** the app was verified structurally via `AppTest`, **not**
+screenshotted — headless Chrome's virtual clock races past the ~20s startup and
+always captures the loading skeleton. Worth one manual look before recording.
+
+**Next:** record the video (2.4) — the ablation table and the review queue are
+both worth screen time — then finish the 2.5 submission checklist.
 
 ---

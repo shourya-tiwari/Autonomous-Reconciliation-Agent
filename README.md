@@ -43,7 +43,7 @@ reproduced every number in the table below. Details in
 | Match precision | **100.0%** | 384/384 asserted 1:1 pairings correct |
 | Match recall | **78.4%** | 384/490 true pairings auto-paired — the rest are *escalated, not missed* |
 | Settlement accuracy | **100.0%** | 80/80 N:1 bank settlements matched to the exact batch |
-| Throughput | **94.6 rec/s** | after a one-off 19.1 s embedding-model load |
+| Throughput | **336 rec/s** | steady state, after a one-off 15.3 s embedding-model load |
 | LLM usage | **16%** | only 112 of 680 records reach the model |
 
 Recall is below 100% on purpose: partial captures, duplicate references and FX
@@ -74,6 +74,55 @@ reach the LLM and 7% reach RAG. See the diagram above.
 | RAG | `recon.rag` | Retrieve and **quote** GST clauses to explain exceptions |
 | Agent | `recon.agent` | Orchestrate, retry transient failures, escalate the rest |
 | Audit | `recon.audit` | One JSONL record per decision — the artifact judges inspect |
+
+## The review queue (optional UI)
+
+```bash
+pip install -r requirements-app.txt
+streamlit run app.py
+```
+
+The terminal shows that 68% of the corpus reconciles itself. The app shows the
+other 32% — the escalations a person has to settle and the exceptions that need a
+policy answer — which is the part of reconciliation a controller actually does.
+It runs the real pipeline in-process (about 20 s, mostly the embedding model);
+nothing in it is mocked. Four views: run overview, review queue with the scored
+candidates and the model's finding, exceptions with their quoted GST clause, and
+a per-record audit trace.
+
+Read-only by design: triage marks live in the browser session and are never
+written back to any ledger. Streamlit is deliberately **not** in
+`requirements.txt` — the pipeline entrypoint must not depend on a UI framework,
+and the clean-clone install stays lean.
+
+## What each layer buys
+
+```bash
+python scripts/run_ablation.py
+```
+
+Removes one layer at a time and re-scores against the same ground truth, so the
+"deterministic layers first, model last" design is measured rather than asserted.
+Full report: [`outputs/reports/ablation.md`](outputs/reports/ablation.md).
+
+| Variant | Auto-resolved | Escalated | Bucket acc. | Recall | LLM calls |
+|---------|--------------:|----------:|------------:|-------:|----------:|
+| Exact only (a join on the reference column) | 256 | 320 | 69.4% | 52.2% | 0 |
+| + fuzzy | 384 | 192 | 88.2% | 78.4% | 0 |
+| + N:1 settlements (full no-model layer) | 464 | 112 | 100.0% | 78.4% | 0 |
+| + LLM + RAG (shipped) | 464 | 112 | 100.0% | 78.4% | 112 |
+
+Precision is 100% in every row — the layers buy recall and never trade precision
+for it. The last two rows are identical on purpose: a confident LLM match that
+still carries a residual amount variance escalates anyway, so the model does not
+convert escalations into resolutions. What it changes is what the reviewer is
+handed — 20 of the 112 escalations arrive with the model's actual finding, and
+48 of 48 exceptions arrive with a verbatim statute quote. That is a claim about
+review cost, not accuracy, and the report says so.
+
+Routing sends **112** records to the LLM where a no-deterministic-layer design
+would send **624** — a **5.6×** difference in model calls. That multiple is
+arithmetic over the measured routing, not a simulated run.
 
 ## Reading the audit trail
 
@@ -108,9 +157,10 @@ The RAG corpus is 9 real GST documents from cbic-gst.gov.in —
 ## Layout
 
 - `src/recon/` — the pipeline, one package per stage above
-- `scripts/` — `run_pipeline.py` (the entrypoint), `show_audit.py` (read the trail), `generate_synthetic.py`, `build_rag_index.py`, `populate_llm_cache.py`, `pull_razorpay_sandbox.py`
+- `app.py` — the optional Streamlit review queue
+- `scripts/` — `run_pipeline.py` (the entrypoint), `show_audit.py` (read the trail), `run_ablation.py`, `generate_synthetic.py`, `build_rag_index.py`, `populate_llm_cache.py`, `pull_razorpay_sandbox.py`
 - `data/` — `snapshot/` (real, committed), `synthetic/` (corpus), `ground_truth/` (answer key), `policy/` (GST corpus), `llm_cache/`, `raw/` (gitignored)
-- `outputs/` — `audit/` trail (regenerated per run), `reports/` metrics + walkthrough (committed)
+- `outputs/` — `audit/` trail (regenerated per run), `reports/` metrics + walkthrough + ablation (committed)
 - `docs/` — `PROJECT.md`, `ARCHITECTURE.md` (+ `.svg`), `PLAN.md`, `PROGRESS.md`, `TASKS.md`, `PITCH.md`
 
 ## Future scope
@@ -126,7 +176,10 @@ leave room for them, not as a roadmap anyone has committed to:
 - **Learned confidence calibration.** Today's cutoffs (`MATCH_CONFIDENT`,
   `LLM_CONFIDENCE_MIN`) are hand-set constants in `config/settings.py`. With
   enough labelled outcomes they could be fitted per discrepancy class, which is
-  what would move recall up without giving up the precision that matters.
+  what would move recall up without giving up the precision that matters. Not
+  attempted here on purpose: the corpus is generated, so a calibrator fitted to
+  it would be learning `generate_synthetic.py`'s parameters rather than
+  reconciliation, and the resulting number would not survive a question.
 - **A fuller LLM cache.** 20 of the 112 ambiguous records currently have a real
   Gemini judgment cached; the rest fall back to a safe escalation, which is the
   bucket they belong in either way. Filling the cache changes the *rationales* a
@@ -140,9 +193,10 @@ forward-looking possibility, not a claim.
 ## Dev
 
 ```bash
-pytest                                      # 130 tests
+pytest                                      # 162 tests
 ruff check .                                # lint
 python scripts/build_rag_index.py --check   # rebuild the policy index + retrieval gate
 python scripts/generate_synthetic.py        # regenerate the corpus (deterministic, --seed)
 python scripts/show_audit.py --markdown     # refresh outputs/reports/audit_walkthrough.md
+python scripts/run_ablation.py              # refresh outputs/reports/ablation.md
 ```

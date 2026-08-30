@@ -4,8 +4,8 @@ Every decision the pipeline makes is written to `outputs/audit/run-<id>.jsonl` a
 
 Regenerate with `python scripts/show_audit.py --markdown`.
 
-- **Run** `20260827T223009.977685Z`
-- **Source** `outputs/audit/run-20260827T223009.977685Z.jsonl`
+- **Run** `20260830T071458.950564Z`
+- **Source** `outputs/audit/run-20260830T071458.950564Z.jsonl`
 - **Entries** 842
 
 | Count | Stage | Decision |
@@ -25,7 +25,7 @@ Regenerate with `python scripts/show_audit.py --markdown`.
 Two fields are unparseable at once and the entry names both, keeps the raw row, and lets the run continue. The record ends in the `failed` bucket, so it still shows up in the totals instead of quietly vanishing from them.
 
 ```
-seq 1     2026-08-27T22:30:10.000784+00:00
+seq 1     2026-08-30T07:14:58.975040+00:00
   record      pay_MALFORMED0001
   stage       ingest  ->  rejected
   source      validate:gateway   confidence 1.00
@@ -51,7 +51,7 @@ seq 1     2026-08-27T22:30:10.000784+00:00
 No money moved, so there is nothing to reconcile. Excluding them here -- and saying so on the record -- keeps them out of the accuracy denominator rather than padding it with free wins.
 
 ```
-seq 2     2026-08-27T22:30:10.001064+00:00
+seq 2     2026-08-30T07:14:58.975350+00:00
   record      pay_GubDZzstveWEcs
   stage       match  ->  ignored
   source      deterministic:filter   confidence 1.00
@@ -66,7 +66,7 @@ seq 2     2026-08-27T22:30:10.001064+00:00
 Reference, amount, currency and day all agree, so no model is consulted. This one path resolves 256 of the 680 records.
 
 ```
-seq 57    2026-08-27T22:30:10.003695+00:00
+seq 57    2026-08-30T07:14:59.587451+00:00
   record      INV-2026-00001
   stage       match  ->  matched
   source      deterministic:exact   confidence 1.00
@@ -82,7 +82,7 @@ seq 57    2026-08-27T22:30:10.003695+00:00
 Scored on amount / date / name / ref. A pairing is only accepted here if it clears MATCH_CONFIDENT (0.82) *and* beats the runner-up by MATCH_MARGIN (0.08). Everything else becomes ambiguous on purpose.
 
 ```
-seq 313   2026-08-27T22:30:10.290270+00:00
+seq 313   2026-08-30T07:14:59.836568+00:00
   record      INV-2026-00004
   stage       match  ->  matched
   source      deterministic:fuzzy   confidence 0.92
@@ -100,7 +100,7 @@ seq 313   2026-08-27T22:30:10.290270+00:00
 A settlement credit is matched to the exact subset of gateway payments that foots to it net of fees. The tolerance is deliberately tight, because a loose one lets a wrong subset add up by coincidence.
 
 ```
-seq 553   2026-08-27T22:30:10.301899+00:00
+seq 553   2026-08-30T07:14:59.847118+00:00
   record      UTR380370543651
   stage       match  ->  matched
   source      deterministic:settlement-group   confidence 1.00
@@ -117,7 +117,7 @@ seq 553   2026-08-27T22:30:10.301899+00:00
 The deterministic layer capped this pairing because the currencies differ. Gemini returns structured output, not prose, and identifies the counterpart with high confidence. The pipeline escalates anyway: a residual amount variance is a human's call. The model's finding is attached to the escalation, not acted on.
 
 ```
-seq 314   2026-08-27T22:30:10.290400+00:00
+seq 314   2026-08-30T07:14:59.836690+00:00
   record      INV-2026-00007
   stage       match  ->  escalated-to-llm
   source      deterministic:fuzzy   confidence 0.55
@@ -129,7 +129,7 @@ seq 314   2026-08-27T22:30:10.290400+00:00
 ```
 
 ```
-seq 681   2026-08-27T22:30:10.358208+00:00
+seq 681   2026-08-30T07:14:59.853729+00:00
   record      INV-2026-00007
   stage       reason  ->  escalated
   source      cache:recon-reason-v1   confidence 0.95
@@ -158,7 +158,7 @@ seq 681   2026-08-27T22:30:10.358208+00:00
 Offline, with no API key and no cached judgment for this record, the reasoner returns a deterministic `unsure` at confidence 0.0 and the record escalates -- carrying the deterministic layer's reason with it. This is what keeps the clean-clone run honest rather than merely green.
 
 ```
-seq 701   2026-08-27T22:30:10.488305+00:00
+seq 701   2026-08-30T07:14:59.863075+00:00
   record      INV-2026-00096
   stage       reason  ->  escalated
   source      fallback:recon-reason-v1   confidence 0.00
@@ -185,7 +185,7 @@ seq 701   2026-08-27T22:30:10.488305+00:00
 The error is classified as transient, so it is retried with backoff; a malformed request would not be. The retry itself is logged, so 'we handled a timeout' is a checkable claim rather than a story. The second attempt returns, and the record then follows the ordinary reasoning path -- here a cache miss, so it escalates. The timeout cost one record 0.25s, not the run.
 
 ```
-seq 780   2026-08-27T22:30:10.499880+00:00
+seq 780   2026-08-30T07:14:59.874056+00:00
   record      pay_8FwHA6as6GWOBJ
   stage       agent  ->  retry
   source      retry:attempt-1   confidence 0.00
@@ -196,7 +196,7 @@ seq 780   2026-08-27T22:30:10.499880+00:00
 ```
 
 ```
-seq 781   2026-08-27T22:30:10.750688+00:00
+seq 781   2026-08-30T07:15:00.124911+00:00
   record      pay_8FwHA6as6GWOBJ
   stage       reason  ->  escalated
   source      fallback:recon-reason-v1   confidence 0.00
@@ -223,7 +223,7 @@ seq 781   2026-08-27T22:30:10.750688+00:00
 A refund debit has no invoice to match. Rather than reporting a bare unmatched line, the exception is grounded in the retrieved statute with the clause quoted verbatim and its source URL recorded, so a controller can check the citation instead of trusting it.
 
 ```
-seq 633   2026-08-27T22:30:10.306570+00:00
+seq 633   2026-08-30T07:14:59.850560+00:00
   record      UTR569276233815
   stage       match  ->  escalated-to-rag
   source      deterministic:no-candidate   confidence 1.00
@@ -234,7 +234,7 @@ seq 633   2026-08-27T22:30:10.306570+00:00
 ```
 
 ```
-seq 794   2026-08-27T22:30:16.282550+00:00
+seq 794   2026-08-30T07:15:00.146844+00:00
   record      UTR569276233815
   stage       ground  ->  grounded
   source      rag:Section 34 CGST Act - Credit and debit notes   confidence 0.76
@@ -253,7 +253,7 @@ seq 794   2026-08-27T22:30:16.282550+00:00
 The bank charge is an input-tax-credit question, not a credit-note one, and retrieval routes it to the ITC sections. Retrieval is doing real work here -- it is not one canned answer wearing two labels.
 
 ```
-seq 796   2026-08-27T22:30:16.320560+00:00
+seq 796   2026-08-30T07:15:00.180901+00:00
   record      UTR708958838017
   stage       ground  ->  grounded
   source      rag:Section 16 CGST Act - Eligibility and conditions for taking input tax credit   confidence 0.80
@@ -272,11 +272,11 @@ seq 796   2026-08-27T22:30:16.320560+00:00
 The final entry reconciles the reconciler: every input row is accounted for in exactly one terminal bucket, and the counts are logged next to the elapsed time that produced them.
 
 ```
-seq 842   2026-08-27T22:30:17.169842+00:00
+seq 842   2026-08-30T07:15:00.972842+00:00
   record      __run__
   stage       agent  ->  completed
   source      orchestrator   confidence 1.00
-  rationale   processed 680 records in 7.19s; 1 retry(ies)
+  rationale   processed 680 records in 2.02s; 1 retry(ies)
   inputs
     auto_resolved = 464
     escalated = 112
@@ -284,6 +284,6 @@ seq 842   2026-08-27T22:30:17.169842+00:00
     ignored = 55
     failed = 1
     total = 680
-    elapsed_seconds = 7.19
-    throughput_rps = 94.6
+    elapsed_seconds = 2.02
+    throughput_rps = 336.3
 ```

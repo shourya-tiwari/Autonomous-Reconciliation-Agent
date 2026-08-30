@@ -51,16 +51,18 @@ _BUCKET_BLURB = {
 }
 
 
-def _warm_index() -> float:
+def _warm_index() -> tuple[PolicyIndex, float]:
     """Build/load the policy index up front and report what it cost.
 
-    Doing it here keeps the one-off embedding-model load out of the pipeline's
-    throughput number instead of quietly inflating it.
+    The warmed index is *returned and reused*, not discarded: if the pipeline
+    builds its own, the embedding-model load lands inside the timed section and
+    gets counted twice — once as setup, once again as pipeline work — which
+    understates throughput by roughly 4x.
     """
     started = time.perf_counter()
     index = PolicyIndex()
     index.query("input tax credit", k=1)
-    return time.perf_counter() - started
+    return index, time.perf_counter() - started
 
 
 def main() -> None:
@@ -76,13 +78,14 @@ def main() -> None:
     print("=" * 62)
 
     print("loading policy index ...", flush=True)
-    model_load = _warm_index()
+    index, model_load = _warm_index()
     print(f"  ready in {model_load:.1f}s\n")
 
     audit = AuditLogger.for_run()
     result = run_pipeline(
         Path(args.data) if args.data else None,
         audit=audit,
+        index=index,
         inject_timeout=not args.no_inject,
         live_llm=args.live_llm,
     )

@@ -25,9 +25,9 @@ python scripts/build_rag_index.py          # warm the embedding model *before* r
 python scripts/run_pipeline.py --report    # confirm the numbers you're about to quote
 ```
 
-Warm the index first. Otherwise the first thing on camera is a 19-second model
-download with nothing to look at. The run itself takes about 7 seconds, which is
-the right length to talk over.
+Warm the index first. Otherwise the first thing on camera is a 15-second model
+load with nothing to look at. The run itself is about 2 seconds — so narrate the
+bucket table rather than the run.
 
 Terminal at a legible font size, window wide enough that the summary table
 doesn't wrap. Have `outputs/reports/audit_walkthrough.md` open in a second tab.
@@ -83,7 +83,7 @@ python scripts/run_pipeline.py --report
 committed and the LLM judgments replay from a cache in the repo, so these numbers
 are reproducible on your machine, not just mine.
 
-680 records, about seven seconds.
+680 records, about two seconds.
 
 Every input row lands in exactly one bucket. 464 auto-resolved. 112 escalated —
 real ambiguity going to a human. 48 exceptions with a cited explanation. 55
@@ -114,7 +114,7 @@ it escalated instead of guessing. I could trade precision for recall by loosenin
 the thresholds. On something that moves money that's the wrong trade, so the
 escalation rate is a feature — and the summary says so rather than burying it.
 
-Throughput is about 95 records a second after the one-off model load."
+Throughput is over 300 records a second once the embedding model is loaded."
 
 ## 3:47 – 4:33 · A failure, handled
 
