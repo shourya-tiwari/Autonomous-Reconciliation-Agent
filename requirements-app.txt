@@ -1,0 +1,5 @@
+# Optional — the Streamlit review-queue UI (`streamlit run app.py`).
+# Kept out of requirements.txt so the core clean-clone install stays lean and the
+# pipeline entrypoint never depends on a UI framework.
+-r requirements.txt
+streamlit>=1.38
